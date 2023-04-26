@@ -1,2 +1,2 @@
-cardingo/obj/*.o
-cardingo/bin/cardingo
+*.o
+play

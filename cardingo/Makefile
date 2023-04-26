@@ -9,7 +9,7 @@ DATA_DIR = data
 
 SRC_FILES = $(wildcard $(SRC_DIR)/*.cpp)
 OBJ_FILES = $(patsubst $(SRC_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(SRC_FILES))
-BIN_FILE = $(BIN_DIR)/cardingo
+BIN_FILE = $(BIN_DIR)/play
 
 all: $(BIN_FILE)
 
