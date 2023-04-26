@@ -1,1 +1,2 @@
-./cardingo/obj
+cardingo/obj/*.o
+cardingo/bin/cardingo
