@@ -140,6 +140,6 @@ void choose_game(){
 int main() {
     cout << "Welcome to Cardingo (This is the welcome message still work in progress)" << endl;
     choose_game();
-    cout << "Thank you for playing";
+    cout << "Thank you for playing" << endl;
     return 0;
 }
