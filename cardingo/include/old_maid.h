@@ -1,6 +1,6 @@
-#ifndef WAR_H
-#define WAR_H
+#ifndef OLD_MAID_H
+#define OLD_MAID_H
 
-void play_war();
+void old_maid_war();
 
 #endif

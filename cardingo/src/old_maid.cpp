@@ -1,7 +1,7 @@
 #include <iostream>
-#include "../include/war.h"
+#include "../include/old_maid.h"
 using namespace std;
 
-void play_war() {
-    cout << "war" << endl;
+void play_old_maid() {
+    cout << "old maid" << endl;
 }
