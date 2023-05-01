@@ -8,6 +8,7 @@ using namespace std;
 
 struct Player{
     string name;
+    int games_played;
     int bigtwo;
     int blackjack;
     int higher_lower;
@@ -20,6 +21,7 @@ vector<Player> create_vector(){
     vector<Player> player_data;
     string line, word;
     string name;
+    int games_played;
     int bigtwo;
     int blackjack;
     int higher_lower;
@@ -37,6 +39,8 @@ vector<Player> create_vector(){
             istringstream line_in(line);
             line_in >> word;
             user.name = word;
+            line_in >> word;
+            user.games_played = stoi(word);
             line_in >> word;
             user.bigtwo = stoi(word);
             line_in >> word;
@@ -63,6 +67,7 @@ void print_data(string username){
     for (int i = 0; i < player_data.size(); i++){
         if(player_data[i].name == username){
             cout << player_data[i].name;
+            cout << player_data[i].games_played;
             cout << player_data[i].bigtwo;
             cout << player_data[i].blackjack;
             cout << player_data[i].higher_lower;
@@ -77,7 +82,7 @@ void print_data(string username){
     }
 }
 
-void update_file(string username, int bigtwo = 0, int blackjack = 0, int higher_lower = 0, int old_maid = 0, int trump = 0, int score = 0){
+void update_file(string username, int games_played = 0, int bigtwo = 0, int blackjack = 0, int higher_lower = 0, int old_maid = 0, int trump = 0, int score = 0){
     vector<Player> player_data = create_vector();
     ofstream fout;
     bool player_exists = false;
@@ -89,6 +94,7 @@ void update_file(string username, int bigtwo = 0, int blackjack = 0, int higher_
     if(player_exists == false){
         fout.open("games.txt", ios::app);
         fout << username << " ";
+        fout << games_played << " ";
         fout << bigtwo << " ";
         fout << blackjack << " ";
         fout << higher_lower << " ";
@@ -100,6 +106,7 @@ void update_file(string username, int bigtwo = 0, int blackjack = 0, int higher_
         fout.open("games.txt");
         for(int i = 0; i < player_data.size(); i++){
             if(player_data[i].name == username){
+                player_data[i].games_played += games_played;
                 player_data[i].bigtwo += bigtwo;
                 player_data[i].blackjack += blackjack;
                 player_data[i].higher_lower += higher_lower;
@@ -110,6 +117,7 @@ void update_file(string username, int bigtwo = 0, int blackjack = 0, int higher_
         }
         for(int i = 0; i < player_data.size(); i++){
             fout << player_data[i].name << " ";
+            fout << player_data[i].games_played << " ";
             fout << player_data[i].bigtwo << " ";
             fout << player_data[i].blackjack << " ";
             fout << player_data[i].higher_lower << " ";
@@ -120,4 +128,25 @@ void update_file(string username, int bigtwo = 0, int blackjack = 0, int higher_
         }
     }
     fout.close();
+}
+
+
+void medal(string username){
+    vector<Player> player_data = create_vector();
+    bool player_exists = false;
+    for (int i = 0; i < player_data.size(); i++){
+        if(player_data[i].name == username){
+            player_exists = true;
+            if(player_data[i].score <= 10){
+                cout << "You have a bronze medal";
+            } else if((player_data[i].score >10) && (player_data[i].score <= 20)){
+                cout << "You have a silver medal";
+            } else if(player_data[i].score > 20){
+                cout << "You have a gold medal";
+            }
+        }
+    }
+    if (player_exists == false){
+        cout << "Player does not exist";
+    }
 }
