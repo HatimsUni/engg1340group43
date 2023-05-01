@@ -4,12 +4,12 @@
 
 // function
 
-vector<string> newDeck();
+vector<string> newDeck(bool isShuffle = true);
 
-vector<string> drawCard();
+vector<string> drawCard(vector<string> &deck, int n);
 
-string getSuit();
+string getSuit(string card);
 
-string getValue();
+string getValue(string card);
 
 #endif
