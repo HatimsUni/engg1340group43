@@ -6,7 +6,7 @@
 #include "../include/card_dealer.h"
 using namespace std;
 
-void printVector(vector<Card> vec) { // debug purposes
+void printCardVector(vector<Card> vec) { // debug purposes
     vector<Card>::iterator itr = vec.begin();
     
     cout << "Card: ";
@@ -17,7 +17,18 @@ void printVector(vector<Card> vec) { // debug purposes
     cout << endl;
 }
 
-vector<Card> newDeck(bool isShuffle = true) { // return a shuffled 52-Card vector
+void printStringVector(vector<string> vec) { // debug purposes
+    vector<string>::iterator itr = vec.begin();
+    
+    cout << "Card: ";
+    for (int i = 0; i < vec.size(); i++) {
+        cout << *itr << " ";
+        itr++;
+    }
+    cout << endl;
+}
+
+vector<string> newDeck(bool isShuffle = true) { // return a shuffled 52-Card vector
     vector<Card> deck;
     for (int i = 1; i <= 52; i++) { // create vector with 52 Card, unshuffled
         deck.push_back(Card(i));
@@ -28,14 +39,23 @@ vector<Card> newDeck(bool isShuffle = true) { // return a shuffled 52-Card vecto
         mt19937 g(rd());
         shuffle(deck.begin(), deck.end(), g);
     }
-
-    return deck;
-}
-
-vector<Card> drawCard(vector<Card> &deck, int n) { // draw n Card from top of the deck and return it as vector
-    vector<Card> cards;
+    
+    vector<string> stringDeck;
     
     vector<Card>::iterator itr = deck.begin();
+    for (int i = 0; i < deck.size(); i++) {
+        string tempStringCard = itr->suit + itr->value;
+        stringDeck.push_back(tempStringCard);
+        itr++;
+    }
+
+    return stringDeck;
+}
+
+vector<string> drawCard(vector<string> &deck, int n) { // draw n Card from top of the deck and return it as vector
+    vector<string> cards;
+    
+    vector<string>::iterator itr = deck.begin();
     for (int i = 0; i < n; i++) {
         cards.push_back(*itr);
         deck.erase(itr);
@@ -44,22 +64,30 @@ vector<Card> drawCard(vector<Card> &deck, int n) { // draw n Card from top of th
     return cards;
 }
 
+string getSuit(string card) {
+    return card.substr(0, 1);
+}
+
+string getValue(string card) {
+    return card.substr(1);
+}
+
 int main() { // testing purposes
     
-    vector<Card> deck = newDeck(false);
+    vector<string> deck = newDeck(false);
     cout << endl << "full unshuffled deck" << endl;
-    printVector(deck);
+    printStringVector(deck);
     
     deck = newDeck();
     cout << endl << "full shuffled deck" << endl;
-    printVector(deck);
+    printStringVector(deck);
 
-    vector<Card> hand1 = drawCard(deck, 3);
+    vector<string> hand1 = drawCard(deck, 3);
     cout << endl << "draw 3 cards" << endl;
-    printVector(hand1);
+    printStringVector(hand1);
     
     cout << endl << "card left in the deck" << endl;
-    printVector(deck);
+    printStringVector(deck);
 
     return 0;
 }
