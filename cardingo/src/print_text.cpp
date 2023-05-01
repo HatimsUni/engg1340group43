@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <sstream>
 using namespace std;
 
 string get_escape_seq(string color)
@@ -131,8 +132,129 @@ void print_main_heading()
     print();
 }
 
+void print_main_ending()
+{
+    for (int i = 0; i < 8; i++)
+    {
+        print_suit("S");
+        print_suit("H");
+        print_suit("C");
+        print_suit("D");
+    }
+    print_suit("S");
+    print();
+    for (int i = 0; i < 8; i++)
+    {
+        print_suit("H");
+        print_suit("C");
+        print_suit("D");
+        print_suit("S");
+    }
+    print_suit("H");
+    print();
+    print_suit("C");
+    print_suit("D");
+    print("                             ", "", "", "");
+    print_suit("H");
+    print_suit("C");
+    print();
+    print_suit("D");
+    print_suit("S");
+    print("    THANK YOU FOR PLAYING    ", "cyan", true, "");
+    print_suit("C");
+    print_suit("D");
+    print();
+    print_suit("S");
+    print_suit("H");
+    print("                             ", "", "", "");
+    print_suit("D");
+    print_suit("S");
+    print();
+    for (int i = 0; i < 8; i++)
+    {
+        print_suit("H");
+        print_suit("C");
+        print_suit("D");
+        print_suit("S");
+    }
+    print_suit("H");
+    print();
+    for (int i = 0; i < 8; i++)
+    {
+        print_suit("C");
+        print_suit("D");
+        print_suit("S");
+        print_suit("H");
+    }
+    print_suit("C");
+    print();
+}
+
+void print_game_heading(string game)
+{
+    print("YOU ARE NOW PLAYING", "blue", true);
+    string game_name;
+    if (game == "bigtwo")
+    {
+        game_name = "BIG TWO";
+    }
+    else if (game == "blackjack")
+    {
+        game_name = "BLACK JACK";
+    }
+    else if (game == "higherlower")
+    {
+        game_name = "HIGHER LOWER";
+    }
+    else if (game == "oldmaid")
+    {
+        game_name = "OLD MAID";
+    }
+    else if (game == "trump")
+    {
+        game_name = "TRUMP";
+    }
+    print_suit("H");
+    print("  " + game_name + "  ", "green", true, "");
+    print_suit("H");
+    print();
+}
+
+void print_user_details(string user, string game, int total = 0, int played = 0, int score = 0) {
+    string game_name;
+    if (game == "bigtwo")
+    {
+        game_name = "Big Two Played";
+    }
+    else if (game == "blackjack")
+    {
+        game_name = "Black Jack Played";
+    }
+    else if (game == "higherlower")
+    {
+        game_name = "Higher Lower Played";
+    }
+    else if (game == "oldmaid")
+    {
+        game_name = "Old Maid Played";
+    }
+    else if (game == "trump")
+    {
+        game_name = "Trump Played";
+    }
+    print("Username", "red", true, ": ");
+    print(user, "", "", "    ");
+    print("Total Games Played", "cyan", true, ": ");
+    print(to_string(total), "", "", "    ");
+    print(game_name, "red", true, ": ");
+    print(to_string(played), "", "", "    ");
+    print("Score", "cyan", true, ": ");
+    print(to_string(score), "", "", "    ");
+    print();
+}
+
 int main()
 {
-    print_main_heading();
+    print_user_details("hatim", "blackjack");
     return 0;
 }

@@ -3,6 +3,7 @@
 #include <vector>
 #include <stdlib.h> 
 #include "../include/old_maid.h"
+#include "../include/card_dealer.h"
 using namespace std;
 
 void shuffle_hand(vector<Card>& hand){
