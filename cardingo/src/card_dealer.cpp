@@ -1,7 +1,94 @@
 #include <iostream>
-#include "../include/card_dealer.h"
+#include <vector>
+#include <string>
+#include <algorithm>
+#include <random>
 using namespace std;
 
-void play_card_dealer() {
-    cout << "card dealer" << endl;
+string rankToSuit(int inputInteger) { // determine suit from card rank; input: [1, 52]
+    inputInteger--; // [0, 51]
+    if (inputInteger%4 == 0) {
+        return "D"; // (♦)
+    } else if (inputInteger%4 == 1) {
+        return "C"; // (♣)
+    } else if (inputInteger%4 == 2) {
+        return "H"; // (♥)
+    } else if (inputInteger%4 == 3) {
+        return "S"; // (♠)
+    }
+    return "invalidSuit";
+}
+
+string rankToValue(int inputInteger) { // determine value from card rank; input: [1, 52]
+    inputInteger--; // [0, 51]
+    if (inputInteger/4 <= 8) { // [0, 8]
+        return to_string(inputInteger/4 + 2);
+    } else if (inputInteger/4 == 9) {
+        return "J";
+    } else if (inputInteger/4 == 10) {
+        return "Q";
+    } else if (inputInteger/4 == 11) {
+        return "K";
+    } else if (inputInteger/4 == 12) {
+        return "A";
+    }
+    return "invalidValue";
+}
+
+struct Card {
+    int rank; // rank of card e.g. 4th-lowest, 17th-lowest, 39-th lowest, etc.
+    string suit;
+    string value;
+    
+    // empty card
+    Card() { 
+        rank = 0;
+        suit = "NULLsuit";
+        value = "NULLvalue";
+    };
+    
+    // given the rank, it will determine the suit and value by itself
+    Card(int inputRank) { // inputRank: [1, 52]
+        rank = inputRank;
+        suit = rankToSuit(inputRank);
+        value = rankToValue(inputRank);
+    };
+    
+    // custom rank, suit, and value
+    Card(int inputRank, string inputSuit, string inputValue) { // inputRank: [1, 52]
+        rank = inputRank;
+        suit = inputSuit;
+        value = inputValue;
+    };
+};
+
+void printVector(vector<Card> vec) { // debug purposes
+    vector<Card>::iterator itr = vec.begin();
+    
+    cout << "Deck: ";
+    for (int i = 0; i < vec.size(); i++) {
+        cout << itr->suit << itr->value << " ";
+        itr++;
+    }
+    cout << endl;
+}
+
+vector<Card> newDeck() { // return a shuffled 52-Card vector
+    vector<Card> deck;
+    for (int i = 1; i <= 52; i++) {
+        deck.push_back(Card(i));
+    }
+    random_device rd;
+    mt19937 g(rd());
+    shuffle(deck.begin(), deck.end(), g);
+    
+    return deck;
+}
+
+int main() { // testing purposes
+    
+    vector<Card> deck = newDeck();
+    printVector(deck);
+    
+    return 0;
 }
