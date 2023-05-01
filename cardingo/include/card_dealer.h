@@ -1,5 +1,6 @@
 #ifndef CARD_DEALER_H
 #define CARD_DEALER_H
+#include <string>
 
 //struct
 struct Card {
