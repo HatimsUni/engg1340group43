@@ -2,39 +2,7 @@
 #define CARD_DEALER_H
 #include <string>
 
-//functions
-void play_card_dealer();
-
-string rankToSuit(int inputInteger) { // determine suit from card rank; input: [1, 52]
-    inputInteger--; // [0, 51]
-    if (inputInteger%4 == 0) {
-        return "D"; // (♦)
-    } else if (inputInteger%4 == 1) {
-        return "C"; // (♣)
-    } else if (inputInteger%4 == 2) {
-        return "H"; // (♥)
-    } else if (inputInteger%4 == 3) {
-        return "S"; // (♠)
-    }
-    return "invalidSuit";
-}
-
-string rankToValue(int inputInteger) { // determine value from card rank; input: [1, 52]
-    inputInteger--; // [0, 51]
-    if (inputInteger/4 <= 8) { // [0, 8]
-        return to_string(inputInteger/4 + 2);
-    } else if (inputInteger/4 == 9) {
-        return "J";
-    } else if (inputInteger/4 == 10) {
-        return "Q";
-    } else if (inputInteger/4 == 11) {
-        return "K";
-    } else if (inputInteger/4 == 12) {
-        return "A";
-    }
-    return "invalidValue";
-}
-
+//struct
 struct Card {
     int rank; // rank of card e.g. 4th-lowest, 17th-lowest, 39-th lowest, etc.
     string suit;
@@ -50,8 +18,34 @@ struct Card {
     // given the rank, it will determine the suit and value by itself
     Card(int inputRank) { // inputRank: [1, 52]
         rank = inputRank;
-        suit = rankToSuit(inputRank);
-        value = rankToValue(inputRank);
+        // suit = rankToSuit(inputRank);
+        // value = rankToValue(inputRank);
+        
+        inputRank--; // [0, 51]
+        if (inputRank%4 == 0) {
+            suit = "D"; // (♦)
+        } else if (inputRank%4 == 1) {
+            suit = "C"; // (♣)
+        } else if (inputRank%4 == 2) {
+            suit = "H"; // (♥)
+        } else if (inputRank%4 == 3) {
+            suit = "S"; // (♠)
+        } else {
+            value = "invalidSuit";
+        }
+        if (inputRank/4 <= 8) { // [0, 8]
+            value =  to_string(inputRank/4 + 2);
+        } else if (inputRank/4 == 9) {
+            value = "J";
+        } else if (inputRank/4 == 10) {
+            value = "Q";
+        } else if (inputRank/4 == 11) {
+            value = "K";
+        } else if (inputRank/4 == 12) {
+            value = "A";
+        } else {
+            value = "invalidValue";
+        }
     };
     
     // custom rank, suit, and value
@@ -61,6 +55,5 @@ struct Card {
         value = inputValue;
     };
 };
-
 
 #endif
