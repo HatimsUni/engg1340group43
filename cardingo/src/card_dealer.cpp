@@ -125,7 +125,7 @@ string getValue(string card) {
     return card.substr(1);
 }
 
-int main() { // testing purposes
+int test() { // testing purposes
     
     vector<string> deck = newDeck(false);
     cout << endl << "full unshuffled deck" << endl;
