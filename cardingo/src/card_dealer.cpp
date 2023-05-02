@@ -34,7 +34,7 @@ struct Card {
         } else if (inputRank%4 == 3) {
             suit = "S"; // (♠)
         } else {
-            value = "invalidSuit";
+            suit = "invalidSuit";
         }
         if (inputRank/4 <= 8) { // [0, 8]
             value =  to_string(inputRank/4 + 2);
