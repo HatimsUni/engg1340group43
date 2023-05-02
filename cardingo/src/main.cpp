@@ -119,14 +119,19 @@ void choose_game(){
                 cout << "Thank you for playing" << endl;
                 return;
             } else if (number == 1){
+                print_game_heading("bigtwo");
                 choose_bigtwo();
             } else if (number == 2){
+                print_game_heading("blackjack");
                 choose_blackjack();
             } else if (number == 3){
+                print_game_heading("higherlower");
                 choose_higer_lower();
             } else if (number == 4){
+                print_game_heading("trump");
                 choose_trump();
             } else if (number == 5){
+                print_game_heading("oldmaid");
                 choose_old_maid();
             }
         } else {
@@ -138,8 +143,8 @@ void choose_game(){
 
 
 int main() {
-    cout << "Welcome to Cardingo (This is the welcome message still work in progress)" << endl;
+    print_main_heading();
     choose_game();
-    cout << "Thank you for playing" << endl;
+    print_main_ending();
     return 0;
 }
