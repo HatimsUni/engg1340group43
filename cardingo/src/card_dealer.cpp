@@ -125,22 +125,22 @@ string getValue(string card) {
     return card.substr(1);
 }
 
-int test() { // testing purposes
+// int test() {
     
-    vector<string> deck = newDeck(false);
-    cout << endl << "full unshuffled deck" << endl;
-    printStringVector(deck);
+//     vector<string> deck = newDeck(false);
+//     cout << endl << "full unshuffled deck" << endl;
+//     printStringVector(deck);
     
-    deck = newDeck();
-    cout << endl << "full shuffled deck" << endl;
-    printStringVector(deck);
+//     deck = newDeck();
+//     cout << endl << "full shuffled deck" << endl;
+//     printStringVector(deck);
 
-    vector<string> hand1 = drawCard(deck, 3);
-    cout << endl << "draw 3 cards" << endl;
-    printStringVector(hand1);
+//     vector<string> hand1 = drawCard(deck, 3);
+//     cout << endl << "draw 3 cards" << endl;
+//     printStringVector(hand1);
     
-    cout << endl << "card left in the deck" << endl;
-    printStringVector(deck);
+//     cout << endl << "card left in the deck" << endl;
+//     printStringVector(deck);
 
-    return 0;
-}
+//     return 0;
+// }

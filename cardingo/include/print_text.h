@@ -1,5 +1,5 @@
-#ifndef CARD_DEALER_H
-#define CARD_DEALER_H
+#ifndef PRINT_TEXT_H
+#define PRINT_TEXT_H
 
 #include <string>
 using namespace std;

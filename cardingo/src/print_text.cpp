@@ -3,7 +3,6 @@
 #include <sstream>
 #include <vector>
 #include "../include/card_dealer.h"
-#include "../src/card_dealer.cpp"
 using namespace std;
 
 string get_escape_seq(string color)
@@ -257,7 +256,7 @@ void print_user_details(string user, string game, int total = 0, int played = 0,
     print();
 }
 
-void printCards(vector<string> deck, int n = 5)
+void print_cards(vector<string> deck, int n = 5)
 {
     int size = deck.size();
     for (int i = 0; i < size / n; i++)
@@ -421,6 +420,6 @@ void printCards(vector<string> deck, int n = 5)
 int main()
 {
     vector<string> deck = newDeck(false);
-    printCards(deck);
+    print_cards(deck);
     return 0;
 }
