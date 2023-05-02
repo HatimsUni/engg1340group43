@@ -183,9 +183,3 @@ void start_old_maid(){
     play_old_maid(discard_pile, human_hand, robot_hand, current_player);
 
 }
-
-
-int main(){
-    start_old_maid();
-    return 0;
-}
