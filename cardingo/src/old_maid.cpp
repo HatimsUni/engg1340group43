@@ -6,6 +6,7 @@
 #include <algorithm>
 #include "../include/old_maid.h"
 #include "../include/card_dealer.h"
+#include "../include/print_text.h"
 using namespace std;
 
 void shuffle_hand(vector<string>& hand){
