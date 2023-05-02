@@ -7,6 +7,8 @@
         "xstring": "cpp",
         "iostream": "cpp",
         "ostream": "cpp",
-        "initializer_list": "cpp"
+        "initializer_list": "cpp",
+        "vector": "cpp",
+        "string": "cpp"
     }
 }

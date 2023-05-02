@@ -81,7 +81,7 @@ void printStringVector(vector<string> vec) { // debug purposes
     cout << endl;
 }
 
-vector<string> newDeck(bool isShuffle = true) { // return a shuffled 52-Card vector
+vector<string> newDeck(bool isShuffle) { // return a shuffled 52-Card vector
     vector<Card> deck;
     for (int i = 1; i <= 52; i++) { // create vector with 52 Card, unshuffled
         deck.push_back(Card(i));

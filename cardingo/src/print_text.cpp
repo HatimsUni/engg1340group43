@@ -1,6 +1,9 @@
 #include <iostream>
 #include <string>
 #include <sstream>
+#include <vector>
+#include "../include/card_dealer.h"
+#include "../src/card_dealer.cpp"
 using namespace std;
 
 string get_escape_seq(string color)
@@ -220,7 +223,8 @@ void print_game_heading(string game)
     print();
 }
 
-void print_user_details(string user, string game, int total = 0, int played = 0, int score = 0) {
+void print_user_details(string user, string game, int total = 0, int played = 0, int score = 0)
+{
     string game_name;
     if (game == "bigtwo")
     {
@@ -253,8 +257,170 @@ void print_user_details(string user, string game, int total = 0, int played = 0,
     print();
 }
 
+void printCards(vector<string> deck, int n = 5)
+{
+    int size = deck.size();
+    for (int i = 0; i < size / n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            string end = "  ";
+            if (j == n - 1)
+            {
+                end = "\n";
+            }
+            print("┌─────────┐", "", "", end);
+        }
+        for (int j = 0; j < n; j++)
+        {
+            string end = "  ";
+            if (j == n - 1)
+            {
+                end = "\n";
+            }
+            string num = getValue(deck[i * n + j]);
+            if (num != "10")
+            {
+                print("|" + getValue(deck[i * n + j]) + "        |", "", "", end);
+            }
+            else
+            {
+                print("|" + getValue(deck[i * n + j]) + "       |", "", "", end);
+            }
+        }
+        for (int j = 0; j < n; j++)
+        {
+            string end = "  ";
+            if (j == n - 1)
+            {
+                end = "\n";
+            }
+            print("|         |", "", "", end);
+        }
+        for (int j = 0; j < n; j++)
+        {
+            string end = "  ";
+            if (j == n - 1)
+            {
+                end = "\n";
+            }
+            print("|", "", "", "    ");
+            print_suit(getSuit(deck[i * n + j]));
+            print("    |", "", "", end);
+        }
+        for (int j = 0; j < n; j++)
+        {
+            string end = "  ";
+            if (j == n - 1)
+            {
+                end = "\n";
+            }
+            print("|         |", "", "", end);
+        }
+        for (int j = 0; j < n; j++)
+        {
+            string end = "  ";
+            if (j == n - 1)
+            {
+                end = "\n";
+            }
+            string num = getValue(deck[i * n + j]);
+            if (num != "10")
+            {
+                print("|        " + getValue(deck[i * n + j]) + "|", "", "", end);
+            }
+            else
+            {
+                print("|       " + getValue(deck[i * n + j]) + "|", "", "", end);
+            }
+        }
+        for (int j = 0; j < n; j++)
+        {
+            string end = "  ";
+            if (j == n - 1)
+            {
+                end = "\n";
+            }
+            print("└─────────┘", "", "", end);
+        }
+    }
+    for (int j = (size / n) * n; j < size; j++)
+    {
+        string end = "  ";
+        if (j == size - 1)
+        {
+            end = "\n";
+        }
+        print("┌─────────┐", "", "", end);
+    }
+    for (int j = (size / n) * n; j < size; j++)
+    {
+        string end = "  ";
+        if (j == size - 1)
+        {
+            end = "\n";
+        }
+        print("|" + getValue(deck[j]) + "        |", "", "", end);
+    }
+    for (int j = (size / n) * n; j < size; j++)
+    {
+        string end = "  ";
+        if (j == size - 1)
+        {
+            end = "\n";
+        }
+        print("|         |", "", "", end);
+    }
+    for (int j = (size / n) * n; j < size; j++)
+    {
+        string end = "  ";
+        if (j == size - 1)
+        {
+            end = "\n";
+        }
+        print("|", "", "", "    ");
+        print_suit(getSuit(deck[j]));
+        print("    |", "", "", end);
+    }
+    for (int j = (size / n) * n; j < size; j++)
+    {
+        string end = "  ";
+        if (j == size - 1)
+        {
+            end = "\n";
+        }
+        print("|         |", "", "", end);
+    }
+    for (int j = (size / n) * n; j < size; j++)
+    {
+        string end = "  ";
+        if (j == size - 1)
+        {
+            end = "\n";
+        }
+        print("|        " + getValue(deck[j]) + "|", "", "", end);
+    }
+    for (int j = (size / n) * n; j < size; j++)
+    {
+        string end = "  ";
+        if (j == size - 1)
+        {
+            end = "\n";
+        }
+        print("└─────────┘", "", "", end);
+    }
+    // print("┌─────────┐");
+    // print("|A        |");
+    // print("|         |");
+    // print("|    ♥    |");
+    // print("|         |");
+    // print("|        A|");
+    // print("└─────────┘");
+}
+
 int main()
 {
-    print_user_details("hatim", "blackjack");
+    vector<string> deck = newDeck(false);
+    printCards(deck);
     return 0;
 }
