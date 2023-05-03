@@ -41,8 +41,12 @@ void remove_pairs(vector<string>& discard_pile, vector<string>& hand, string cur
                 remover++;
             }
         }
-        cout << "The thrown away cards are:" << endl;
-        print_cards(thrown_pairs);
+        if(thrown_pairs.size() == 0){
+            cout << "No pairs to throw" << endl;
+        } else {
+            cout << "The thrown away cards are:" << endl;
+            print_cards(thrown_pairs);
+        }
         
         
         cout << "Your hand now is:" << endl;
@@ -67,8 +71,12 @@ void remove_pairs(vector<string>& discard_pile, vector<string>& hand, string cur
                 remover++;
             }
         }
-        cout << "The robot threw away the cards:" << endl;
-        print_cards(thrown_pairs);
+        if(thrown_pairs.size() == 0){
+            cout << "No pairs to throw" << endl;
+        } else {
+            cout << "The robot threw away the cards:" << endl;
+            print_cards(thrown_pairs);
+        }
     }
 }
 
@@ -83,6 +91,7 @@ void play_turn(vector<string>& discard_pile, vector<string>& human_hand, vector<
         while (true){
             if(robot_hand.size() == 1){
                 cout << "You can only take one card";
+                break;
             } else {
                 cout << "Please pick a card between 1 and " << robot_hand.size() << endl;
                 cin >> choice;
@@ -142,7 +151,7 @@ void play_old_maid(vector<string>& discard_pile, vector<string>& human_hand, vec
 }
 
 void start_old_maid(){
-    vector<string> deck = newDeck();
+    vector<string> deck = newDeck(true);
     vector<string> discard_pile;
     vector<string> human_hand(deck.begin(), deck.begin() + 26);
     vector<string> robot_hand(deck.begin() + 26, deck.end());
