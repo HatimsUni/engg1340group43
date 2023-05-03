@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include "../include/bigtwo.h"
+#include "../include/crazy_eights.h"
 #include "../include/blackjack.h"
 #include "../include/higher_lower.h"
 #include "../include/trump.h"
@@ -10,14 +10,14 @@
 #include "../include/print_text.h"
 using namespace std;
 
-void choose_bigtwo(){
+void choose_crazy_eights(){
     string reply;
-    play_bigtwo();
+    play_crazy_eights();
     while (true){
         print("Would you like to play again? (y/n)");
         getline(cin, reply);
         if (reply == "y"){
-            choose_bigtwo();
+            choose_crazy_eights();
             return;
         } else if  (reply == "n"){
             print("Thank you. Returning to the game chooser screen");
@@ -106,7 +106,7 @@ void choose_game(){
     int number;
     while(true){
         print("We have many card games, please pick one by entering the number (0-5)");
-        print("1 Big Two");
+        print("1 Crazy Eights");
         print("2 Blackjack");
         print("3 Higer Lower");
         print("4 Trump");
@@ -120,8 +120,8 @@ void choose_game(){
                 print("Thank you for playing");
                 return;
             } else if (number == 1){
-                print_game_heading("bigtwo");
-                choose_bigtwo();
+                print_game_heading("crazyeights");
+                choose_crazy_eights();
             } else if (number == 2){
                 print_game_heading("blackjack");
                 choose_blackjack();
