@@ -11,21 +11,21 @@
 using namespace std;
 
 void choose_crazy_eights(){
-    string reply;
-    play_crazy_eights();
-    while (true){
-        print("Would you like to play again? (y/n)");
-        getline(cin, reply);
-        if (reply == "y"){
-            choose_crazy_eights();
-            return;
-        } else if  (reply == "n"){
-            print("Thank you. Returning to the game chooser screen");
-            return;
-        } else {
-            print("Wrong input. Please input your answer again");
-        }
-    }
+    // string reply;
+    // play_crazy_eights();
+    // while (true){
+    //     print("Would you like to play again? (y/n)");
+    //     getline(cin, reply);
+    //     if (reply == "y"){
+    //         choose_crazy_eights();
+    //         return;
+    //     } else if  (reply == "n"){
+    //         print("Thank you. Returning to the game chooser screen");
+    //         return;
+    //     } else {
+    //         print("Wrong input. Please input your answer again");
+    //     }
+    // }
 }
 
 void choose_blackjack(){

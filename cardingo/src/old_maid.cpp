@@ -140,7 +140,7 @@ void play_turn(vector<string>& discard_pile, vector<string>& human_hand, vector<
     }
 }
 
-void play_old_maid(vector<string>& discard_pile, vector<string>& human_hand, vector<string>& robot_hand, string current_player){
+void start_old_maid(vector<string>& discard_pile, vector<string>& human_hand, vector<string>& robot_hand, string current_player){
     remove_pairs(discard_pile, human_hand, "human");
     remove_pairs(discard_pile, robot_hand, "robot");
     if(current_player == "human"){
@@ -150,7 +150,7 @@ void play_old_maid(vector<string>& discard_pile, vector<string>& human_hand, vec
     }
 }
 
-void start_old_maid(){
+void play_old_maid(){
     vector<string> deck = newDeck(true);
     vector<string> discard_pile;
     vector<string> human_hand(deck.begin(), deck.begin() + 26);
@@ -184,6 +184,6 @@ void start_old_maid(){
         current_player = "human";
     }
     
-    play_old_maid(discard_pile, human_hand, robot_hand, current_player);
+    start_old_maid(discard_pile, human_hand, robot_hand, current_player);
 
 }
