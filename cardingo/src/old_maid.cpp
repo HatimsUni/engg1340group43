@@ -16,12 +16,6 @@ void shuffle_hand(vector<string>& hand){
 }
 
 
-void print_cards(vector<string>& hand){
-    for(int i = 0; i < hand.size(); i++){
-        cout << getSuit(hand[i]) << getValue(hand[i]) << endl;
-    }
-}
-
 void remove_pairs(vector<string>& discard_pile, vector<string>& hand, string current_player){
     vector<string> thrown_pairs;
     if(current_player == "human"){
@@ -85,7 +79,7 @@ void play_turn(vector<string>& discard_pile, vector<string>& human_hand, vector<
     if(current_player == "human"){
         int choice;
         cout << "Its your turn" << endl;
-        cout << "The robot has " << robot_hand.size() << " cards" << endl;
+        cout << "The robot has " << robot_hand.size() << " card(s)" << endl;
         while (true){
             if(robot_hand.size() == 1){
                 cout << "You can only take one card";
