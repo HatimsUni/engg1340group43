@@ -2,6 +2,6 @@
 #include <thread>
 using namespace std;
 
-void wait(int s) {
-    this_thread::sleep_for(chrono::seconds(s));
+void wait(int ms) {
+    this_thread::sleep_for(chrono::milliseconds(ms));
 }

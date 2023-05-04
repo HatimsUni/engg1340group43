@@ -99,8 +99,9 @@ void startGame(int winner)
         print("C: Clubs (♣)");
         print("D: Diamonds (♦)", "red");
         cin >> trump;
-        while (trump != "S" || trump != "H" || trump != "C" || trump != "D") {
+        while (trump != "S" && trump != "H" && trump != "C" && trump != "D") {
             print("Wrong input! Please input again", "red", true);
+            print("Trump: ", "magenta", false, "");
             cin >> trump;
         }
     }
@@ -124,13 +125,13 @@ void startGame(int winner)
 void toss(vector<string> deck)
 {
     vector<string> draw4 = drawCard(deck, 4);
-    wait(1);
+    wait(500);
     print("This is a toss, the player with the highest number starts!", "magenta", true);
-    wait(1);
+    wait();
     print("Your card: ", "green", true, "  ");
     print("Computer 1:  Computer 2:  Computer 3:", "cyan");
     printCards(draw4);
-    wait(2);
+    wait(2000);
     int highest = 0;
     string value;
     int number = 0;
@@ -152,7 +153,7 @@ void toss(vector<string> deck)
     {
         print("Computer " + to_string(winner) + " won the toss!", "cyan");
     }
-    wait(1);
+    wait();
     startGame(winner);
 }
 
