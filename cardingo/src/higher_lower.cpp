@@ -2,6 +2,6 @@
 #include "../include/higher_lower.h"
 using namespace std;
 
-void play_higher_lower() {
+void playHigherLower() {
     cout << "higher lower" << endl;
 }
