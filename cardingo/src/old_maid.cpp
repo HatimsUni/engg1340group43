@@ -90,14 +90,14 @@ void playTurn(vector<string>& discard_pile, vector<string>& human_hand, vector<s
         cout << "The robot has " << robot_hand.size() << " card(s)" << endl;
         while (true){
             if(robot_hand.size() == 1){
-                cout << "You can only take one card";
+                cout << "You can only take one card" << endl;
                 choice = 1;
                 break;
             } else {
                 cout << "Please pick a card between 1 and " << robot_hand.size() << endl;
                 cin >> choice;
                 if((choice < 1) || (choice > robot_hand.size())){
-                    cout << "Invalid input. Please pick again";
+                    cout << "Invalid input. Please pick again" << endl;
                 } else{
                     break;
                 }
@@ -109,10 +109,10 @@ void playTurn(vector<string>& discard_pile, vector<string>& human_hand, vector<s
         robot_hand.erase(robot_hand.begin() + (choice-1));
         removePairs(discard_pile, human_hand, "human");
         if(robot_hand.size()==0 && human_hand.size() == 1){
-            cout << "The robot wins";
+            cout << "The robot wins" << endl;
             return;
         } else if (robot_hand.size() == 1 && human_hand.size() == 0){
-            cout << "The player wins";
+            cout << "The player wins" << endl;
             return;
         } else{
             playTurn(discard_pile, human_hand, robot_hand, "robot");
@@ -128,10 +128,10 @@ void playTurn(vector<string>& discard_pile, vector<string>& human_hand, vector<s
         human_hand.erase(human_hand.begin() + (choice));
         removePairs(discard_pile, robot_hand, "robot");
         if(robot_hand.size()==0 && human_hand.size() == 1){
-            cout << "The robot wins";
+            cout << "The robot wins" << endl;
             return;
         } else if (robot_hand.size() == 1 && human_hand.size() == 0){
-            cout << "The player wins";
+            cout << "The player wins" << endl;
             return;
         } else{
             shuffleHand(robot_hand);
