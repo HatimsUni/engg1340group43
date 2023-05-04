@@ -256,7 +256,7 @@ void printUserDetails(string user, string game, int total, int played, int score
     print();
 }
 
-void printCards(vector<string> deck, int n)
+void printCards(vector<string> deck, int n, bool show)
 {
     int size = deck.size();
     for (int i = 0; i < size / n; i++)
@@ -342,21 +342,24 @@ void printCards(vector<string> deck, int n)
             }
             print("└─────────┘", "", "", end);
         }
-        for (int j = 0; j < n; j++)
+        if (show)
         {
-            string end = "  ";
-            if (j == n - 1)
+            for (int j = 0; j < n; j++)
             {
-                end = "\n";
-            }
-            string num = getValue(deck[i * n + j]);
-            if (num != "10")
-            {
-                print(deck[i * n + j] + "         ", "", "", end);
-            }
-            else
-            {
-                print(deck[i * n + j] + "        ", "", "", end);
+                string end = "  ";
+                if (j == n - 1)
+                {
+                    end = "\n";
+                }
+                string num = getValue(deck[i * n + j]);
+                if (num != "10")
+                {
+                    print(deck[i * n + j] + "         ", "", "", end);
+                }
+                else
+                {
+                    print(deck[i * n + j] + "        ", "", "", end);
+                }
             }
         }
     }
@@ -377,10 +380,12 @@ void printCards(vector<string> deck, int n)
             end = "\n";
         }
         string value = getValue(deck[j]);
-        if (value != "10") {
-        print("|" + value + "        |", "", "", end);
+        if (value != "10")
+        {
+            print("|" + value + "        |", "", "", end);
         }
-        else {
+        else
+        {
             print("|" + value + "       |", "", "", end);
         }
     }
@@ -421,10 +426,12 @@ void printCards(vector<string> deck, int n)
             end = "\n";
         }
         string value = getValue(deck[j]);
-        if (value != "10") {
-        print("|        " + value + "|", "", "", end);
+        if (value != "10")
+        {
+            print("|        " + value + "|", "", "", end);
         }
-        else {
+        else
+        {
             print("|       " + value + "|", "", "", end);
         }
     }
@@ -437,19 +444,24 @@ void printCards(vector<string> deck, int n)
         }
         print("└─────────┘", "", "", end);
     }
-    for (int j = (size / n) * n; j < size; j++)
+    if (show)
     {
-        string end = "  ";
-        if (j == size - 1)
+        for (int j = (size / n) * n; j < size; j++)
         {
-            end = "\n";
-        }
-        string value = getValue(deck[j]);
-        if (value != "10") {
-        print(deck[j] + "         ", "", "", end);
-        }
-        else {
-            print(deck[j] + "        ", "", "", end);
+            string end = "  ";
+            if (j == size - 1)
+            {
+                end = "\n";
+            }
+            string value = getValue(deck[j]);
+            if (value != "10")
+            {
+                print(deck[j] + "         ", "", "", end);
+            }
+            else
+            {
+                print(deck[j] + "        ", "", "", end);
+            }
         }
     }
     // print("┌─────────┐");

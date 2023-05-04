@@ -46,7 +46,7 @@ void chooseBlackjack(){
     }
 }
 
-void chooseHigerLower(){
+void chooseHigherLower(){
     string reply;
     playHigherLower();
     while (true){
@@ -127,7 +127,7 @@ void chooseGame(){
                 chooseBlackjack();
             } else if (number == 3){
                 printGameHeading("higherlower");
-                chooseHigerLower();
+                chooseHigherLower();
             } else if (number == 4){
                 printGameHeading("trump");
                 chooseTrump();
