@@ -2,6 +2,6 @@
 #include "../include/blackjack.h"
 using namespace std;
 
-void play_blackjack() {
+void playBlackjack() {
     cout << "blackjack" << endl;
 }
