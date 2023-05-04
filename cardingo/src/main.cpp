@@ -8,6 +8,7 @@
 #include "../include/card_dealer.h"
 #include "../include/file_handler.h"
 #include "../include/print_text.h"
+#include "../include/sleep.h"
 using namespace std;
 
 void chooseCrazyEights(){
@@ -33,15 +34,18 @@ void chooseBlackjack(){
     playBlackjack();
     while (true){
         print("Would you like to play again? (y/n)");
+        wait();
         getline(cin, reply);
         if (reply == "y"){
             chooseBlackjack();
             return;
         } else if  (reply == "n"){
             print("Thank you. Returning to the game chooser screen");
+            wait();
             return;
         } else {
             print("Wrong input. Please input your answer again");
+            wait();
         }
     }
 }
@@ -51,15 +55,18 @@ void chooseHigherLower(){
     playHigherLower();
     while (true){
         print("Would you like to play again? (y/n)");
+        wait();
         getline(cin, reply);
         if (reply == "y"){
             chooseHigherLower();
             return;
         } else if  (reply == "n"){
             print("Thank you. Returning to the game chooser screen");
+            wait();
             return;
         } else {
             print("Wrong input. Please input your answer again");
+            wait();
         }
     }
 }
@@ -69,15 +76,18 @@ void chooseTrump(){
     playTrump();
     while (true){
         print("Would you like to play again? (y/n)");
+        wait();
         getline(cin, reply);
         if (reply == "y"){
             chooseTrump();
             return;
         } else if  (reply == "n"){
             print("Thank you. Returning to the game chooser screen");
+            wait();
             return;
         } else {
             print("Wrong input. Please input your answer again");
+            wait();
         }
     }
 }
@@ -88,15 +98,18 @@ void chooseOldMaid(){
     playOldMaid();
     while (true){
         print("Would you like to play again? (y/n)");
+        wait();
         getline(cin, reply);
         if (reply == "y"){
             chooseOldMaid();
             return;
         } else if  (reply == "n"){
             print("Thank you. Returning to the game chooser screen");
+            wait();
             return;
         } else {
             print("Wrong input. Please input your answer again");
+            wait();
         }
     }
 }
@@ -145,6 +158,7 @@ void chooseGame(){
 
 int main() {
     printMainHeading();
+    wait();
     chooseGame();
     printMainEnding();
     return 0;
