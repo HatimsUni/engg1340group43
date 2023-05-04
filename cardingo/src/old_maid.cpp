@@ -9,14 +9,14 @@
 #include "../include/print_text.h"
 using namespace std;
 
-void shuffle_hand(vector<string>& hand){
+void shuffleHand(vector<string>& hand){
     random_device rd;
     mt19937 g(rd());
     shuffle(hand.begin(), hand.end(), g);
 }
 
 
-void remove_pairs(vector<string>& discard_pile, vector<string>& hand, string current_player){
+void removePairs(vector<string>& discard_pile, vector<string>& hand, string current_player){
     vector<string> thrown_pairs;
     if(current_player == "human"){
         cout << "Your hand has:" << endl;
@@ -83,7 +83,7 @@ void remove_pairs(vector<string>& discard_pile, vector<string>& hand, string cur
 
 
 
-void play_turn(vector<string>& discard_pile, vector<string>& human_hand, vector<string>& robot_hand, string current_player){
+void playTurn(vector<string>& discard_pile, vector<string>& human_hand, vector<string>& robot_hand, string current_player){
     if(current_player == "human"){
         int choice;
         cout << "Its your turn" << endl;
@@ -106,7 +106,7 @@ void play_turn(vector<string>& discard_pile, vector<string>& human_hand, vector<
         cout << "You took the " << getSuit(robot_hand[choice - 1]) << getValue(robot_hand[choice - 1]) << endl;
         human_hand.push_back(robot_hand[choice-1]);
         robot_hand.erase(robot_hand.begin() + (choice-1));
-        remove_pairs(discard_pile, human_hand, "human");
+        removePairs(discard_pile, human_hand, "human");
         if(robot_hand.size()==0 && human_hand.size() == 1){
             cout << "The robot wins";
             return;
@@ -114,8 +114,8 @@ void play_turn(vector<string>& discard_pile, vector<string>& human_hand, vector<
             cout << "The player wins";
             return;
         } else{
-            shuffle_hand(human_hand);
-            play_turn(discard_pile, human_hand, robot_hand, "robot");
+            shuffleHand(human_hand);
+            playTurn(discard_pile, human_hand, robot_hand, "robot");
         }
 
     } else if (current_player == "robot"){
@@ -126,7 +126,7 @@ void play_turn(vector<string>& discard_pile, vector<string>& human_hand, vector<
         cout << "The robot took the " << getSuit(human_hand[choice - 1]) << getValue(human_hand[choice - 1]) << endl;
         robot_hand.push_back(human_hand[choice-1]);
         human_hand.erase(human_hand.begin() + (choice-1));
-        remove_pairs(discard_pile, robot_hand, "robot");
+        removePairs(discard_pile, robot_hand, "robot");
         if(robot_hand.size()==0 && human_hand.size() == 1){
             cout << "The robot wins";
             return;
@@ -134,23 +134,23 @@ void play_turn(vector<string>& discard_pile, vector<string>& human_hand, vector<
             cout << "The player wins";
             return;
         } else{
-            shuffle_hand(robot_hand);
-            play_turn(discard_pile, human_hand, robot_hand, "human");
+            shuffleHand(robot_hand);
+            playTurn(discard_pile, human_hand, robot_hand, "human");
         }
     }
 }
 
-void start_old_maid(vector<string>& discard_pile, vector<string>& human_hand, vector<string>& robot_hand, string current_player){
-    remove_pairs(discard_pile, human_hand, "human");
-    remove_pairs(discard_pile, robot_hand, "robot");
+void startOldMaid(vector<string>& discard_pile, vector<string>& human_hand, vector<string>& robot_hand, string current_player){
+    removePairs(discard_pile, human_hand, "human");
+    removePairs(discard_pile, robot_hand, "robot");
     if(current_player == "human"){
-        play_turn(discard_pile, human_hand, robot_hand, "human");
+        playTurn(discard_pile, human_hand, robot_hand, "human");
     } else if(current_player == "robot"){
-        play_turn(discard_pile, human_hand, robot_hand, "robot");
+        playTurn(discard_pile, human_hand, robot_hand, "robot");
     }
 }
 
-void play_old_maid(){
+void playOldMaid(){
     vector<string> deck = newDeck(true);
     vector<string> discard_pile;
     vector<string> human_hand(deck.begin(), deck.begin() + 26);
@@ -184,6 +184,6 @@ void play_old_maid(){
         current_player = "human";
     }
     
-    start_old_maid(discard_pile, human_hand, robot_hand, current_player);
+    startOldMaid(discard_pile, human_hand, robot_hand, current_player);
 
 }
