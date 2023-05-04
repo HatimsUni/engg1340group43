@@ -1,10 +1,10 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <unistd.h>
 #include "../include/trump.h"
 #include "../include/print_text.h"
 #include "../include/card_dealer.h"
+#include "../include/sleep.h"
 using namespace std;
 vector<string> order = {"A", "K", "Q"};
 vector<string> user_deck;
@@ -124,20 +124,20 @@ void startGame(int winner)
 void toss(vector<string> deck)
 {
     vector<string> draw4 = drawCard(deck, 4);
-    sleep(1);
+    wait(1);
     print("This is a toss, the player with the highest number starts!", "magenta", true);
-    sleep(1);
+    wait(1);
     print("Your card: ", "green", true, "  ");
     print("Computer 1:  Computer 2:  Computer 3:", "cyan");
     printCards(draw4);
-    sleep(1);
-    int highest = 1;
+    wait(2);
+    int highest = 0;
     string value;
     int number = 0;
     int winner;
     for (int i = 0; i < 4; i++)
     {
-        number = getCardValue(deck[i]);
+        number = getCardValue(draw4[i]);
         if (number > highest)
         {
             highest = number;
@@ -152,7 +152,7 @@ void toss(vector<string> deck)
     {
         print("Computer " + to_string(winner) + " won the toss!", "cyan");
     }
-    sleep(1);
+    wait(1);
     startGame(winner);
 }
 

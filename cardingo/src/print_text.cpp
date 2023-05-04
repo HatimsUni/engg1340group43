@@ -196,9 +196,9 @@ void printGameHeading(string game)
 {
     print("YOU ARE NOW PLAYING", "blue", true);
     string game_name;
-    if (game == "bigtwo")
+    if (game == "crazyeights")
     {
-        game_name = "BIG TWO";
+        game_name = "CRAZY EIGHTS";
     }
     else if (game == "blackjack")
     {

@@ -9,6 +9,7 @@
         "ostream": "cpp",
         "initializer_list": "cpp",
         "vector": "cpp",
-        "string": "cpp"
+        "string": "cpp",
+        "thread": "cpp"
     }
 }
