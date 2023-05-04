@@ -20,7 +20,7 @@ void remove_pairs(vector<string>& discard_pile, vector<string>& hand, string cur
     vector<string> thrown_pairs;
     if(current_player == "human"){
         cout << "Your hand has:" << endl;
-        print_cards(hand);
+        printCards(hand);
         
         for(int i = 0; i < hand.size(); ++i){
             for(int j = 0; j < hand.size(); ++j){
@@ -45,12 +45,12 @@ void remove_pairs(vector<string>& discard_pile, vector<string>& hand, string cur
             cout << "No pairs to throw" << endl;
         } else {
             cout << "The thrown away cards are:" << endl;
-            print_cards(thrown_pairs);
+            printCards(thrown_pairs);
         }
         
         
         cout << "Your hand now is:" << endl;
-        print_cards(hand);
+        printCards(hand);
     } else if (current_player == "robot"){
         for(int i = 0; i < hand.size(); ++i){
             for(int j = 0; j < hand.size(); ++j){
@@ -75,7 +75,7 @@ void remove_pairs(vector<string>& discard_pile, vector<string>& hand, string cur
             cout << "No pairs to throw" << endl;
         } else {
             cout << "The robot threw away the cards:" << endl;
-            print_cards(thrown_pairs);
+            printCards(thrown_pairs);
         }
     }
 }

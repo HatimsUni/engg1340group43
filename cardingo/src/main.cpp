@@ -66,7 +66,7 @@ void choose_higer_lower(){
 
 void choose_trump(){
     string reply;
-    play_trump();
+    playTrump();
     while (true){
         print("Would you like to play again? (y/n)");
         getline(cin, reply);
@@ -120,19 +120,19 @@ void choose_game(){
                 print("Thank you for playing");
                 return;
             } else if (number == 1){
-                print_game_heading("crazyeights");
+                printGameHeading("crazyeights");
                 choose_crazy_eights();
             } else if (number == 2){
-                print_game_heading("blackjack");
+                printGameHeading("blackjack");
                 choose_blackjack();
             } else if (number == 3){
-                print_game_heading("higherlower");
+                printGameHeading("higherlower");
                 choose_higer_lower();
             } else if (number == 4){
-                print_game_heading("trump");
+                printGameHeading("trump");
                 choose_trump();
             } else if (number == 5){
-                print_game_heading("oldmaid");
+                printGameHeading("oldmaid");
                 choose_old_maid();
             }
         } else {
@@ -144,8 +144,8 @@ void choose_game(){
 
 
 int main() {
-    print_main_heading();
+    printMainHeading();
     choose_game();
-    print_main_ending();
+    printMainEnding();
     return 0;
 }

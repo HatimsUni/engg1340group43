@@ -5,7 +5,7 @@
 #include "../include/card_dealer.h"
 using namespace std;
 
-string get_escape_seq(string color)
+string getEscapeSequence(string color)
 {
     string escape_sequence;
     if (color == "black")
@@ -51,7 +51,7 @@ string get_escape_seq(string color)
 void print(string text = "", string color = "default", bool bold = false, string end = "\n")
 {
     string def = "\033[0m";
-    string esc = get_escape_seq(color);
+    string esc = getEscapeSequence(color);
     string bold_esc = "";
     if (bold == true)
     {
@@ -60,7 +60,7 @@ void print(string text = "", string color = "default", bool bold = false, string
     cout << bold_esc << esc << text << def << end;
 }
 
-void print_suit(string suit)
+void printSuit(string suit)
 {
     if (suit == "H")
     {
@@ -80,119 +80,119 @@ void print_suit(string suit)
     }
 }
 
-void print_main_heading()
+void printMainHeading()
 {
     for (int i = 0; i < 5; i++)
     {
-        print_suit("S");
-        print_suit("H");
-        print_suit("C");
-        print_suit("D");
+        printSuit("S");
+        printSuit("H");
+        printSuit("C");
+        printSuit("D");
     }
     print();
     for (int i = 0; i < 5; i++)
     {
-        print_suit("H");
-        print_suit("C");
-        print_suit("D");
-        print_suit("S");
+        printSuit("H");
+        printSuit("C");
+        printSuit("D");
+        printSuit("S");
     }
     print();
-    print_suit("C");
-    print_suit("D");
+    printSuit("C");
+    printSuit("D");
     print("                ", "", "", "");
-    print_suit("S");
-    print_suit("H");
+    printSuit("S");
+    printSuit("H");
     print();
-    print_suit("D");
-    print_suit("S");
+    printSuit("D");
+    printSuit("S");
     print("    CARDINGO    ", "cyan", true, "");
-    print_suit("H");
-    print_suit("C");
+    printSuit("H");
+    printSuit("C");
     print();
-    print_suit("S");
-    print_suit("H");
+    printSuit("S");
+    printSuit("H");
     print("                ", "", "", "");
-    print_suit("C");
-    print_suit("D");
+    printSuit("C");
+    printSuit("D");
     print();
     for (int i = 0; i < 5; i++)
     {
-        print_suit("H");
-        print_suit("C");
-        print_suit("D");
-        print_suit("S");
+        printSuit("H");
+        printSuit("C");
+        printSuit("D");
+        printSuit("S");
     }
     print();
     for (int i = 0; i < 5; i++)
     {
-        print_suit("C");
-        print_suit("D");
-        print_suit("S");
-        print_suit("H");
+        printSuit("C");
+        printSuit("D");
+        printSuit("S");
+        printSuit("H");
     }
     print();
 }
 
-void print_main_ending()
+void printMainEnding()
 {
     for (int i = 0; i < 8; i++)
     {
-        print_suit("S");
-        print_suit("H");
-        print_suit("C");
-        print_suit("D");
+        printSuit("S");
+        printSuit("H");
+        printSuit("C");
+        printSuit("D");
     }
-    print_suit("S");
+    printSuit("S");
     print();
     for (int i = 0; i < 8; i++)
     {
-        print_suit("H");
-        print_suit("C");
-        print_suit("D");
-        print_suit("S");
+        printSuit("H");
+        printSuit("C");
+        printSuit("D");
+        printSuit("S");
     }
-    print_suit("H");
+    printSuit("H");
     print();
-    print_suit("C");
-    print_suit("D");
+    printSuit("C");
+    printSuit("D");
     print("                             ", "", "", "");
-    print_suit("H");
-    print_suit("C");
+    printSuit("H");
+    printSuit("C");
     print();
-    print_suit("D");
-    print_suit("S");
+    printSuit("D");
+    printSuit("S");
     print("    THANK YOU FOR PLAYING    ", "cyan", true, "");
-    print_suit("C");
-    print_suit("D");
+    printSuit("C");
+    printSuit("D");
     print();
-    print_suit("S");
-    print_suit("H");
+    printSuit("S");
+    printSuit("H");
     print("                             ", "", "", "");
-    print_suit("D");
-    print_suit("S");
+    printSuit("D");
+    printSuit("S");
     print();
     for (int i = 0; i < 8; i++)
     {
-        print_suit("H");
-        print_suit("C");
-        print_suit("D");
-        print_suit("S");
+        printSuit("H");
+        printSuit("C");
+        printSuit("D");
+        printSuit("S");
     }
-    print_suit("H");
+    printSuit("H");
     print();
     for (int i = 0; i < 8; i++)
     {
-        print_suit("C");
-        print_suit("D");
-        print_suit("S");
-        print_suit("H");
+        printSuit("C");
+        printSuit("D");
+        printSuit("S");
+        printSuit("H");
     }
-    print_suit("C");
+    printSuit("C");
     print();
 }
 
-void print_game_heading(string game)
+void printGameHeading(string game)
 {
     print("YOU ARE NOW PLAYING", "blue", true);
     string game_name;
@@ -216,13 +216,13 @@ void print_game_heading(string game)
     {
         game_name = "TRUMP";
     }
-    print_suit("H");
+    printSuit("H");
     print("  " + game_name + "  ", "green", true, "");
-    print_suit("H");
+    printSuit("H");
     print();
 }
 
-void print_user_details(string user, string game, int total, int played, int score)
+void printUserDetails(string user, string game, int total, int played, int score)
 {
     string game_name;
     if (game == "bigtwo")
@@ -256,7 +256,7 @@ void print_user_details(string user, string game, int total, int played, int sco
     print();
 }
 
-void print_cards(vector<string> deck, int n)
+void printCards(vector<string> deck, int n)
 {
     int size = deck.size();
     for (int i = 0; i < size / n; i++)
@@ -304,7 +304,7 @@ void print_cards(vector<string> deck, int n)
                 end = "\n";
             }
             print("|", "", "", "    ");
-            print_suit(getSuit(deck[i * n + j]));
+            printSuit(getSuit(deck[i * n + j]));
             print("    |", "", "", end);
         }
         for (int j = 0; j < n; j++)
@@ -401,7 +401,7 @@ void print_cards(vector<string> deck, int n)
             end = "\n";
         }
         print("|", "", "", "    ");
-        print_suit(getSuit(deck[j]));
+        printSuit(getSuit(deck[j]));
         print("    |", "", "", end);
     }
     for (int j = (size / n) * n; j < size; j++)
