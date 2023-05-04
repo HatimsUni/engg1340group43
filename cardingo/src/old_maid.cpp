@@ -91,6 +91,7 @@ void playTurn(vector<string>& discard_pile, vector<string>& human_hand, vector<s
         while (true){
             if(robot_hand.size() == 1){
                 cout << "You can only take one card";
+                choice = 1;
                 break;
             } else {
                 cout << "Please pick a card between 1 and " << robot_hand.size() << endl;
@@ -114,18 +115,17 @@ void playTurn(vector<string>& discard_pile, vector<string>& human_hand, vector<s
             cout << "The player wins";
             return;
         } else{
-            shuffleHand(human_hand);
             playTurn(discard_pile, human_hand, robot_hand, "robot");
         }
 
     } else if (current_player == "robot"){
-        int choice = rand() % human_hand.size() + 1;
+        int choice = rand() % human_hand.size();
         cout << "Its your opponents turn" << endl;
         cout << "You have " << human_hand.size() << " cards" << endl;
-        cout << "The robot picked card number " << choice << endl;
-        cout << "The robot took the " << getSuit(human_hand[choice - 1]) << getValue(human_hand[choice - 1]) << endl;
-        robot_hand.push_back(human_hand[choice-1]);
-        human_hand.erase(human_hand.begin() + (choice-1));
+        cout << "The robot picked card number " << choice+1 << endl;
+        cout << "The robot took the " << getSuit(human_hand[choice]) << getValue(human_hand[choice]) << endl;
+        robot_hand.push_back(human_hand[choice]);
+        human_hand.erase(human_hand.begin() + (choice));
         removePairs(discard_pile, robot_hand, "robot");
         if(robot_hand.size()==0 && human_hand.size() == 1){
             cout << "The robot wins";
