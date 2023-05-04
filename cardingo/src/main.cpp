@@ -10,7 +10,7 @@
 #include "../include/print_text.h"
 using namespace std;
 
-void choose_crazy_eights(){
+void chooseCrazyEights(){
     // string reply;
     // play_crazy_eights();
     // while (true){
@@ -28,14 +28,14 @@ void choose_crazy_eights(){
     // }
 }
 
-void choose_blackjack(){
+void chooseBlackjack(){
     string reply;
-    play_blackjack();
+    playBlackjack();
     while (true){
         print("Would you like to play again? (y/n)");
         getline(cin, reply);
         if (reply == "y"){
-            choose_blackjack();
+            chooseBlackjack();
             return;
         } else if  (reply == "n"){
             print("Thank you. Returning to the game chooser screen");
@@ -46,14 +46,14 @@ void choose_blackjack(){
     }
 }
 
-void choose_higer_lower(){
+void chooseHigerLower(){
     string reply;
-    play_higher_lower();
+    playHigherLower();
     while (true){
         print("Would you like to play again? (y/n)");
         getline(cin, reply);
         if (reply == "y"){
-            choose_higer_lower();
+            chooseHigherLower();
             return;
         } else if  (reply == "n"){
             print("Thank you. Returning to the game chooser screen");
@@ -64,14 +64,14 @@ void choose_higer_lower(){
     }
 }
 
-void choose_trump(){
+void chooseTrump(){
     string reply;
     playTrump();
     while (true){
         print("Would you like to play again? (y/n)");
         getline(cin, reply);
         if (reply == "y"){
-            choose_trump();
+            chooseTrump();
             return;
         } else if  (reply == "n"){
             print("Thank you. Returning to the game chooser screen");
@@ -83,14 +83,14 @@ void choose_trump(){
 }
 
 
-void choose_old_maid(){
+void chooseOldMaid(){
     string reply;
-    play_old_maid();
+    playOldMaid();
     while (true){
         print("Would you like to play again? (y/n)");
         getline(cin, reply);
         if (reply == "y"){
-            choose_old_maid();
+            chooseOldMaid();
             return;
         } else if  (reply == "n"){
             print("Thank you. Returning to the game chooser screen");
@@ -101,7 +101,7 @@ void choose_old_maid(){
     }
 }
 
-void choose_game(){
+void chooseGame(){
     string input;
     int number;
     while(true){
@@ -121,19 +121,19 @@ void choose_game(){
                 return;
             } else if (number == 1){
                 printGameHeading("crazyeights");
-                choose_crazy_eights();
+                chooseCrazyEights();
             } else if (number == 2){
                 printGameHeading("blackjack");
-                choose_blackjack();
+                chooseBlackjack();
             } else if (number == 3){
                 printGameHeading("higherlower");
-                choose_higer_lower();
+                chooseHigerLower();
             } else if (number == 4){
                 printGameHeading("trump");
-                choose_trump();
+                chooseTrump();
             } else if (number == 5){
                 printGameHeading("oldmaid");
-                choose_old_maid();
+                chooseOldMaid();
             }
         } else {
             print("Invalid input, please reenter a number from 0-5");
@@ -145,7 +145,7 @@ void choose_game(){
 
 int main() {
     printMainHeading();
-    choose_game();
+    chooseGame();
     printMainEnding();
     return 0;
 }

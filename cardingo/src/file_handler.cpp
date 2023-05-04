@@ -17,7 +17,7 @@ struct Player{
     int score;
 };
 
-vector<Player> create_vector(){
+vector<Player> createVector(){
     vector<Player> player_data;
     string line, word;
     string name;
@@ -61,8 +61,8 @@ vector<Player> create_vector(){
 }
 
 
-void print_data(string username){
-    vector<Player> player_data = create_vector();
+void printData(string username){
+    vector<Player> player_data = createVector();
     bool player_exists = false;
     for (int i = 0; i < player_data.size(); i++){
         if(player_data[i].name == username){
@@ -82,8 +82,8 @@ void print_data(string username){
     }
 }
 
-void update_file(string username, int games_played = 0, int bigtwo = 0, int blackjack = 0, int higher_lower = 0, int old_maid = 0, int trump = 0, int score = 0){
-    vector<Player> player_data = create_vector();
+void updateFile(string username, int games_played = 0, int bigtwo = 0, int blackjack = 0, int higher_lower = 0, int old_maid = 0, int trump = 0, int score = 0){
+    vector<Player> player_data = createVector();
     ofstream fout;
     bool player_exists = false;
     for(int i = 0; i < player_data.size(); i++){
@@ -132,7 +132,7 @@ void update_file(string username, int games_played = 0, int bigtwo = 0, int blac
 
 
 void medal(string username){
-    vector<Player> player_data = create_vector();
+    vector<Player> player_data = createVector();
     bool player_exists = false;
     for (int i = 0; i < player_data.size(); i++){
         if(player_data[i].name == username){
