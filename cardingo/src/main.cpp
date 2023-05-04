@@ -96,6 +96,7 @@ void chooseTrump(){
 void chooseOldMaid(){
     string reply;
     playOldMaid();
+    getline(cin, reply);
     while (true){
         print("Would you like to play again? (y/n)");
         wait();
