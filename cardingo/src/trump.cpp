@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <algorithm>
 #include "../include/trump.h"
 #include "../include/print_text.h"
 #include "../include/card_dealer.h"
@@ -509,19 +510,88 @@ string chooseCard(vector<string> deck, vector<string> round_cards, int turn, str
     return card;
 }
 
-bool checkUserCard(vector<string> deck, string card, string trump, string suit) {
-    if (!findCard(deck, card)) {
+bool checkUserCard(vector<string> deck, string card, string trump, string suit)
+{
+    if (!findCard(deck, card))
+    {
         print("Invalid Card (Card not in hand)", "red", true);
         return false;
     }
     else if (hasSuit(deck, suit))
     {
-        if (getSuit(card) != suit) {
+        if (getSuit(card) != suit)
+        {
             print("Invalid Card (Suit already present)", "red", true);
             return false;
         }
     }
     return true;
+}
+
+void removeCards(vector<string> deck)
+{
+    for (int i = 0; i < 4; i++)
+    {
+        if (i == 0)
+        {
+            auto it = find(user_deck.begin(), user_deck.end(), deck[i]);
+            if (it != user_deck.end())
+            {
+                user_deck.erase(it);
+            }
+        } else if (i == 1)
+        {
+            auto it = find(comp1.begin(), comp1.end(), deck[i]);
+            if (it != comp1.end())
+            {
+                comp1.erase(it);
+            }
+        } else if (i == 2)
+        {
+            auto it = find(comp2.begin(), comp2.end(), deck[i]);
+            if (it != comp2.end())
+            {
+                comp2.erase(it);
+            }
+        } else if (i == 3)
+        {
+            auto it = find(comp3.begin(), comp3.end(), deck[i]);
+            if (it != comp3.end())
+            {
+                comp3.erase(it);
+            }
+        }
+    }
+}
+
+void roundWinner(int winner, string card)
+{
+    if (winner == 0)
+    {
+        print("You won the round with ", "blue", true, "");
+        print(getValue(card), "cyan", "", "");
+        printSuit(getSuit(card));
+        print();
+    }
+    else
+    {
+        print("Computer " + to_string(winner) + " won the round with ", "blue", true, "");
+        print(getValue(card), "cyan", "", "");
+        printSuit(getSuit(card));
+        print();
+    }
+}
+
+void gameWinner(int team1, int team2)
+{
+    if (team1 >= 7)
+    {
+        print("Team 1 (You and Computer 2) won the game !", "blue", true);
+    }
+    else
+    {
+        print("Team 2 (Computer 1 and Computer 3) won the game !", "blue", true);
+    }
 }
 // TRUMP TOOLS END
 
@@ -537,13 +607,17 @@ void startRounds(Round &round)
         if (turn == 0)
         {
             roundInfo(round, i);
+            wait(300);
             printCards(user_deck, 7, true);
+            wait(100);
             print("Throw Card: ", "magenta", true, "");
             cin >> card;
+            wait(100);
             while (!checkUserCard(user_deck, card, round.trump, round.round_suit))
             {
                 print("Throw Card: ", "magenta", true, "");
                 cin >> card;
+                wait(100);
             }
             round_cards[0] = card;
         }
@@ -551,20 +625,35 @@ void startRounds(Round &round)
         {
             printCards(comp1);
             round_cards[1] = chooseCard(comp1, round_cards, turn, round.trump, round.round_suit);
-            print(round_cards[1]);
+            print("Computer 1 played ", "blue", true, "");
+            print(getValue(round_cards[1]), "cyan", "", "");
+            printSuit(getSuit(round_cards[1]));
+            print();
+            wait(500);
         }
         else if (turn == 2)
         {
             printCards(comp2);
             round_cards[2] = chooseCard(comp2, round_cards, turn, round.trump, round.round_suit);
             print(round_cards[2]);
+            print("Computer 2 played ", "blue", true, "");
+            print(getValue(round_cards[2]), "cyan", "", "");
+            printSuit(getSuit(round_cards[2]));
+            print();
+            wait(500);
         }
         else if (turn == 3)
         {
             printCards(comp3);
             round_cards[3] = chooseCard(comp3, round_cards, turn, round.trump, round.round_suit);
             print(round_cards[3]);
+            print("Computer 3 played ", "blue", true, "");
+            print(getValue(round_cards[3]), "cyan", "", "");
+            printSuit(getSuit(round_cards[3]));
+            print();
+            wait(500);
         }
+
         if (i == 0)
         {
             round.round_suit = getSuit(round_cards[turn]);
@@ -572,21 +661,28 @@ void startRounds(Round &round)
         else if (i == 3)
         {
             round.winner = stoi(getHighestInRound(round.trump, round.round_suit, round_cards)[1]);
+            roundWinner(round.winner, getHighestInRound(round.trump, round.round_suit, round_cards)[0]);
+            wait(100);
             if (round.winner == 0 || round.winner == 2)
             {
                 round.team1++;
+                print("Team 1 (You and Computer 2) won the round!", "green", true);
             }
             else
             {
                 round.team2++;
+                print("Team 2 (Computer 1 and Computer 3) won the round!", "green", true);
             }
         }
+
+        removeCards(round_cards);
 
         turn++;
         if (turn == 4)
         {
             turn = 0;
         }
+        wait();
     }
 }
 
@@ -602,6 +698,7 @@ void startGame(int winner)
     print("The trump is ", "magenta", true, "");
     printSuit(trump);
     print();
+    wait();
 
     for (int i = 0; i < 8; i++)
     {
@@ -624,6 +721,8 @@ void startGame(int winner)
         startRounds(round);
         round.round++;
     }
+    gameWinner(round.team1, round.team2);
+    wait(2000);
 }
 
 void toss(vector<string> deck)
@@ -634,6 +733,7 @@ void toss(vector<string> deck)
     wait();
     print("Your card: ", "green", true, "  ");
     print("Computer 1:  Computer 2:  Computer 3:", "cyan");
+    wait(100);
     printCards(draw4);
     wait(2000);
     int highest = 0;
