@@ -134,7 +134,9 @@ void playTurn(vector<string>& discard_pile, vector<string>& human_hand, vector<s
             }
             
         }
-        cout << "You took the " << getSuit(robot_hand[choice - 1]) << getValue(robot_hand[choice - 1]) << endl;
+        cout << "You took the ";
+        print(getSuit(robot_hand[choice - 1]), "magenta", true, ""); 
+        print(getValue(robot_hand[choice - 1]), "magenta", true);
         wait();
         human_hand.push_back(robot_hand[choice-1]);
         robot_hand.erase(robot_hand.begin() + (choice-1));
@@ -159,7 +161,9 @@ void playTurn(vector<string>& discard_pile, vector<string>& human_hand, vector<s
         wait();
         cout << "The robot picked card number " << choice+1 << endl;
         wait();
-        cout << "The robot took the " << getSuit(human_hand[choice]) << getValue(human_hand[choice]) << endl;
+        cout << "The robot took the ";
+        print(getSuit(human_hand[choice - 1]), "magenta", true, ""); 
+        print(getValue(human_hand[choice - 1]), "magenta", true);
         wait();
         robot_hand.push_back(human_hand[choice]);
         human_hand.erase(human_hand.begin() + (choice));
