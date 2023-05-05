@@ -1,18 +1,18 @@
-CARD-INGO
+# CARD-INGO
 
 Course Information\
 Course Code: ENGG1340\
-Course Title: Computer Programming I\
+Course Title: Computer Programming II\
 Group: 43
 
-Team Members:\
+## Team Members
 QUETTAWALA Hatim (3036094849)\
 SUHANDJAJA Alexander Gaudi (3036029674)\
 SUTANTO Winiera (3035964671)\
 MANATUNGE Aishani Induja (3035962386)\
 YOON Hyunseo ()
 
-Introduction:\
+## Introduction
 CARD-INGO is a fun and exciting collection of five different card games. The games included are:
 
 Blackjack\
@@ -23,7 +23,7 @@ Crazy eights
 
 The name CARD-INGO is inspired by the popular game BINGO. CARD-INGO is sure to provide hours of entertainment and challenge. So, gather your friends and family, and get ready to play these classic card games in a whole new way with CARD-INGO!
 
-Game Rules:\
+## Game Rules
 These are game rules for each of the five card games.
 
 Blackjack:
@@ -44,7 +44,7 @@ Higher Lower:
 
 Crazy Eights:
 
-Features Implemented and Coding Requirements
+## Features Implemented and Coding Requirements
 We implemented the following features and coding requirements to support the game:
 
 1. Generation of random game sets or events: In this game we randomly generated a deck of cards.
@@ -53,10 +53,10 @@ We implemented the following features and coding requirements to support the gam
 4. File input/output (e.g., for loading/saving game status): We created a C++ program with the intended purpose of storing the username, total games played, the score for each game, and the total sums of scores in a txt file. This program also has the ability to print a person's score and update that score.
 5. Program codes in multiple files: For each game, we separated the C++ programs into multiple files. Through the use of header files and makefile, we were able to combine all of the files into one executable program.
 
-Non-Standard C/C++ Libraries:
+## Non-Standard C/C++ Libraries
 We did not use any non-standard C/C++ libraries.
 
-Compilation and Execution Instructions (How to Play "CARD-INGO"):
+##  Compilation and Execution Instructions (How to Play "CARD-INGO")
 To play "CARD-INGO," follow these steps:
 
 1. Open the command terminal.
