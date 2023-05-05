@@ -1,29 +1,43 @@
 CARD-INGO
 
-Course Information
-Course Code: ENGG1340
-Course Title: Computer Programming I
+Course Information\
+Course Code: ENGG1340\
+Course Title: Computer Programming I\
 Group: 43
-Team Members:
-QUETTAWALA Hatim (3036094849)
-SUHANDJAJA Alexander Gaudi (3036029674)
-SUTANTO Winiera (3035964671)
-MANATUNGE Aishani Induja (3035962386)
+
+Team Members:\
+QUETTAWALA Hatim (3036094849)\
+SUHANDJAJA Alexander Gaudi (3036029674)\
+SUTANTO Winiera (3035964671)\
+MANATUNGE Aishani Induja (3035962386)\
 YOON Hyunseo ()
 
-Introduction
+Introduction:\
 CARD-INGO is a fun and exciting collection of five different card games. The games included are:
 
-Blackjack
-Trump
-Old maid
-Higher lower
+Blackjack\
+Trump\
+Old Maid\
+Higher lower\
 Crazy eights
 
 The name CARD-INGO is inspired by the popular game BINGO. CARD-INGO is sure to provide hours of entertainment and challenge. So, gather your friends and family, and get ready to play these classic card games in a whole new way with CARD-INGO!
 
-Game Rules
-The game rules for each of the five card games are included in the program.
+Game Rules:\
+These are game rules for each of the five card games.
+
+Blackjack:
+
+Trump:
+
+Old Maid:
+* Old Maid is a classic card game where the goal of the game is to remove all pairs from your hand while not being left with the queen of spades
+* At the start of the game each player draws 26 cards
+* Whoever starts 
+
+Higher Lower:
+
+Crazy Eights:
 
 Features Implemented and Coding Requirements
 We implemented the following features and coding requirements to support the game:
