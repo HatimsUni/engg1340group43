@@ -256,6 +256,39 @@ void printUserDetails(string user, string game, int total, int played, int score
     print();
 }
 
+void printCard(string card, bool show)
+{
+    string value = getValue(card);
+    string suit = getSuit(card);
+    print("┌─────────┐");
+    if (value != "10")
+    {
+        print("|" + value + "        |");
+    }
+    else
+    {
+        print("|" + value + "       |");
+    }
+    print("|         |");
+    print("|    ", "", "", "");
+    printSuit(suit);
+    print("    |");
+    print("|         |");
+    if (value != "10")
+    {
+        print("|        " + value + "|");
+    }
+    else
+    {
+        print("|       " + value + "|");
+    }
+    print("└─────────┘");
+    if (show)
+    {
+        print(card);
+    }
+}
+
 void printCards(vector<string> deck, int n, bool show)
 {
     int size = deck.size();
@@ -475,6 +508,5 @@ void printCards(vector<string> deck, int n, bool show)
 
 // int main()
 // {
-//     vector<string> deck = newDeck(false);
 //     return 0;
 // }
