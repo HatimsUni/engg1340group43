@@ -11,7 +11,7 @@
 using namespace std;
 
 void shuffleHand(vector<string>& hand){
-    //this function shuffles the hand randomly
+    //this function takes in the hand given and shuffles it randomly
     random_device rd;
     mt19937 g(rd());
     shuffle(hand.begin(), hand.end(), g);
@@ -20,6 +20,12 @@ void shuffleHand(vector<string>& hand){
 
 void removePairs(vector<string>& discard_pile, vector<string>& hand, string current_player){
     //this function will remove any pairs held by the hand
+    //this function takes in the discard_pile, hand, and current player;
+    //if the current player is a human, it will print the current hand, throw out any pairs, copy those pairs into the discard_pile
+    //and thrown pairs, and print the new hand
+    //if the current player is a robot, it will just print out the thrown pairs the robot threw
+    //if no pairs are found, it will print it out and continue the game
+    //the discard_pile is not actually printed but was used for bug fixing
     vector<string> thrown_pairs;
     if(current_player == "human"){
         cout << "Your hand has:" << endl;
@@ -97,6 +103,12 @@ void removePairs(vector<string>& discard_pile, vector<string>& hand, string curr
 
 void playTurn(vector<string>& discard_pile, vector<string>& human_hand, vector<string>& robot_hand, string current_player){
     //this function will play the turn
+    //it takes in the discard_pile, human_hand, robot_hand, and current_player
+    //if its the human's turn, it will print out the number of cards the robot has and ask the player to pick a card
+    //once the user picks a card it will go through the remove_pair function
+    //if its the robot's turn, it will just take a card from the player randomly and remove any pairs
+    //if the opponent only has one card the game automatically takes it for the player
+    //this function will be done recursively until the win conditon is met
     if(current_player == "human"){
         int choice;
         cout << "Its your turn" << endl;
@@ -169,6 +181,9 @@ void playTurn(vector<string>& discard_pile, vector<string>& human_hand, vector<s
 
 void startOldMaid(vector<string>& discard_pile, vector<string>& human_hand, vector<string>& robot_hand, string current_player){
     //this function starts the game of old maid
+    //it takes in the discard_pile, human_hand, robot_hand, and current_player
+    //it removes any pairs that the human or robot has
+    //then it will play the turns
     removePairs(discard_pile, human_hand, "human");
     removePairs(discard_pile, robot_hand, "robot");
     if(current_player == "human"){
@@ -179,7 +194,9 @@ void startOldMaid(vector<string>& discard_pile, vector<string>& human_hand, vect
 }
 
 void playOldMaid(){
-    //this functions initialized all the variables
+    //this function initializes all the variables (deck, discard_pile, human_hand, robot_hand, and current_player)
+    //it will find the queen of clubs from both hands and throw it away
+    //whoever had the queen of clubs in their initial hand will start second
     vector<string> deck = newDeck(true);
     vector<string> discard_pile;
     vector<string> human_hand(deck.begin(), deck.begin() + 26);
