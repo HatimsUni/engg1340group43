@@ -15,21 +15,26 @@ void chooseCrazyEights(string username){
     //this will play crazy eights and once the game has finished it will ask if the user wants to play again
     //if the user wants to play again, it will play crazy eights
     //if the user doesnt want to play they will be brought back to the game chooser screen
-    // string reply;
-    // play_crazy_eights();
-    // while (true){
-    //     print("Would you like to play again? (y/n)");
-    //     getline(cin, reply);
-    //     if (reply == "y"){
-    //         choose_crazy_eights();
-    //         return;
-    //     } else if  (reply == "n"){
-    //         print("Thank you. Returning to the game chooser screen");
-    //         return;
-    //     } else {
-    //         print("Wrong input. Please input your answer again");
-    //     }
-    // }
+    string reply;
+    int score;
+    score = playCrazyEights();
+    updateFile(username, 1, 0, 1, 0, 0, score);
+    while (true){
+        print("Would you like to play again? (y/n)");
+        wait();
+        getline(cin, reply);
+        if (reply == "y"){
+            chooseCrazyEights(username);
+            return;
+        } else if  (reply == "n"){
+            print("Thank you. Returning to the game chooser screen");
+            wait();
+            return;
+        } else {
+            print("Wrong input. Please input your answer again");
+            wait();
+        }
+    }
 }
 
 void chooseBlackjack(string username){

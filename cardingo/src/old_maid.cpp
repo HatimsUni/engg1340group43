@@ -146,12 +146,12 @@ void playTurn(vector<string>& discard_pile, vector<string>& human_hand, vector<s
         removePairs(discard_pile, human_hand, "human");
         if(robot_hand.size()==0 && human_hand.size() == 1){
             cout << "The robot wins" << endl;
-            score += 0;
+            score = 0;
             wait();
             return;
         } else if (robot_hand.size() == 1 && human_hand.size() == 0){
             cout << "The player wins" << endl;
-            score += 4;
+            score = 4;
             wait();
             return;
         } else{
@@ -175,12 +175,12 @@ void playTurn(vector<string>& discard_pile, vector<string>& human_hand, vector<s
         removePairs(discard_pile, robot_hand, "robot");
         if(robot_hand.size()==0 && human_hand.size() == 1){
             cout << "The robot wins" << endl;
-            score += 0;
+            score = 0;
             wait();
             return;
         } else if (robot_hand.size() == 1 && human_hand.size() == 0){
             cout << "The player wins" << endl;
-            score += 4;
+            score = 4;
             wait();
             return;
         } else{

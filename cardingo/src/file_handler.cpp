@@ -74,11 +74,11 @@ void printData(string username){
         }
     }
     if (player_exists == false){
-        cout << "Player does not exist";
+        cout << "This is your first time playing" << endl;
     }
 }
 
-void updateFile(string username, int games_played = 0, int crazyeights = 0, int blackjack = 0, int old_maid = 0, int trump = 0, int score = 0){
+void updateFile(string username, int games_played, int crazyeights, int blackjack, int old_maid, int trump, int score){
     //this function will update the txt file
     //if the player is not found in the txt file it will create a new player with the corresponding score
     //if the player is found it will update that player's score in the txt file
