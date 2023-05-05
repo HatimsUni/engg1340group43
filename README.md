@@ -38,11 +38,21 @@ Old Maid:
 * Each turn the current player will take a card from the opponent's hand and if it results in a pair with a card from their hand, they throw away the pair
 * The players alternate turns until one player is left with the queen of spades and the other player has no card
 * The winner is the player with no cards left
-* THe loser is the player with the queen of spades left
+* The loser is the player with the queen of spades left
 
 Higher Lower:
 
 Crazy Eights:
+- The basic gameplay of Crazy Eights involves trying to get rid of your cards by matching either the rank or suit of the current card
+- The objective of the game is to be the first one to discard all your cards
+- At the start of the game each player are dealt 7 cards
+- Place the remaining cards face down on the table forming the draw pile and turn the top card over and place it beside the draw pile to start the discard pile
+- The first player must play a card that matches the suit or rank of the card on the discard pile (e.g. current card is a 7 of hearts, hence player can play any other 7 or any heart card)
+- If a player cannot play a card, they must keep drawing cards from the draw pile until they found a card they can play and play it
+- The game's namesake card is the "eight" and when played, the player gets to choose which suit will be played next
+- The first player to get rid of all their cards wins the game
+- If the draw pile run out of cards, then the player ties and the game is over
+
 
 ## Features Implemented and Coding Requirements
 We implemented the following features and coding requirements to support the game:
