@@ -223,11 +223,11 @@ void playOldMaid(){
     }
 
     if(human_hand.size() == 25){
-        cout << "You got the queen of spades so you threw it away and the robot starts first" << endl;
+        cout << "You got the queen of clubs so you threw it away and the robot starts first" << endl;
         wait();
         current_player = "robot";
     } else if(robot_hand.size() == 25){
-        cout << "The robot got the queen of spades so you start first" << endl;
+        cout << "The robot got the queen of clubs so you start first" << endl;
         wait();
         current_player = "human";
     }
