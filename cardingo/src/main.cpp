@@ -199,7 +199,7 @@ int main() {
     cout << endl;
     cout << endl;
     wait();
-    cout << "Please enter your username:";
+    cout << "Please enter your username:" << endl;
     getline(cin, username);
     chooseGame(username);
     printMainEnding();
