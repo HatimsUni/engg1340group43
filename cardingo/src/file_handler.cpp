@@ -7,9 +7,11 @@
 using namespace std;
 
 struct Player{
+    //this is a structure of every player in the text file
+    //it will keep track of the player's name, games_played, score for each game and total score
     string name;
     int games_played;
-    int bigtwo;
+    int crazyeights;
     int blackjack;
     int higher_lower;
     int old_maid;
@@ -18,11 +20,12 @@ struct Player{
 };
 
 vector<Player> createVector(){
+    //this function will create a vector of players based on the players in the txt file
     vector<Player> player_data;
     string line, word;
     string name;
     int games_played;
-    int bigtwo;
+    int crazyeights;
     int blackjack;
     int higher_lower;
     int old_maid;
@@ -42,7 +45,7 @@ vector<Player> createVector(){
             line_in >> word;
             user.games_played = stoi(word);
             line_in >> word;
-            user.bigtwo = stoi(word);
+            user.crazyeights = stoi(word);
             line_in >> word;
             user.blackjack = stoi(word);
             line_in >> word;
@@ -62,13 +65,16 @@ vector<Player> createVector(){
 
 
 void printData(string username){
+    //this function takes in the username as the input
+    //it will loop through the txt file and print out any data that has the username
+    //if the username is not found it will print that the player does not exist
     vector<Player> player_data = createVector();
     bool player_exists = false;
     for (int i = 0; i < player_data.size(); i++){
         if(player_data[i].name == username){
             cout << player_data[i].name;
             cout << player_data[i].games_played;
-            cout << player_data[i].bigtwo;
+            cout << player_data[i].crazyeights;
             cout << player_data[i].blackjack;
             cout << player_data[i].higher_lower;
             cout << player_data[i].old_maid;
@@ -82,7 +88,10 @@ void printData(string username){
     }
 }
 
-void updateFile(string username, int games_played = 0, int bigtwo = 0, int blackjack = 0, int higher_lower = 0, int old_maid = 0, int trump = 0, int score = 0){
+void updateFile(string username, int games_played = 0, int crazyeights = 0, int blackjack = 0, int higher_lower = 0, int old_maid = 0, int trump = 0, int score = 0){
+    //this function will update the txt file
+    //if the player is not found in the txt file it will create a new player with the corresponding score
+    //if the player is found it will update that player's score in the txt file
     vector<Player> player_data = createVector();
     ofstream fout;
     bool player_exists = false;
@@ -95,7 +104,7 @@ void updateFile(string username, int games_played = 0, int bigtwo = 0, int black
         fout.open("games.txt", ios::app);
         fout << username << " ";
         fout << games_played << " ";
-        fout << bigtwo << " ";
+        fout << crazyeights << " ";
         fout << blackjack << " ";
         fout << higher_lower << " ";
         fout << old_maid << " ";
@@ -107,7 +116,7 @@ void updateFile(string username, int games_played = 0, int bigtwo = 0, int black
         for(int i = 0; i < player_data.size(); i++){
             if(player_data[i].name == username){
                 player_data[i].games_played += games_played;
-                player_data[i].bigtwo += bigtwo;
+                player_data[i].crazyeights += crazyeights;
                 player_data[i].blackjack += blackjack;
                 player_data[i].higher_lower += higher_lower;
                 player_data[i].old_maid += old_maid;
@@ -118,7 +127,7 @@ void updateFile(string username, int games_played = 0, int bigtwo = 0, int black
         for(int i = 0; i < player_data.size(); i++){
             fout << player_data[i].name << " ";
             fout << player_data[i].games_played << " ";
-            fout << player_data[i].bigtwo << " ";
+            fout << player_data[i].crazyeights << " ";
             fout << player_data[i].blackjack << " ";
             fout << player_data[i].higher_lower << " ";
             fout << player_data[i].old_maid << " ";
@@ -132,6 +141,11 @@ void updateFile(string username, int games_played = 0, int bigtwo = 0, int black
 
 
 void medal(string username){
+    //this function takes in the username as input
+    //it will look at the total score the player has
+    //if the score is <= 10 it will print that you have a bronze medal
+    //if the score is > 10 & <=20 it will print that you have a silver medal
+    //if the score is > 20 it will print that you have a gold medal
     vector<Player> player_data = createVector();
     bool player_exists = false;
     for (int i = 0; i < player_data.size(); i++){

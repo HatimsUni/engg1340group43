@@ -12,6 +12,10 @@
 using namespace std;
 
 void chooseCrazyEights(){
+    //if the user chooses crazy eights this function will run
+    //this will play crazy eights and once the game has finished it will ask if the user wants to play again
+    //if the user wants to play again, it will play crazy eights
+    //if the user doesnt want to play they will be brought back to the game chooser screen
     // string reply;
     // play_crazy_eights();
     // while (true){
@@ -30,6 +34,10 @@ void chooseCrazyEights(){
 }
 
 void chooseBlackjack(){
+    //if the user chooses blackjack this function will run
+    //this will play blackjack and once the game has finished it will ask if the user wants to play again
+    //if the user wants to play again, it will play blackjack
+    //if the user doesnt want to play they will be brought back to the game chooser screen
     string reply;
     playBlackjack();
     while (true){
@@ -51,6 +59,10 @@ void chooseBlackjack(){
 }
 
 void chooseHigherLower(){
+    //if the user chooses higher lower this function will run
+    //this will play higher lower and once the game has finished it will ask if the user wants to play again
+    //if the user wants to play again, it will play higher lower
+    //if the user doesnt want to play they will be brought back to the game chooser screen
     string reply;
     playHigherLower();
     while (true){
@@ -72,6 +84,10 @@ void chooseHigherLower(){
 }
 
 void chooseTrump(){
+    //if the user chooses trump this function will run
+    //this will play trump and once the game has finished it will ask if the user wants to play again
+    //if the user wants to play again, it will play  trump
+    //if the user doesnt want to play they will be brought back to the game chooser screen
     string reply;
     playTrump();
     while (true){
@@ -94,6 +110,10 @@ void chooseTrump(){
 
 
 void chooseOldMaid(){
+    //if the user chooses old maid this function will run
+    //this will play the old maid game and once the game has finished it will ask if the user wants to play again
+    //if the user wants to play again, it will play the old maid game
+    //if the user doesnt want to play they will be brought back to the game chooser screen
     string reply;
     playOldMaid();
     getline(cin, reply);
@@ -116,6 +136,10 @@ void chooseOldMaid(){
 }
 
 void chooseGame(){
+    //this is function that allows the user to choose the game they want to play
+    //it will prompt the user for a number which corresponds to the game they want to play
+    //if the user inputs 0 the game ends
+    //once they choose a game the corresponding game function will be played
     string input;
     int number;
     while(true){
@@ -158,6 +182,10 @@ void chooseGame(){
 
 
 int main() {
+    //this is the  main function
+    //it will print the heading of our game
+    //go  into the the game chooser screen
+    //and print the main ending once the user is  done playing
     printMainHeading();
     wait();
     chooseGame();
