@@ -1,22 +1,16 @@
 #include <iostream>
-#include "../include/blackjack.h"
+#include <string>
+#include <vector>
+#include <random>
+#include <algorithm>
+#include "../include/crazy_eights.h"
+#include "../include/card_dealer.h"
+#include "../include/print_text.h"
+#include "../include/sleep.h"
+
 using namespace std;
 
 // Human class
-class Human {
-public:
-    void handSetup(vector<string> &deck, int k);
-    void printHand();
-    bool isValidCard(string card, string &currentSuit, string &currentValue);
-    bool isWinner();
-    void pickSuit(string &currentSuit);
-    void turn(vector<string> &deck, string &currentSuit, string &currentValue);
-
-private:
-    vector<string> hand;
-    int handSize;
-};
-
 void Human::handSetup(vector<string> &deck, int k) {
     hand = drawCard(deck, k);
 }
@@ -148,22 +142,7 @@ void Human::turn(vector<string> &deck, string &currentSuit, string &currentValue
     
 }
 
-
 // Robot class
-class Robot {
-public:
-    void handSetup(vector<string> &deck, int k);
-    void printHand();
-    bool isValidCard(string card, string &currentSuit, string &currentValue);
-    bool isWinner();
-    void pickSuit(string &currentSuit);
-    void turn(vector<string> &deck, string &currentSuit, string &currentValue);
-    
-private:
-    vector<string> hand;
-    int seri;
-};
-
 void Robot::handSetup(vector<string> &deck, int k) {
     hand = drawCard(deck, k);
 }
@@ -252,13 +231,7 @@ void Robot::turn(vector<string> &deck, string &currentSuit, string &currentValue
     }
 }
 
-
 // Deck class
-class Deck {
-public:
-    void getStartingCard(vector<string> &deck, string &currentSuit, string &currentValue);
-};
-
 void Deck::getStartingCard(vector<string> &deck, string &currentSuit, string &currentValue) {
     vector<string>::iterator itr = deck.begin();
     while (getValue(*itr) == "8") {
@@ -268,8 +241,6 @@ void Deck::getStartingCard(vector<string> &deck, string &currentSuit, string &cu
     currentSuit = getSuit(*itr);
     deck.erase(itr);
 }
-
-
 
 void play_crazy_eights() {
     vector<string> deck = newDeck(true);
