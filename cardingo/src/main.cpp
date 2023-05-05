@@ -169,6 +169,8 @@ int main() {
     wait();
     cout << "Please enter your username:" << endl;
     getline(cin, username);
+    printData(username);
+    updateFile(username);
     chooseGame(username);
     printMainEnding();
     return 0;
