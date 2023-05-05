@@ -12,6 +12,7 @@ vector<string> user_deck;
 vector<string> comp1;
 vector<string> comp2;
 vector<string> comp3;
+int score = 0;
 
 struct Round
 {
@@ -586,6 +587,7 @@ void gameWinner(int team1, int team2)
 {
     if (team1 >= 7)
     {
+        score = 8;
         print("Team 1 (You and Computer 2) won the game !", "blue", true);
     }
     else
@@ -761,7 +763,8 @@ void toss(vector<string> deck)
     startGame(winner);
 }
 
-void playTrump()
+int playTrump()
 {
     toss(newDeck());
+    return score;
 }
