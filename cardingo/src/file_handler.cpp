@@ -72,14 +72,8 @@ void printData(string username){
     bool player_exists = false;
     for (int i = 0; i < player_data.size(); i++){
         if(player_data[i].name == username){
-            cout << player_data[i].name;
-            cout << player_data[i].games_played;
-            cout << player_data[i].crazyeights;
-            cout << player_data[i].blackjack;
-            cout << player_data[i].higher_lower;
-            cout << player_data[i].old_maid;
-            cout << player_data[i].trump;
-            cout << player_data[i].score << endl;
+            cout << "You have played " << player_data[i].games_played << "games" << endl;
+            cout << "Your total score is " << player_data[i].score << endl;
             player_exists = true;
         }
     }

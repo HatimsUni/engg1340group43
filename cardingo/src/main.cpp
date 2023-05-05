@@ -11,7 +11,7 @@
 #include "../include/sleep.h"
 using namespace std;
 
-void chooseCrazyEights(){
+void chooseCrazyEights(string username){
     //if the user chooses crazy eights this function will run
     //this will play crazy eights and once the game has finished it will ask if the user wants to play again
     //if the user wants to play again, it will play crazy eights
@@ -33,19 +33,21 @@ void chooseCrazyEights(){
     // }
 }
 
-void chooseBlackjack(){
+void chooseBlackjack(string username){
     //if the user chooses blackjack this function will run
     //this will play blackjack and once the game has finished it will ask if the user wants to play again
     //if the user wants to play again, it will play blackjack
     //if the user doesnt want to play they will be brought back to the game chooser screen
     string reply;
-    playBlackjack();
+    int score;
+    score = playBlackjack();
+    updateFile(username, 0, 0, 1, 0, 0, 0, score);
     while (true){
         print("Would you like to play again? (y/n)");
         wait();
         getline(cin, reply);
         if (reply == "y"){
-            chooseBlackjack();
+            chooseBlackjack(username);
             return;
         } else if  (reply == "n"){
             print("Thank you. Returning to the game chooser screen");
@@ -58,19 +60,21 @@ void chooseBlackjack(){
     }
 }
 
-void chooseHigherLower(){
+void chooseHigherLower(string username){
     //if the user chooses higher lower this function will run
     //this will play higher lower and once the game has finished it will ask if the user wants to play again
     //if the user wants to play again, it will play higher lower
     //if the user doesnt want to play they will be brought back to the game chooser screen
     string reply;
-    playHigherLower();
+    int score;
+    score = playHigherLower();
+    updateFile(username, 0, 0, 0, 1, 0, 0, score);
     while (true){
         print("Would you like to play again? (y/n)");
         wait();
         getline(cin, reply);
         if (reply == "y"){
-            chooseHigherLower();
+            chooseHigherLower(username);
             return;
         } else if  (reply == "n"){
             print("Thank you. Returning to the game chooser screen");
@@ -83,19 +87,21 @@ void chooseHigherLower(){
     }
 }
 
-void chooseTrump(){
+void chooseTrump(string username){
     //if the user chooses trump this function will run
     //this will play trump and once the game has finished it will ask if the user wants to play again
     //if the user wants to play again, it will play  trump
     //if the user doesnt want to play they will be brought back to the game chooser screen
     string reply;
-    playTrump();
+    int score;
+    score = playTrump();
+    updateFile(username, 0, 0, 0, 0, 0, 1, score);
     while (true){
         print("Would you like to play again? (y/n)");
         wait();
         getline(cin, reply);
         if (reply == "y"){
-            chooseTrump();
+            chooseTrump(username);
             return;
         } else if  (reply == "n"){
             print("Thank you. Returning to the game chooser screen");
@@ -109,20 +115,22 @@ void chooseTrump(){
 }
 
 
-void chooseOldMaid(){
+void chooseOldMaid(string username){
     //if the user chooses old maid this function will run
     //this will play the old maid game and once the game has finished it will ask if the user wants to play again
     //if the user wants to play again, it will play the old maid game
     //if the user doesnt want to play they will be brought back to the game chooser screen
     string reply;
-    playOldMaid();
+    int score;
+    score = playOldMaid();
+    updateFile(username, 1, 0, 0, 0, 0, 0, score);
     getline(cin, reply);
     while (true){
         print("Would you like to play again? (y/n)");
         wait();
         getline(cin, reply);
         if (reply == "y"){
-            chooseOldMaid();
+            chooseOldMaid(username);
             return;
         } else if  (reply == "n"){
             print("Thank you. Returning to the game chooser screen");
@@ -135,7 +143,7 @@ void chooseOldMaid(){
     }
 }
 
-void chooseGame(){
+void chooseGame(string username){
     //this is function that allows the user to choose the game they want to play
     //it will prompt the user for a number which corresponds to the game they want to play
     //if the user inputs 0 the game ends
@@ -159,19 +167,19 @@ void chooseGame(){
                 return;
             } else if (number == 1){
                 printGameHeading("crazyeights");
-                chooseCrazyEights();
+                chooseCrazyEights(username);
             } else if (number == 2){
                 printGameHeading("blackjack");
-                chooseBlackjack();
+                chooseBlackjack(username);
             } else if (number == 3){
                 printGameHeading("higherlower");
-                chooseHigherLower();
+                chooseHigherLower(username);
             } else if (number == 4){
                 printGameHeading("trump");
-                chooseTrump();
+                chooseTrump(username);
             } else if (number == 5){
                 printGameHeading("oldmaid");
-                chooseOldMaid();
+                chooseOldMaid(username);
             }
         } else {
             print("Invalid input, please reenter a number from 0-5");
@@ -186,9 +194,14 @@ int main() {
     //it will print the heading of our game
     //go  into the the game chooser screen
     //and print the main ending once the user is  done playing
+    string username;
     printMainHeading();
+    cout << endl;
+    cout << endl;
     wait();
-    chooseGame();
+    cout << "Please enter your username:";
+    getline(cin, username);
+    chooseGame(username);
     printMainEnding();
     return 0;
 }
