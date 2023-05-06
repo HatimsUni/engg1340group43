@@ -75,21 +75,21 @@ vector <string> getRules(string game_name){
         }
         fin.close();
         return rules;
-    } else if (game_name == "crazy_eights"){
-        fin.open("data/crazy_eigts_rules.txt");
+    } else if (game_name == "crazyeights"){
+        fin.open("data/crazy_eights_rules.txt");
         while(getline(fin, line)){
             rules.push_back(line);
         }
         fin.close();
         return rules;
-    } else if (game_name == "higher_lower"){
+    } else if (game_name == "higherlower"){
         fin.open("data/higher_lower_rules.txt");
         while(getline(fin, line)){
             rules.push_back(line);
         }
         fin.close();
         return rules;
-    } else if (game_name == "old_maid"){
+    } else if (game_name == "oldmaid"){
         fin.open("data/old_maid_rules.txt");
         while(getline(fin, line)){
             rules.push_back(line);
