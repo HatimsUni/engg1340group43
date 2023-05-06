@@ -37,9 +37,9 @@ void startHigherLower() {
 } 
 
 void continueHigherLower(vector<string> answer_cards) {
-    char guess;
+    string guess;
     string answer;
-    char answer_char;
+
 
     for (int i = 0; i <= answer_cards.size() - 2; i++) {
         string current_card = answer_cards[i];
@@ -48,9 +48,7 @@ void continueHigherLower(vector<string> answer_cards) {
         print("Input your guess of how the current card compares to the next card (H = Higher, L = Lower, S = Similar): ", "green", false, "\n");
         cin >> guess;
 
-        if (guess == 'H' || guess == 'L' || guess == 'S') {
-            ;
-        } else {
+        while (!(guess == "H" || guess == "L" || guess == "S" || guess == "h" || guess == "l" || guess == "s")) {
             print("Please input your guess correctly (H / L / S): ", "green", false, "\n");
             cin >> guess;
         }
@@ -60,9 +58,11 @@ void continueHigherLower(vector<string> answer_cards) {
         printCard(next_card);
 
         answer = compareCards(current_card, next_card);
-        answer_char = (char)answer[0];
+        const char answer_char = answer[0];
+        const char guess2 = toupper(guess[0]);
 
-        if (answer_char == toupper(guess)) {
+
+        if (answer_char == guess2) {
             print("Congratulation! Your guess is correct!", "green", false, "\n");
         } else {
             print("Incorrect guess, the correct answer was: " + answer, "green", false, "\n");
