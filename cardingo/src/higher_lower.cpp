@@ -49,13 +49,17 @@ void continueHigherLower(vector<string> answer_cards)
         string current_card = answer_cards[i];
         print("Current card: ", "yellow", true);
         printCard(current_card);
-        print("Input your guess of how the current card compares to the next card (H = Higher, L = Lower, S = Similar): ", "green", false);
-        getline(cin, guess);
+        print("Is the current card (H: Higher, L: Lower, S: Similar) than the next card: ", "magenta", true, "");
+        cin >> guess;
 
-        while (!(guess == "H" || guess == "L" || guess == "S" || guess == "h" || guess == "l" || guess == "s")) {
-            print("Please input your guess correctly (H / L / S): ", "green", false, "\n");
+        while (!(guess == "H" || guess == "L" || guess == "S" || guess == "h" || guess == "l" || guess == "s"))
+        {
+            print("Invalid guess (H/L/S): ", "red", true);
+            wait(500);
+            print("Is the current card (H: Higher, L: Lower, S: Similar) than the next card: ", "magenta", true, "");
             cin >> guess;
         }
+        wait();
 
         string next_card = answer_cards[i + 1];
         print("Next card: ", "yellow", true);
@@ -65,18 +69,21 @@ void continueHigherLower(vector<string> answer_cards)
         const char answer_char = answer[0];
         const char guess_char = toupper(guess[0]);
 
-        if (answer_char == guess_char) {
-            print("Congratulation! Your guess is correct!", "green", false, "\n");
-        } else {
-            print("Incorrect guess, the correct answer was: " + answer, "green", false, "\n");
-            print("One life will be lost.", "magenta", false, "\n");
+        if (answer_char == guess_char)
+        {
+            print("Congratulation! Your guess is correct!", "green", true, "\n");
+        }
+        else
+        {
+            print("Incorrect guess, the correct answer was: " + answer, "red", true);
+            print("You lost one life.", "magenta", false, "\n");
             life_count--;
-            print("Total lives left: " + to_string(life_count), "magenta", true);
+            print("Total lives left: " + to_string(life_count), "red");
         }
 
         if (life_count == 0)
         {
-            print("You have lost all your lives.\n", "magenta", true);
+            print("You lost all your lives.\n", "red", true);
             break;
         }
     }
@@ -134,44 +141,31 @@ void higherLowerWinner()
     if (life_count == 5)
     {
         game_score = 5;
-        print("Congratulations! You are the winner!", "cyan", true);
-        print("Your score: " + to_string(game_score), "cyan", false);
-        print("Thank you for playing!");
+        print("You Won!", "green", true);
     }
     else if (life_count == 4)
     {
         game_score = 4;
-        print("Congratulations! You are the winner!", "cyan", true);
-        print("Your score: " + to_string(game_score), "cyan", false);
-        print("Thank you for playing!");
+        print("You Won!", "green", true);
     }
     else if (life_count == 3)
     {
         game_score = 3;
-        print("Congratulations! You are the winner!", "cyan", true);
-        print("Your score: " + to_string(game_score), "cyan", false);
-        print("Thank you for playing!");
+        print("You Won!", "green", true);
     }
     else if (life_count == 2)
     {
         game_score = 2;
-        print("Congratulations! You are the winner!", "cyan", true);
-        print("Your score: " + to_string(game_score), "cyan", false);
-        print("Thank you for playing!");
+        print("You Won!", "green", true);
     }
     else if (life_count == 1)
     {
         game_score = 1;
-        print("Congratulations! You are the winner!", "cyan", true, "\n");
-        print("Your score: " + to_string(game_score), "cyan", false, "\n");
-        print("Thank you for playing!");
+        print("You Won!", "green", true, "\n");
     }
     else
     {
         game_score = 0;
-        print("Try again.. You have lost due to incorrect guesses...",
-              "magenta", true);
-        print("Your score: " + to_string(game_score), "magenta", false);
-        print("Thank you for playing!");
+        print("You Lost!", "red", true);
     }
 }

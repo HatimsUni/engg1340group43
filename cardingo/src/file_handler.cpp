@@ -155,7 +155,7 @@ void printData(string username)
     if (player_exists == false)
     {
         print("This is your first time playing", "cyan");
-        print("Win games to win medals!");
+        print("Win games to win medals!", "magenta", true);
     }
     wait();
     print();

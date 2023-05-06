@@ -232,7 +232,7 @@ string getChoice(int i)
     {
         print("Hit (H) or Stand (S): ", "blue", true, "");
         cin >> choice;
-        while (choice != "H" && choice != "S")
+        while (choice != "H" && choice != "S" && choice != "h" && choice != "s")
         {
             print("Invalid Choice!", "red", true);
             print("Hit (H) or Stand (S): ", "blue", true, "");
@@ -308,11 +308,11 @@ void startRound()
             if (status[i] == "P")
             {
                 choice = getChoice(i);
-                if (choice == "H")
+                if (choice == "H" || choice == "h")
                 {
                     hit(i);
                 }
-                else
+                else if (choice == "S" || choice == "s")
                 {
                     stand(i);
                 }
@@ -331,13 +331,15 @@ void startGame()
 {
     print("You will be playing against computers, Good Luck!", "green", true);
     print("Number of Players (2-6): ", "magenta", true, "");
-    cin >> n;
-    while (n > 6 || n < 2)
+    string input;
+    cin >> input;
+    while (input > "6" || input < "2")
     {
         print("Invalid input!", "red", true);
         print("Number of Players (2-6): ", "magenta", true, "");
-        cin >> n;
+        cin >> input;
     }
+    n = stoi(input);
     vector<vector<string>> player_cards_temp(n);
     vector<string> status_temp(n, "P");
     vector<int> scores_temp(n, 0);

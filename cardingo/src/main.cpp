@@ -25,7 +25,7 @@ void chooseCrazyEights(string username)
     getline(cin, reply);
     while (true)
     {
-        print("Would you like to play again? (y/n)");
+        print("Would you like to play again? (y/n)", "magenta", true);
         wait();
         getline(cin, reply);
         if (reply == "y")
@@ -35,13 +35,13 @@ void chooseCrazyEights(string username)
         }
         else if (reply == "n")
         {
-            print("Thank you. Returning to the game chooser screen");
+            print("Thank you. Returning to the game chooser screen", "blue", true);
             wait();
             return;
         }
         else
         {
-            print("Wrong input. Please input your answer again");
+            print("Wrong input. Please input your answer again", "red", true);
             wait();
         }
     }
@@ -60,7 +60,7 @@ void chooseBlackjack(string username)
     getline(cin, reply);
     while (true)
     {
-        print("Would you like to play again? (y/n)");
+        print("Would you like to play again? (y/n)", "magenta", true);
         wait();
         getline(cin, reply);
         if (reply == "y")
@@ -70,13 +70,13 @@ void chooseBlackjack(string username)
         }
         else if (reply == "n")
         {
-            print("Thank you. Returning to the game chooser screen");
+            print("Thank you. Returning to the game chooser screen", "blue", true);
             wait();
             return;
         }
         else
         {
-            print("Wrong input. Please input your answer again");
+            print("Wrong input. Please input your answer again", "red", true);
             wait();
         }
     }
@@ -95,7 +95,7 @@ void chooseHigherLower(string username)
     getline(cin, reply);
     while (true)
     {
-        print("Would you like to play again? (y/n)");
+        print("Would you like to play again? (y/n)", "magenta", true);
         wait();
         getline(cin, reply);
         if (reply == "y")
@@ -105,13 +105,13 @@ void chooseHigherLower(string username)
         }
         else if (reply == "n")
         {
-            print("Thank you. Returning to the game chooser screen");
+            print("Thank you. Returning to the game chooser screen", "blue", true);
             wait();
             return;
         }
         else
         {
-            print("Wrong input. Please input your answer again");
+            print("Wrong input. Please input your answer again", "red", true);
             wait();
         }
     }
@@ -130,7 +130,7 @@ void chooseTrump(string username)
     getline(cin, reply);
     while (true)
     {
-        print("Would you like to play again? (y/n)");
+        print("Would you like to play again? (y/n)", "magenta", true);
         wait();
         getline(cin, reply);
         if (reply == "y")
@@ -140,13 +140,13 @@ void chooseTrump(string username)
         }
         else if (reply == "n")
         {
-            print("Thank you. Returning to the game chooser screen");
+            print("Thank you. Returning to the game chooser screen", "blue", true);
             wait();
             return;
         }
         else
         {
-            print("Wrong input. Please input your answer again");
+            print("Wrong input. Please input your answer again", "red", true);
             wait();
         }
     }
@@ -165,7 +165,7 @@ void chooseOldMaid(string username)
     getline(cin, reply);
     while (true)
     {
-        print("Would you like to play again? (y/n)");
+        print("Would you like to play again? (y/n)", "magenta", true);
         wait();
         getline(cin, reply);
         if (reply == "y")
@@ -175,13 +175,13 @@ void chooseOldMaid(string username)
         }
         else if (reply == "n")
         {
-            print("Thank you. Returning to the game chooser screen");
+            print("Thank you. Returning to the game chooser screen", "blue", true);
             wait();
             return;
         }
         else
         {
-            print("Wrong input. Please input your answer again");
+            print("Wrong input. Please input your answer again", "red", true);
             wait();
         }
     }
@@ -210,6 +210,7 @@ void chooseGame(string username)
         if (input.size() == 1 && input.find_first_not_of("012345") == string::npos)
         {
             number = stoi(input);
+            print();
             if (number == 0)
             {
                 return;
@@ -247,7 +248,7 @@ void chooseGame(string username)
         }
         else
         {
-            print("Invalid input, please reenter a number from 0-5");
+            print("Invalid input, please reenter a number from 0-5", "red", true);
         }
     }
 }
