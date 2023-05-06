@@ -62,13 +62,13 @@ void continueHigherLower(vector<string> answer_cards) {
             print("Congratulation! Your guess is correct!", "green", false, "\n");
         } else {
             print("You are wrong. The correct answer is: " + answer, "green", false, "\n");
-            print("One life will be lost.", "cyan", false, "\n");
+            print("One life will be lost.", "magenta", false, "\n");
             life_count--;
-            print("Total life left: " + to_string(life_count), "cyan", true, "\n");
+            print("Total life left: " + to_string(life_count), "magenta", true, "\n");
         }
 
         if (life_count == 0) {
-            print("You have lost all your lives.", "cyan", true, "\n");
+            print("You have lost all your lives.", "magenta", true, "\n \n");
             break;
         }
     }
@@ -113,33 +113,33 @@ string compareCards(string current_card, string next_card) {
 void higherLowerWinner() {
     if (life_count == 5) {
         game_score = 5;
-        print("Congratulations! You are the winner!", "magenta", true, "\n");
-        print("Your score: " + to_string(game_score), "magenta", false, "\n");
+        print("Congratulations! You are the winner!", "cyan", true, "\n");
+        print("Your score: " + to_string(game_score), "cyan", false, "\n");
         print("Thank you for playing!");
     } else if (life_count == 4) {
         game_score = 4;
-        print("Congratulations! You are the winner!", "magenta", true, "\n");
-        print("Your score: " + to_string(game_score), "magenta", false, "\n");
+        print("Congratulations! You are the winner!", "cyan", true, "\n");
+        print("Your score: " + to_string(game_score), "cyan", false, "\n");
         print("Thank you for playing!");
     } else if (life_count == 3) {
         game_score = 3;
-        print("Congratulations! You are the winner!", "magenta", true, "\n");
-        print("Your score: " + to_string(game_score), "magenta", false, "\n");
+        print("Congratulations! You are the winner!", "cyan", true, "\n");
+        print("Your score: " + to_string(game_score), "cyan", false, "\n");
         print("Thank you for playing!");
     } else if (life_count == 2) {
         game_score = 2;
-        print("Congratulations! You are the winner!", "magenta", true, "\n");
-        print("Your score: " + to_string(game_score), "magenta", false, "\n");
+        print("Congratulations! You are the winner!", "cyan", true, "\n");
+        print("Your score: " + to_string(game_score), "cyan", false, "\n");
         print("Thank you for playing!");
     } else if (life_count == 1) {
         game_score = 1;
-        print("Congratulations! You are the winner!", "magenta", true, "\n");
-        print("Your score: " + to_string(game_score), "magenta", false, "\n");
+        print("Congratulations! You are the winner!", "cyan", true, "\n");
+        print("Your score: " + to_string(game_score), "cyan", false, "\n");
         print("Thank you for playing!");
     } else {
         game_score = 0;
-        print("Try again.. You have lost due to incorrect guesses...", "cyan", true, "\n");
-        print("Your score: " + to_string(game_score), "cyan", false, "\n");
+        print("Try again.. You have lost due to incorrect guesses...", "magenta", true, "\n");
+        print("Your score: " + to_string(game_score), "magenta", false, "\n");
         print("Thank you for playing!");
     }
 }
