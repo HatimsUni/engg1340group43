@@ -10,6 +10,15 @@ using namespace std;
 
 int life_count = 5;
 
+void startHigherLower();
+vector<string> getCards();
+void startHigherLower();
+void continueHigherLower(vector<string> answer_cards);
+int getRank(string val);
+string compareCards(string current_card, string next_card);
+void higherLowerWinner();
+
+
 int playHigherLower() {
     startHigherLower();
     return game_score;
@@ -19,12 +28,6 @@ vector<string> getCards() {
     vector<string> deck = newDeck(true);
     return drawCard(deck, 10);
 }
-
-int getRank(string val);
-
-string compareCards(string current_card, string next_card);
-
-void higherLowerWinner();
 
 void startHigherLower() {
     vector<string> answer_cards = getCards();
