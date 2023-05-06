@@ -49,7 +49,19 @@ void Human::pickSuit(string &currentSuit) { // set the currentSuit by taking inp
     
     bool isValidMove = false;
     while (!isValidMove) {
-        cin >> input;
+        
+
+        while (true) {
+            cin >> input;
+            if (!cin) {
+                cout << "Input an integer! ";
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                continue;
+            } 
+            else break;
+        }
+
         if (1 <= input && input <= 4) {
             isValidMove = true;
         } else {
@@ -107,7 +119,16 @@ void Human::turn(vector<string> &deck, string &currentSuit, string &currentValue
     }
     
     int input;
-    cin >> input;
+    while (true) {
+        cin >> input;
+        if (!cin) {
+            cout << "Input an integer! ";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            continue;
+        }
+        else break;
+    }
     
     bool isValidMove = false;
     while (!isValidMove) {
@@ -121,13 +142,35 @@ void Human::turn(vector<string> &deck, string &currentSuit, string &currentValue
                 } else if (hand.size() == 1) {
                     cout << "Invalid move! Pick a card [Enter 1]... ";
                 }
-                cin >> input;
+                
+                while (true) {
+                    cin >> input;
+                    if (!cin) {
+                        cout << "Input an integer! ";
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                        continue;
+                    }
+                    else break;
+                }
             }
             isValidMove = true;
+
         } else if (isMoveAvail == false) {
             while (input != 0) {
                 cout << "Invalid move! Draw a card [Enter 0]... ";
-                cin >> input;
+
+                while (true) {
+                    cin >> input;
+                    if (!cin) {
+                        cout << "Input an integer! ";
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                        continue;
+                    }
+                    else break;
+                }
+
             }
             isValidMove = true;
         }
