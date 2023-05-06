@@ -38,18 +38,19 @@ void startHigherLower() {
 void continueHigherLower(vector<string> answer_cards) {
     string guess;
     string answer;
+    string answer_char;
 
     for (int i = 0; i <= answer_cards.size() - 2; i++) {
         string current_card = answer_cards[i];
         print("Current card: ", "yellow", true, "\n");
         printCard(current_card);
-        print("Input your guess of how the current card compares to the next card (Higher, Lower, Similar): ", "green", false, "\n");
+        print("Input your guess of how the current card compares to the next card (H = Higher, L = Lower, S = Similar): ", "green", false, "\n");
         cin >> guess;
 
-        if (guess == "Higher" || guess == "Lower" || guess == "Similar") {
+        if (guess == "H" || guess == "L" || guess == "S") {
             ;
         } else {
-            print("Please input your guess correctly (Higher / Lower / Similar): ", "green", false, "\n");
+            print("Please input your guess correctly (H / L / S): ", "green", false, "\n");
             cin >> guess;
         }
 
@@ -58,11 +59,12 @@ void continueHigherLower(vector<string> answer_cards) {
         printCard(next_card);
 
         answer = compareCards(current_card, next_card);
+        answer_char = answer[0];
 
-        if (answer == guess) {
+        if (answer_char == guess) {
             print("Congratulation! Your guess is correct!", "green", false, "\n");
         } else {
-            print("You are incorrect. The correct answer is: " + answer, "green", false, "\n");
+            print("Incorrect guess, the correct answer was: " + answer, "green", false, "\n");
             print("One life will be lost.", "magenta", false, "\n");
             life_count--;
             print("Total lives left: " + to_string(life_count), "magenta", true, "\n");
