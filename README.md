@@ -26,9 +26,11 @@ The name CARD-INGO is inspired by the popular game BINGO. CARD-INGO is sure to p
 ## Game Rules
 These are game rules for each of the five card games.
 
+All games are played with only one human player and the rest being computer players.
+
 Blackjack:
 * Blackjack is a card game played with a standard deck of 52 cards.
-* The game can be played with 2-6 players, with only one human player and the rest being computer players. 
+* The game can be played with 2-6 players. 
 * The cards have a rank of 2-10, with face cards (J/Q/K) worth 10 points each and an Ace worth 1 or 11 points.
 * At the start of the game, each player is dealt 2 cards.
 * The goal of the game is to have a score of 21, or as close to 21 as possible without going over.
