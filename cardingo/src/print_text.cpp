@@ -8,7 +8,7 @@
 using namespace std;
 
 // take color as string input and return the escape sequence characters of the color
-string getEscapeSequence(string color) 
+string getEscapeSequence(string color)
 {
     string escape_sequence;
     if (color == "black")
@@ -42,6 +42,14 @@ string getEscapeSequence(string color)
     else if (color == "white")
     {
         escape_sequence = "\033[37m";
+    }
+    else if (color == "bronze")
+    {
+        escape_sequence = "\033[38;5;130m";
+    }
+    else if (color == "grey")
+    {
+        escape_sequence = "\033[90m";
     }
     else
     {
@@ -552,13 +560,31 @@ void printRules(string game_name)
     while (true)
     {
         cin >> input;
-        if (input == "Y" || input == "y") {
+        if (input == "Y" || input == "y")
+        {
             break;
         }
         print("Invalid input!", "red", true);
         print("Continue? (Y): ", "blue", true, "");
     }
     print();
+}
+
+// Prints the medal of the user
+void printMedal(int score)
+{
+    if (score > 0 && score <= 10)
+    {
+        print("Bronze 🥉 Medal", "bronze", true, "");
+    }
+    else if (score > 10 && score <= 20)
+    {
+        print("Silver 🥈 Medal", "grey", true, "");
+    }
+    else if (score > 20)
+    {
+        print("Gold 🥇 Medal", "yellow", true, "");
+    }
 }
 
 // int main()

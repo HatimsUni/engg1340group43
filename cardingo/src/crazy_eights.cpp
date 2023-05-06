@@ -190,7 +190,7 @@ void Robot::printHand() { // print cards in hand as strings
     cout << endl;
 }
 bool Robot::isValidCard(string card, string &currentSuit, string &currentValue) { // check if the given card is valid to be played and match the currentSuit or currentValue
-    if (currentValue ==
+
     if (currentValue == "8" && getSuit(card) == currentSuit) {
         return true;
     } else if (getSuit(card) == currentSuit || getValue(card) == currentValue || getValue(card) == "8") {

@@ -143,11 +143,19 @@ void printData(string username)
             player_exists = true;
             print("You have played " + to_string(player_data[i].games_played) + " games", "cyan");
             print("Your total score is " + to_string(player_data[i].score), "blue");
+            if (player_data[i].score == 0) {
+                print("You don't have a medal yet, win games to get medals!", "cyan");
+            } else {
+                print("You have won a ", "magenta", "", "");
+                printMedal(player_data[i].score);
+                print();
+            }
         }
     }
     if (player_exists == false)
     {
         print("This is your first time playing", "cyan");
+        print("Win games to win medals!");
     }
     wait();
     print();
