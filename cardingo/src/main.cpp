@@ -104,6 +104,7 @@ void chooseTrump(string username){
     int score;
     score = playTrump();
     updateFile(username, 1, 0, 0, 0, 0, 1, score);
+    getline(cin, reply);
     while (true){
         print("Would you like to play again? (y/n)");
         wait();
