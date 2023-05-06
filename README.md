@@ -33,6 +33,7 @@ Trump:
 Old Maid:
 * Old Maid is a classic card game where the goal of the game is to remove all pairs from your hand while not being left with the queen of spades
 * A pair is defined of cards with the same value and same color (clubs with spades and diamonds with hearts)
+* In Cardingo you will play against a computer
 * At the start of the game each player draws 26 cards
 * Whoever starts with the queen of clubs throws it away and the opponent starts first
 * Each turn the current player will take a card from the opponent's hand and if it results in a pair with a card from their hand, they throw away the pair
