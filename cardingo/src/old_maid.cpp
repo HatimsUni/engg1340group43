@@ -143,11 +143,11 @@ void playTurn(vector<string>& discard_pile, vector<string>& human_hand, vector<s
         robot_hand.erase(robot_hand.begin() + (choice-1));
         removePairs(discard_pile, human_hand, "human");
         if(robot_hand.size()==0 && human_hand.size() == 1){
-            print("The computer wins");
+            print("The computer wins", "red", true);
             wait();
             return;
         } else if (robot_hand.size() == 1 && human_hand.size() == 0){
-            print("The player wins");
+            print("The player wins", "green", true);
             game_score = 4;
             wait();
             return;
@@ -171,11 +171,11 @@ void playTurn(vector<string>& discard_pile, vector<string>& human_hand, vector<s
         human_hand.erase(human_hand.begin() + (choice));
         removePairs(discard_pile, robot_hand, "robot");
         if(robot_hand.size()==0 && human_hand.size() == 1){
-            print("The computer wins");
+            print("The computer wins", "red", true);
             wait();
             return;
         } else if (robot_hand.size() == 1 && human_hand.size() == 0){
-            print("The player wins");
+            print("The player wins", "green", true);
             game_score = 4;
             wait();
             return;
