@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <cstring>
+#include <cctype>
 #include "../include/higher_lower.h"
 #include "../include/card_dealer.h"
 #include "../include/print_text.h"
@@ -36,9 +37,9 @@ void startHigherLower() {
 } 
 
 void continueHigherLower(vector<string> answer_cards) {
-    string guess;
+    char guess;
     string answer;
-    string answer_char;
+    char answer_char;
 
     for (int i = 0; i <= answer_cards.size() - 2; i++) {
         string current_card = answer_cards[i];
@@ -47,7 +48,7 @@ void continueHigherLower(vector<string> answer_cards) {
         print("Input your guess of how the current card compares to the next card (H = Higher, L = Lower, S = Similar): ", "green", false, "\n");
         cin >> guess;
 
-        if (guess == "H" || guess == "L" || guess == "S") {
+        if (guess == 'H' || guess == 'L' || guess == 'S') {
             ;
         } else {
             print("Please input your guess correctly (H / L / S): ", "green", false, "\n");
@@ -59,9 +60,9 @@ void continueHigherLower(vector<string> answer_cards) {
         printCard(next_card);
 
         answer = compareCards(current_card, next_card);
-        answer_char = answer[0];
+        answer_char = 'answer[0]';
 
-        if (answer_char == guess) {
+        if (answer_char == toupper(guess)) {
             print("Congratulation! Your guess is correct!", "green", false, "\n");
         } else {
             print("Incorrect guess, the correct answer was: " + answer, "green", false, "\n");
