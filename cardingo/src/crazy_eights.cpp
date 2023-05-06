@@ -12,17 +12,17 @@
 using namespace std;
 
 // Human class
-void Human::handSetup(vector<string> &deck, int k) {
+void Human::handSetup(vector<string> &deck, int k) { // draw k amount of card from the deck for initial setup
     hand = drawCard(deck, k);
 }
-void Human::printHand() {
+void Human::printHand() { // print cards in hand as strings
     vector<string>::iterator itr;
     for (itr = hand.begin(); itr != hand.end(); itr++) {
         cout << (*itr) << " ";
     }
     cout << endl;
 }
-bool Human::isValidCard(string card, string &currentSuit, string &currentValue) {
+bool Human::isValidCard(string card, string &currentSuit, string &currentValue) { // check if the given card is valid to be played and match the currentSuit or currentValue
     if (currentValue == "8" && getSuit(card) == currentSuit) {
         return true;
     } else if (getSuit(card) == currentSuit || getValue(card) == currentValue || getValue(card) == "8") {
@@ -31,11 +31,11 @@ bool Human::isValidCard(string card, string &currentSuit, string &currentValue) 
         return false;
     }
 }
-bool Human::isWinner() {
+bool Human::isWinner() { // check winning condition by counting the number of card in hand and return a boolean
     if (hand.size() == 0) return true;
     else return false;
 }
-void Human::pickSuit(string &currentSuit) {
+void Human::pickSuit(string &currentSuit) { // set the currentSuit by taking input from player
     
     int input;
     
@@ -45,8 +45,7 @@ void Human::pickSuit(string &currentSuit) {
     cout << "\t3:"; printSuit("H");
     cout << "\t4:"; printSuit("S");
     cout << endl;
-    cout << "pick a suit [Enter 1 to 4]... ";
-    print("Enter 1 to 4");
+    cout << "Pick a suit [Enter 1 to 4]... ";
     
     bool isValidMove = false;
     while (!isValidMove) {
@@ -55,7 +54,7 @@ void Human::pickSuit(string &currentSuit) {
             isValidMove = true;
         } else {
             cout << "\t1:D\t2:C\t3:H\t4:S" << endl;
-            cout << "invalid move! pick a suit [Enter 1 to 4]... "; 
+            cout << "Invalid move! Pick a suit [Enter 1 to 4]... "; 
         }
     }
     
@@ -65,36 +64,36 @@ void Human::pickSuit(string &currentSuit) {
     else if (input == 4) currentSuit = "S";
     
     cout << endl;
-    cout << "you pick suit ";
+    cout << "You picked suit ";
     printSuit(currentSuit);
     cout << endl;
 }
-void Human::turn(vector<string> &deck, string &currentSuit, string &currentValue) {
+void Human::turn(vector<string> &deck, string &currentSuit, string &currentValue) { // execute one whole player turn
     
-    cout << endl << endl << endl;
+    cout << endl;
     if (currentValue == "8") {
-        cout << "current suit:" << endl;
+        cout << "Current suit:" << endl;
         printSuit(currentSuit); // cout << currentSuit << endl;
         cout << endl;
     } else {
-        cout << "current card:" << endl;
+        cout << "Current card:" << endl;
         printCard(currentSuit+currentValue, false); // cout << currentSuit << currentValue << endl;
     }
     wait(750);
     
     cout << endl;
-    cout << "your cards: " << endl;
+    cout << "Your cards: " << endl;
     printCards(hand, 5, false); // printHand();
     
     if (currentValue == "8") {
-        cout << "pick any ";
+        cout << "Pick any ";
         printSuit(currentSuit);
         cout << " card [Enter 1 to " << hand.size() << "] or draw a card [Enter 0]... ";
     }
     else if (hand.size() > 1) {
-        cout << "pick a card [Enter 1 to " << hand.size() << "] or draw a card [Enter 0]... ";
+        cout << "Pick a card [Enter 1 to " << hand.size() << "] or draw a card [Enter 0]... ";
     } else if (hand.size() == 1) {
-        cout << "pick a card [Enter 1] or draw a card [Enter 0]... ";
+        cout << "Pick a card [Enter 1] or draw a card [Enter 0]... ";
     }
     
     // check if there are move available
@@ -115,19 +114,19 @@ void Human::turn(vector<string> &deck, string &currentSuit, string &currentValue
         if (isMoveAvail == true) {
             while (!(0 < input && input <= hand.size()) || !isValidCard(hand[input-1], currentSuit, currentValue)) {
                 if (currentValue == "8") {
-                    cout << "invalid move! pick a " << currentSuit << " card [Enter 1 to " << hand.size() << "]... ";
+                    cout << "Invalid move! Pick a " << currentSuit << " card [Enter 1 to " << hand.size() << "]... ";
                 }
                 else if (hand.size() > 1) {
-                    cout << "invalid move! pick a card [Enter 1 to " << hand.size() << "]... ";
+                    cout << "Invalid move! Pick a card [Enter 1 to " << hand.size() << "]... ";
                 } else if (hand.size() == 1) {
-                    cout << "invalid move! pick a card [Enter 1]... ";
+                    cout << "Invalid move! Pick a card [Enter 1]... ";
                 }
                 cin >> input;
             }
             isValidMove = true;
         } else if (isMoveAvail == false) {
             while (input != 0) {
-                cout << "invalid move! draw a card [Enter 0]... ";
+                cout << "Invalid move! Draw a card [Enter 0]... ";
                 cin >> input;
             }
             isValidMove = true;
@@ -138,7 +137,7 @@ void Human::turn(vector<string> &deck, string &currentSuit, string &currentValue
     
     if (input == 0) {
         vector<string> temp = drawCard(deck, 1);
-        cout << "you draw.." << endl;
+        cout << "You drew.." << endl;
         wait(150);
         printSuit( getSuit(temp.front()) );
         cout << getValue(temp.front()) << endl;
@@ -146,7 +145,7 @@ void Human::turn(vector<string> &deck, string &currentSuit, string &currentValue
         while (!isValidCard(temp.front(), currentSuit, currentValue)) {
             hand.push_back(temp.front());
             
-            cout << "draw card again, you draw.. " << endl;
+            cout << "Draw a card again, you drew.. " << endl;
             wait(850);
             
             temp = drawCard(deck, 1);
@@ -154,7 +153,7 @@ void Human::turn(vector<string> &deck, string &currentSuit, string &currentValue
             cout << getValue(temp.front()) << endl;
         }
         wait(300);
-        cout << "you pick.." << endl;
+        cout << "You picked.." << endl;
         printSuit( getSuit(temp.front()) );
         cout << getValue(temp.front()) << endl;
         
@@ -165,7 +164,7 @@ void Human::turn(vector<string> &deck, string &currentSuit, string &currentValue
         }
     }
     else if (input > 0) {
-        cout << "you pick.." << endl;
+        cout << "You picked.." << endl;
         printSuit( getSuit(hand[input-1]) );
         cout << getValue(hand[input-1]) << endl;
         currentSuit = getSuit(hand[input-1]); currentValue = getValue(hand[input-1]);
@@ -180,17 +179,18 @@ void Human::turn(vector<string> &deck, string &currentSuit, string &currentValue
 }
 
 // Robot class
-void Robot::handSetup(vector<string> &deck, int k) {
+void Robot::handSetup(vector<string> &deck, int k) { // draw k amount of card from the deck for initial setup
     hand = drawCard(deck, k);
 }
-void Robot::printHand() {
+void Robot::printHand() { // print cards in hand as strings
     vector<string>::iterator itr;
     for (itr = hand.begin(); itr != hand.end(); itr++) {
         cout << (*itr) << " ";
     }
     cout << endl;
 }
-bool Robot::isValidCard(string card, string &currentSuit, string &currentValue) {
+bool Robot::isValidCard(string card, string &currentSuit, string &currentValue) { // check if the given card is valid to be played and match the currentSuit or currentValue
+
     if (currentValue == "8" && getSuit(card) == currentSuit) {
         return true;
     } else if (getSuit(card) == currentSuit || getValue(card) == currentValue || getValue(card) == "8") {
@@ -199,11 +199,11 @@ bool Robot::isValidCard(string card, string &currentSuit, string &currentValue) 
         return false;
     }
 }
-bool Robot::isWinner() {
+bool Robot::isWinner() { // check winning condition by counting the number of card in hand and return a boolean
     if (hand.size() == 0) return true;
     else return false;
 }
-void Robot::pickSuit(string &currentSuit) {
+void Robot::pickSuit(string &currentSuit) { // set the currentSuit by taking input from player
     
     wait(250);
     cout << endl;
@@ -214,13 +214,13 @@ void Robot::pickSuit(string &currentSuit) {
     else if (input == 3) currentSuit = "H";
     else if (input == 4) currentSuit = "S";
     
-    cout << "robot pick suit "; 
+    cout << "Computer picked suit "; 
     printSuit(currentSuit);
     cout << endl;
 }
-void Robot::turn(vector<string> &deck, string &currentSuit, string &currentValue) {
+void Robot::turn(vector<string> &deck, string &currentSuit, string &currentValue) { // execute one whole player turn
     
-    cout << endl << endl << endl;
+    cout << endl;
     
     bool isMoveAvail = false;
     vector<int> validInput;
@@ -243,20 +243,20 @@ void Robot::turn(vector<string> &deck, string &currentSuit, string &currentValue
         
         wait(750);
         vector<string> temp = drawCard(deck, 1);
-        cout << "robot draw a card ";
+        cout << "Computer drew a card ";
         
         while (!isValidCard(temp.front(), currentSuit, currentValue)) {
             wait(900);
             hand.push_back(temp.front());
-            cout << endl << "robot draw a card again ";
+            cout << endl << "Computer drew a card again ";
             temp = drawCard(deck, 1);
         }
         wait(150);
-        cout << "[card left: " << hand.size() << "]" << endl;
+        cout << "[Computer's card(s) left: " << hand.size() << "]" << endl;
         
         wait(200);
         cout << endl;
-        cout << "robot pick.." << endl;
+        cout << "Computer picked.." << endl;
         printSuit( getSuit(temp.front()) );
         cout << getValue(temp.front()) << endl;
         
@@ -267,7 +267,7 @@ void Robot::turn(vector<string> &deck, string &currentSuit, string &currentValue
     } else if (input > 0) {
         
         wait(750);
-        cout << "robot pick.." << endl;
+        cout << "Computer picked.." << endl;
         
         wait(1050);
         printSuit( getSuit(hand[input-1]) );
@@ -277,7 +277,7 @@ void Robot::turn(vector<string> &deck, string &currentSuit, string &currentValue
         hand.erase(hand.begin() + input-1);
         
         wait(150);
-        cout << "[card left: " << hand.size() << "]" << endl;
+        cout << "[Computer's card(s) left: " << hand.size() << "]" << endl;
         wait(1350);
     }
     
@@ -288,7 +288,7 @@ void Robot::turn(vector<string> &deck, string &currentSuit, string &currentValue
 }
 
 // Deck class
-void Deck::getStartingCard(vector<string> &deck, string &currentSuit, string &currentValue) {
+void Deck::getStartingCard(vector<string> &deck, string &currentSuit, string &currentValue) { // draw a non-eight card to be use as the current card
     vector<string>::iterator itr = deck.begin();
     while (getValue(*itr) == "8") {
         itr++;
@@ -298,9 +298,11 @@ void Deck::getStartingCard(vector<string> &deck, string &currentSuit, string &cu
     deck.erase(itr);
 }
 
+// starts the crazy eights game
 int playCrazyEights() {
     int gameScore;
-
+    
+    cout << endl;
     printGameHeading("crazyeights");
     wait(2100);
     

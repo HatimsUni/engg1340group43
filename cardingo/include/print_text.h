@@ -15,5 +15,6 @@ void printUserDetails(string user, string game, int total = 0, int played = 0, i
 void printCard(string card, bool show = false);
 void printCards(vector<string> deck, int n = 5, bool show = false);
 void printRules(string game_name);
+void printMedal(int score);
 
 #endif
