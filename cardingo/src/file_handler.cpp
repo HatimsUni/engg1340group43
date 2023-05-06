@@ -33,7 +33,7 @@ vector<Player> createVector(){
     int score;
     
     ifstream fin;
-    fin.open("games.txt");
+    fin.open("data/games.txt");
     if(fin.fail()){
         cout << "Error in opening file!" << endl;
     } else {
@@ -95,7 +95,7 @@ void updateFile(string username, int games_played, int crazyeights, int blackjac
         }
     }
     if(player_exists == false){
-        fout.open("games.txt", ios::app);
+        fout.open("data/games.txt", ios::app);
         fout << username << " ";
         fout << games_played << " ";
         fout << crazyeights << " ";
@@ -106,7 +106,7 @@ void updateFile(string username, int games_played, int crazyeights, int blackjac
         fout << score << " ";
         fout << endl;
     } else if(player_exists == true){
-        fout.open("games.txt");
+        fout.open("data/games.txt");
         for(int i = 0; i < player_data.size(); i++){
             if(player_data[i].name == username){
                 player_data[i].games_played += games_played;
