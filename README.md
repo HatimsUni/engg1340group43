@@ -27,12 +27,24 @@ The name CARD-INGO is inspired by the popular game BINGO. CARD-INGO is sure to p
 These are game rules for each of the five card games.
 
 Blackjack:
+* Blackjack is a card game played with a standard deck of 52 cards.
+* The game can be played with 2-6 players, with only one human player and the rest being computer players. 
+* The cards have a rank of 2-10, with face cards (J/Q/K) worth 10 points each and an Ace worth 1 or 11 points.
+* At the start of the game, each player is dealt 2 cards.
+* The goal of the game is to have a score of 21, or as close to 21 as possible without going over.
+* If a player's score is below 21, they can choose to "hit," which means drawing another card from the deck.
+* If a player's score exceeds 21, they lose the game. If a player's score is exactly 21, they win the game. Otherwise, the game continues with the players who have not yet lost or won.
+* If a player is satisfied with their score, they can choose to "stand," which means they will not draw any more cards.
+* The game ends when all players have either lost, won, or chosen to stand.
+* The winners are the players with the highest scores.
+* Winners earn points equal to the number of players in the game.
 
 Trump:
 
 Old Maid:
 * Old Maid is a classic card game where the goal of the game is to remove all pairs from your hand while not being left with the queen of spades
 * A pair is defined of cards with the same value and same color (clubs with spades and diamonds with hearts)
+* In Cardingo you will play against a computer
 * At the start of the game each player draws 26 cards
 * Whoever starts with the queen of clubs throws it away and the opponent starts first
 * Each turn the current player will take a card from the opponent's hand and if it results in a pair with a card from their hand, they throw away the pair

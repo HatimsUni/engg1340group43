@@ -299,6 +299,8 @@ void Deck::getStartingCard(vector<string> &deck, string &currentSuit, string &cu
 }
 
 int playCrazyEights() {
+    int gameScore;
+
     printGameHeading("crazyeights");
     wait(2100);
     
@@ -318,16 +320,19 @@ int playCrazyEights() {
         h.turn(deck, currentSuit, currentValue);
         if (h.isWinner()) {
             cout << "you win!" << endl;
+            gameScore = 2;
             break;
         }
         
         if (deck.size() == 0) {
             cout << "tie!" << endl;
+            gameScore = 1;
             break;
         }
         r.turn(deck, currentSuit, currentValue);
         if (r.isWinner()) {
             cout << "you lose!" << endl;
+            gameScore = 0;
             break;
         }
     }
@@ -335,5 +340,5 @@ int playCrazyEights() {
     cout << endl;
     cout << "\t--- GAME OVER ---" << endl;
 
-    return game_score;
+    return gameScore;
 }
