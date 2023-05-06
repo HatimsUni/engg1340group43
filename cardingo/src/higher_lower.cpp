@@ -26,7 +26,7 @@ int playHigherLower() {
 
 vector<string> getCards() {
     vector<string> deck = newDeck(true);
-    return drawCard(deck, 10);
+    return drawCard(deck, 11);
 }
 
 void startHigherLower() {
@@ -38,7 +38,7 @@ void continueHigherLower(vector<string> answer_cards) {
     string guess;
     string answer;
 
-    for (int i = 0; i <= answer_cards.size() - 1; i++) {
+    for (int i = 0; i <= answer_cards.size() - 2; i++) {
         string current_card = answer_cards[i];
         print("Current card: ", "yellow", true, "\n");
         printCard(current_card);
