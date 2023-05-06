@@ -40,11 +40,14 @@ void continueHigherLower(vector<string> answer_cards) {
 
     for (int i = 0; i <= answer_cards.size() - 1; i++) {
         string current_card = answer_cards[i];
+        cout << "Current card: " << endl;
         cout << current_card << endl;
-        cout << "Input your guess of how the current card compares to the next card (Higher, Lower, Similar): " << endl;
+        cout << "Input your guess of how the current card compares to the next card (Higher, Lower, Similar): ";
         cin >> guess;
 
-        if (guess != "Higher" || guess != "Lower" || guess != "Similar") {
+        if (guess == "Higher" || guess == "Lower" || guess == "Similar") {
+            continue;
+        } else {
             cout << "Please input your guess correctly (Higher / Lower / Similar): " << endl;
             cin >> guess;
         }
