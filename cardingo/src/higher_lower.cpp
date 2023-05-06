@@ -46,7 +46,7 @@ void continueHigherLower(vector<string> answer_cards) {
         cin >> guess;
 
         if (guess == "Higher" || guess == "Lower" || guess == "Similar") {
-            continue;
+            ;
         } else {
             print("Please input your guess correctly (Higher / Lower / Similar): ", "green", false, "\n");
             cin >> guess;
