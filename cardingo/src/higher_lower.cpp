@@ -60,7 +60,7 @@ void continueHigherLower(vector<string> answer_cards) {
         printCard(next_card);
 
         answer = compareCards(current_card, next_card);
-        answer_char = 'answer[0]';
+        answer_char = (char)answer[0];
 
         if (answer_char == toupper(guess)) {
             print("Congratulation! Your guess is correct!", "green", false, "\n");
