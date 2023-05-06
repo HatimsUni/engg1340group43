@@ -1,15 +1,16 @@
 Objective: Guess 10 cards correctly with least amount of lives lost.
 Player gets 5 lives.
 Draw a card from deck.
-Guess if the current card is either higher, lower, or similar to the next unknown card.
+Guess if the current card is either similar, higher, or lower than the next unknown card.
+Input options: "H", "L", "S"
 Lose one life per one wrong guess.
 Guess until player guessed right 10 times or lost all 5 lives.
 Winning condition: Have remaining lives.
-- 5 lives left = 5 points scored
-- 4 lives left = 4 points scored
-- 3 lives left = 3 points scored
-- 2 lives left = 2 points scored
-- 1 life left = 1 point scored
+> 5 lives left = 5 points scored
+> 4 lives left = 4 points scored
+> 3 lives left = 3 points scored
+> 2 lives left = 2 points scored
+> 1 life left = 1 point scored
 Losing condition: Have 0 life.
-- 0 life left = 0 point scored
+> 0 life left = 0 point scored
 Have Fun!
