@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <algorithm>
 #include "../include/crazy_eights.h"
 #include "../include/blackjack.h"
 #include "../include/trump.h"
@@ -79,27 +80,34 @@ void chooseBlackjack(string username)
     }
 }
 
-void chooseHigherLower(string username){
-    //if the user chooses higher lower this function will run
-    //this will play higher lower and once the game has finished it will ask if the user wants to play again
-    //if the user wants to play again, it will play  higher lower
-    //if the user doesnt want to play they will be brought back to the game chooser screen
+void chooseHigherLower(string username)
+{
+    // if the user chooses higher lower this function will run
+    // this will play higher lower and once the game has finished it will ask if the user wants to play again
+    // if the user wants to play again, it will play  higher lower
+    // if the user doesnt want to play they will be brought back to the game chooser screen
     string reply;
     int score;
     // score = playHigherLower();
     updateFile(username, 1, 0, 0, 1, 0, 0, score);
-    while (true){
+    while (true)
+    {
         print("Would you like to play again? (y/n)");
         wait();
         getline(cin, reply);
-        if (reply == "y"){
+        if (reply == "y")
+        {
             chooseHigherLower(username);
             return;
-        } else if  (reply == "n"){
+        }
+        else if (reply == "n")
+        {
             print("Thank you. Returning to the game chooser screen");
             wait();
             return;
-        } else {
+        }
+        else
+        {
             print("Wrong input. Please input your answer again");
             wait();
         }
@@ -194,7 +202,7 @@ void chooseGame(string username)
         print("0 Exit");
         getline(cin, input);
 
-        if (input.size() == 1 && input.find_first_not_of("01235") == string::npos)
+        if (input.size() == 1 && input.find_first_not_of("012345") == string::npos)
         {
             number = stoi(input);
             if (number == 0)
@@ -205,25 +213,30 @@ void chooseGame(string username)
             else if (number == 1)
             {
                 printGameHeading("crazyeights");
+                printRules("crazyeights");
                 chooseCrazyEights(username);
             }
             else if (number == 2)
             {
                 printGameHeading("blackjack");
+                printRules("blackjack");
                 chooseBlackjack(username);
             }
             else if (number == 3)
             {
                 printGameHeading("higherlower");
+                printRules("higherlower");                
             }
             else if (number == 4)
             {
                 printGameHeading("trump");
+                printRules("trump");
                 chooseTrump(username);
             }
             else if (number == 5)
             {
                 printGameHeading("oldmaid");
+                printRules("oldmaid");
                 chooseOldMaid(username);
             }
         }
@@ -242,11 +255,24 @@ int main()
     // and print the main ending once the user is  done playing
     string username;
     printMainHeading();
-    cout << endl;
-    cout << endl;
+    print();
     wait();
-    cout << "Please enter your username:" << endl;
-    getline(cin, username);
+    while (true)
+    {
+        print("Please enter your username: ", "green", true, "");
+        getline(cin, username);
+        if (username.find(' ') != string::npos)
+        {
+            print("Username cannot contain spaces!", "red", true);
+        }
+        else
+        {
+            break;
+        }
+        transform(username.begin(), username.end(), username.begin(), [](unsigned char c)
+                  { return std::tolower(c); });
+    }
+    print();
     printData(username);
     updateFile(username);
     chooseGame(username);
