@@ -7,7 +7,7 @@
 #include "../include/old_maid.h"
 #include "../include/card_dealer.h"
 #include "../include/file_handler.h"
-// #include "../include/higher_lower.h"
+#include "../include/higher_lower.h"
 #include "../include/print_text.h"
 #include "../include/sleep.h"
 using namespace std;
@@ -88,7 +88,7 @@ void chooseHigherLower(string username)
     // if the user doesnt want to play they will be brought back to the game chooser screen
     string reply;
     int score;
-    // score = playHigherLower();
+    score = playHigherLower();
     updateFile(username, 1, 0, 0, 1, 0, 0, score);
     while (true)
     {
@@ -225,7 +225,8 @@ void chooseGame(string username)
             else if (number == 3)
             {
                 printGameHeading("higherlower");
-                printRules("higherlower");                
+                printRules("higherlower"); 
+                chooseHigherLower(username);               
             }
             else if (number == 4)
             {

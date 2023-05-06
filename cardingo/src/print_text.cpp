@@ -509,6 +509,7 @@ void printCards(vector<string> deck, int n, bool show)
 
 void printRules(string game_name)
 {
+    print();
     string choice;
     while (true)
     {
@@ -528,7 +529,9 @@ void printRules(string game_name)
         else if (choice == "N" || choice == "n")
         {
             break;
-        } else {
+        }
+        else
+        {
             print("Invalid Choice!", "red", true);
         }
     }
