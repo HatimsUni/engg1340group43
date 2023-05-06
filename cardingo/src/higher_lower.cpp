@@ -20,6 +20,7 @@ void higherLowerWinner();
 
 
 int playHigherLower() {
+    life_count = 5;
     startHigherLower();
     return game_score;
 }
