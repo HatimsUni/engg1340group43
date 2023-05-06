@@ -10,7 +10,7 @@ QUETTAWALA Hatim (3036094849)\
 SUHANDJAJA Alexander Gaudi (3036029674)\
 SUTANTO Winiera (3035964671)\
 MANATUNGE Aishani Induja (3035962386)\
-YOON Hyunseo ()
+YOON Hyunseo (3036029844)
 
 ## Introduction
 CARD-INGO is a fun and exciting collection of five different card games. The games included are:
