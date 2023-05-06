@@ -62,10 +62,10 @@ void continueHigherLower(vector<string> answer_cards) {
         if (answer == guess) {
             print("Congratulation! Your guess is correct!", "green", false, "\n");
         } else {
-            print("You are wrong. The correct answer is: " + answer, "green", false, "\n");
+            print("You are incorrect. The correct answer is: " + answer, "green", false, "\n");
             print("One life will be lost.", "magenta", false, "\n");
             life_count--;
-            print("Total life left: " + to_string(life_count), "magenta", true, "\n");
+            print("Total lives left: " + to_string(life_count), "magenta", true, "\n");
         }
 
         if (life_count == 0) {
