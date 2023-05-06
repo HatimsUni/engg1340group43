@@ -6,13 +6,12 @@
 #include "../include/print_text.h"
 #include "../include/card_dealer.h"
 #include "../include/sleep.h"
+#include "../include/score.h"
 using namespace std;
-vector<string> order = {"A", "K", "Q"};
 vector<string> user_deck;
 vector<string> comp1;
 vector<string> comp2;
 vector<string> comp3;
-int score = 0;
 
 struct Round
 {
@@ -587,7 +586,7 @@ void gameWinner(int team1, int team2)
 {
     if (team1 >= 7)
     {
-        score = 8;
+        game_score = 8;
         print("Team 1 (You and Computer 2) won the game !", "blue", true);
     }
     else
@@ -766,5 +765,5 @@ void toss(vector<string> deck)
 int playTrump()
 {
     toss(newDeck());
-    return score;
+    return game_score;
 }

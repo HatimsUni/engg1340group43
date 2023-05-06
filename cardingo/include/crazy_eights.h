@@ -44,6 +44,6 @@ public:
 
 // function
 
-void play_crazy_eights();
+int playCrazyEights();
 
 #endif
