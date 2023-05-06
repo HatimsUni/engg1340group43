@@ -180,7 +180,7 @@ void Human::turn(vector<string> &deck, string &currentSuit, string &currentValue
 }
 
 // Robot class
-void Robot::handSetup(vector<string> &deck, int k) { // // draw k amount of card from the deck for initial setup
+void Robot::handSetup(vector<string> &deck, int k) { // draw k amount of card from the deck for initial setup
     hand = drawCard(deck, k);
 }
 void Robot::printHand() { // print cards in hand as strings
