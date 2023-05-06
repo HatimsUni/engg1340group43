@@ -13,6 +13,7 @@ struct Player{
     int games_played;
     int crazyeights;
     int blackjack;
+    int higher_lower;
     int old_maid;
     int trump;
     int score;
@@ -26,6 +27,7 @@ vector<Player> createVector(){
     int games_played;
     int crazyeights;
     int blackjack;
+    int higher_lower;
     int old_maid;
     int trump;
     int score;
@@ -46,6 +48,8 @@ vector<Player> createVector(){
             user.crazyeights = stoi(word);
             line_in >> word;
             user.blackjack = stoi(word);
+            line_in >> word;
+            user.higher_lower = stoi(word);
             line_in >> word;
             user.old_maid = stoi(word);
             line_in >> word;
@@ -78,7 +82,7 @@ void printData(string username){
     }
 }
 
-void updateFile(string username, int games_played, int crazyeights, int blackjack, int old_maid, int trump, int score){
+void updateFile(string username, int games_played, int crazyeights, int blackjack, int higher_lower, int old_maid, int trump, int score){
     //this function will update the txt file
     //if the player is not found in the txt file it will create a new player with the corresponding score
     //if the player is found it will update that player's score in the txt file
@@ -96,6 +100,7 @@ void updateFile(string username, int games_played, int crazyeights, int blackjac
         fout << games_played << " ";
         fout << crazyeights << " ";
         fout << blackjack << " ";
+        fout << higher_lower << " ";
         fout << old_maid << " ";
         fout << trump << " ";
         fout << score << " ";
@@ -107,6 +112,7 @@ void updateFile(string username, int games_played, int crazyeights, int blackjac
                 player_data[i].games_played += games_played;
                 player_data[i].crazyeights += crazyeights;
                 player_data[i].blackjack += blackjack;
+                player_data[i].higher_lower += higher_lower;
                 player_data[i].old_maid += old_maid;
                 player_data[i].trump += trump;
                 player_data[i].score += score;
@@ -117,6 +123,7 @@ void updateFile(string username, int games_played, int crazyeights, int blackjac
             fout << player_data[i].games_played << " ";
             fout << player_data[i].crazyeights << " ";
             fout << player_data[i].blackjack << " ";
+            fout << player_data[i].higher_lower << " ";
             fout << player_data[i].old_maid << " ";
             fout << player_data[i].trump << " ";
             fout << player_data[i].score << " ";
