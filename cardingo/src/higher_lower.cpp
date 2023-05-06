@@ -44,9 +44,7 @@ void continueHigherLower(vector<string> answer_cards) {
         string current_card = answer_cards[i];
         print("Current card: ", "yellow", true, "\n");
         printCard(current_card);
-        print("Input your guess of how the current card compares to
-the next card (H = Higher, L = Lower, S = Similar): ", "green", false,
-"\n");
+        print("Input your guess of how the current card compares to the next card (H = Higher, L = Lower, S = Similar): ", "green", false, "\n");
         cin >> guess;
 
         while (!(guess == "H" || guess == "L" || guess == "S" || guess
