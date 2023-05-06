@@ -33,7 +33,7 @@ vector<Player> createVector(){
     int score;
     
     ifstream fin;
-    fin.open("games.txt");
+    fin.open("data/users.txt");
     if(fin.fail()){
         cout << "Error in opening file!" << endl;
     } else {
@@ -61,6 +61,50 @@ vector<Player> createVector(){
     }
     fin.close();
     return player_data;
+}
+
+
+vector <string> getRules(string game_name){
+    vector<string> rules;
+    string line;
+    ifstream fin;
+    if(game_name == "blackjack"){
+        fin.open("data/blackjack_rules.txt");
+        while(getline(fin, line)){
+            rules.push_back(line);
+        }
+        fin.close();
+        return rules;
+    } else if (game_name == "crazy_eights"){
+        fin.open("data/crazy_eigts_rules.txt");
+        while(getline(fin, line)){
+            rules.push_back(line);
+        }
+        fin.close();
+        return rules;
+    } else if (game_name == "higher_lower"){
+        fin.open("data/higher_lower_rules.txt");
+        while(getline(fin, line)){
+            rules.push_back(line);
+        }
+        fin.close();
+        return rules;
+    } else if (game_name == "old_maid"){
+        fin.open("data/old_maid_rules.txt");
+        while(getline(fin, line)){
+            rules.push_back(line);
+        }
+        fin.close();
+        return rules;
+    } else if (game_name == "trump"){
+        fin.open("data/trump_rules.txt");
+        while(getline(fin,line)){
+            rules.push_back(line);
+        }
+        fin.close();
+        return rules;
+    }
+    return rules;
 }
 
 
@@ -95,7 +139,7 @@ void updateFile(string username, int games_played, int crazyeights, int blackjac
         }
     }
     if(player_exists == false){
-        fout.open("games.txt", ios::app);
+        fout.open("data/users.txt", ios::app);
         fout << username << " ";
         fout << games_played << " ";
         fout << crazyeights << " ";
@@ -106,7 +150,7 @@ void updateFile(string username, int games_played, int crazyeights, int blackjac
         fout << score << " ";
         fout << endl;
     } else if(player_exists == true){
-        fout.open("games.txt");
+        fout.open("data/users.txt");
         for(int i = 0; i < player_data.size(); i++){
             if(player_data[i].name == username){
                 player_data[i].games_played += games_played;

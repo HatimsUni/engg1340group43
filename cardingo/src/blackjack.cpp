@@ -17,8 +17,80 @@ vector<int> scores;
 
 // BLACKJACK TOOLS START
 
-void finalWinners() {
-    
+void printWinners(vector<int> finals)
+{
+    print();
+    if (finals.size() == 1)
+    {
+        if (finals[0] == 0)
+        {
+            print("You won the game !", "green", true);
+            wait(2000);
+            game_score = n;
+        }
+        else
+        {
+            print("Computer " + to_string(finals[0]) + " won the game !", "blue", true);
+        }
+    }
+    else
+    {
+        print("The following players won the game !", "blue", true);
+        for (int i = 0; i < finals.size(); i++)
+        {
+            if (finals[i] == 0)
+            {
+                wait(400);
+                print("    You", "green", true);
+                game_score = n;
+            }
+            else
+            {
+                wait(400);
+                print("    Computer " + to_string(finals[i]), "cyan", true);
+            }
+        }
+    }
+    wait(2000);
+    print();
+}
+
+void finalWinners()
+{
+    bool hasWinner = false;
+    vector<int> winners;
+    vector<int> stood;
+    int max = 0;
+    for (int i = 0; i < n; i++)
+    {
+        if (status[i] == "W")
+        {
+            hasWinner = true;
+            winners.push_back(i);
+        }
+        if (status[i] == "S")
+        {
+            if (scores[i] > max)
+            {
+                max = scores[i];
+            }
+        }
+    }
+    if (hasWinner)
+    {
+        printWinners(winners);
+    }
+    else
+    {
+        for (int i = 0; i < n; i++)
+        {
+            if (scores[i] == max)
+            {
+                stood.push_back(i);
+            }
+        }
+        printWinners(stood);
+    }
 }
 
 void printStatus(int i)
@@ -111,20 +183,28 @@ void hit(int i)
     if (i == 0)
     {
         print("You chose to Hit!", "magenta", true);
+        wait(300);
         player_cards[i].push_back(drawCard(deck, 1)[0]);
         updatePlayerScore(i);
         printCards(player_cards[i]);
+        wait(300);
         print("Your score: " + to_string(getPlayerScore(i)), "blue", true);
+        wait(300);
         printStatus(i);
+        wait();
     }
     else
     {
         print("Computer " + to_string(i) + " chose to Hit!", "cyan");
+        wait(300);
         player_cards[i].push_back(drawCard(deck, 1)[0]);
         updatePlayerScore(i);
         printCards(player_cards[i]);
+        wait(300);
         print("Computer " + to_string(i) + "'s score: " + to_string(getPlayerScore(i)), "blue");
+        wait(300);
         printStatus(i);
+        wait();
     }
 }
 
@@ -133,11 +213,13 @@ void stand(int i)
     if (i == 0)
     {
         print("You chose to Stand!", "magenta", true);
+        wait();
         status[i] = "S";
     }
     else
     {
         print("Computer " + to_string(i) + " chose to Stand!", "cyan");
+        wait();
         status[i] = "S";
     }
 }
@@ -205,15 +287,23 @@ void startRound()
         {
             if (i == 0)
             {
+                print();
                 print("It is your turn!", "magenta", true);
+                wait(300);
                 printCards(player_cards[i]);
+                wait(300);
                 print("Your score: " + to_string(getPlayerScore(i)), "blue", true);
+                wait(300);
             }
             else
             {
+                print();
                 print("It is Computer " + to_string(i) + "'s turn!", "cyan");
+                wait(300);
                 printCards(player_cards[i]);
+                wait(300);
                 print("Computer " + to_string(i) + "'s score: " + to_string(getPlayerScore(i)), "blue");
+                wait(300);
             }
             if (status[i] == "P")
             {
@@ -226,11 +316,15 @@ void startRound()
                 {
                     stand(i);
                 }
-            } else {
+            }
+            else
+            {
                 printStatus(i);
+                wait();
             }
         }
     }
+    finalWinners();
 }
 
 void startGame()

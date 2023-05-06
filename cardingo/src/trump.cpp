@@ -21,6 +21,7 @@ struct Round
     int winner;
     string round_suit = "?";
     string trump;
+    vector<string> round_cards;
 };
 
 // TRUMP TOOLS START
@@ -249,6 +250,7 @@ void roundInfo(Round round, int i)
     print(to_string(round.team1), "cyan", "", "   ");
     print("Team 2 Sets: ", "magenta", true, "");
     print(to_string(round.team2), "cyan", "");
+    print();
 }
 
 string calculateTrump(vector<string> deck)
@@ -387,9 +389,9 @@ bool higherThan(string card1, string card2)
     }
 }
 
-string getNextHighTrump(vector<string> deck, vector<string> round_cards, string trump)
+string getNextHighTrump(vector<string> deck, Round round, string trump)
 {
-    int max = getCardValue(getHighestInSuit(round_cards, trump)[0]);
+    int max = getCardValue(getHighestInSuit(round.round_cards, trump)[0]);
     for (int i = 0; i < deck.size(); i++)
     {
         int value = getCardValue(deck[i]);
@@ -403,17 +405,17 @@ string getNextHighTrump(vector<string> deck, vector<string> round_cards, string 
     return "";
 }
 
-string chooseCard(vector<string> deck, vector<string> round_cards, int turn, string trump, string suit)
+string chooseCard(vector<string> deck, Round round, int turn, string trump, string suit)
 {
-    bool has_trump = hasSuit(round_cards, trump);
-    bool has_suit = hasSuit(round_cards, suit);
+    bool has_trump = hasSuit(round.round_cards, trump);
+    bool has_suit = hasSuit(round.round_cards, suit);
     string card;
     string highest;
     int highest_player;
     if (has_trump)
     {
-        highest = getHighestInSuit(round_cards, trump)[0];
-        highest_player = stoi(getHighestInSuit(round_cards, trump)[1]);
+        highest = getHighestInSuit(round.round_cards, trump)[0];
+        highest_player = stoi(getHighestInSuit(round.round_cards, trump)[1]);
 
         if (trump == suit)
         {
@@ -447,7 +449,7 @@ string chooseCard(vector<string> deck, vector<string> round_cards, int turn, str
                 }
                 else
                 {
-                    string nextHigh = getNextHighTrump(deck, round_cards, trump);
+                    string nextHigh = getNextHighTrump(deck, round, trump);
                     if (nextHigh == "")
                     {
                         card = getLowestCardNotInTrump(deck, trump);
@@ -466,8 +468,8 @@ string chooseCard(vector<string> deck, vector<string> round_cards, int turn, str
     }
     else if (has_suit)
     {
-        highest = getHighestInSuit(round_cards, suit)[0];
-        highest_player = stoi(getHighestInSuit(round_cards, suit)[1]);
+        highest = getHighestInSuit(round.round_cards, suit)[0];
+        highest_player = stoi(getHighestInSuit(round.round_cards, suit)[1]);
         if (hasSuit(deck, suit))
         {
             if (highest_player == getPartner(turn))
@@ -593,90 +595,95 @@ void gameWinner(int team1, int team2)
     {
         print("Team 2 (Computer 1 and Computer 3) won the game !", "blue", true);
     }
+    print();
+    wait(2000);
 }
 // TRUMP TOOLS END
 
 void startRounds(Round &round)
 {
     int turn = round.winner;
-    vector<string> round_cards(4, "");
+    vector<string> round_cards_temp(4, "");
+    round.round_cards = round_cards_temp;
     string card;
     for (int i = 0; i < 4; i++)
     {
-        string highest_card = getHighestInRound(round.trump, round.round_suit, round_cards)[0];
-        int highest_player = stoi(getHighestInRound(round.trump, round.round_suit, round_cards)[1]);
+        string highest_card = getHighestInRound(round.trump, round.round_suit, round.round_cards)[0];
+        int highest_player = stoi(getHighestInRound(round.trump, round.round_suit, round.round_cards)[1]);
         if (turn == 0)
         {
+            print("It is your turn!", "magenta", true);
             roundInfo(round, i);
-            wait(300);
+            wait();
             printCards(user_deck, 7, true);
-            wait(100);
+            print();
+            wait(500);
             print("Throw Card: ", "magenta", true, "");
             cin >> card;
-            wait(100);
+            wait(300);
             while (!checkUserCard(user_deck, card, round.trump, round.round_suit))
             {
                 print("Throw Card: ", "magenta", true, "");
                 cin >> card;
-                wait(100);
+                wait(300);
             }
-            round_cards[0] = card;
+            round.round_cards[0] = card;
+            print();
         }
         else if (turn == 1)
         {
-            printCards(comp1);
-            round_cards[1] = chooseCard(comp1, round_cards, turn, round.trump, round.round_suit);
+            round.round_cards[1] = chooseCard(comp1, round, turn, round.trump, round.round_suit);
             print("Computer 1 played ", "blue", true, "");
-            print(getValue(round_cards[1]), "cyan", "", "");
-            printSuit(getSuit(round_cards[1]));
-            print();
+            print(getValue(round.round_cards[1]), "cyan", "", "");
+            printSuit(getSuit(round.round_cards[1]));
+            print("\n");
             wait(500);
         }
         else if (turn == 2)
         {
-            printCards(comp2);
-            round_cards[2] = chooseCard(comp2, round_cards, turn, round.trump, round.round_suit);
-            print(round_cards[2]);
+            round.round_cards[2] = chooseCard(comp2, round, turn, round.trump, round.round_suit);
             print("Computer 2 played ", "blue", true, "");
-            print(getValue(round_cards[2]), "cyan", "", "");
-            printSuit(getSuit(round_cards[2]));
-            print();
+            print(getValue(round.round_cards[2]), "cyan", "", "");
+            printSuit(getSuit(round.round_cards[2]));
+            print("\n");
             wait(500);
         }
         else if (turn == 3)
         {
-            printCards(comp3);
-            round_cards[3] = chooseCard(comp3, round_cards, turn, round.trump, round.round_suit);
-            print(round_cards[3]);
+            round.round_cards[3] = chooseCard(comp3, round, turn, round.trump, round.round_suit);
             print("Computer 3 played ", "blue", true, "");
-            print(getValue(round_cards[3]), "cyan", "", "");
-            printSuit(getSuit(round_cards[3]));
-            print();
+            print(getValue(round.round_cards[3]), "cyan", "", "");
+            printSuit(getSuit(round.round_cards[3]));
+            print("\n");
             wait(500);
         }
 
         if (i == 0)
         {
-            round.round_suit = getSuit(round_cards[turn]);
+            round.round_suit = getSuit(round.round_cards[turn]);
         }
         else if (i == 3)
         {
-            round.winner = stoi(getHighestInRound(round.trump, round.round_suit, round_cards)[1]);
-            roundWinner(round.winner, getHighestInRound(round.trump, round.round_suit, round_cards)[0]);
-            wait(100);
+            round.winner = stoi(getHighestInRound(round.trump, round.round_suit, round.round_cards)[1]);
+            roundWinner(round.winner, getHighestInRound(round.trump, round.round_suit, round.round_cards)[0]);
+            wait();
             if (round.winner == 0 || round.winner == 2)
             {
                 round.team1++;
                 print("Team 1 (You and Computer 2) won the round!", "green", true);
+                wait();
+                print();
             }
             else
             {
                 round.team2++;
                 print("Team 2 (Computer 1 and Computer 3) won the round!", "green", true);
+                wait();
+                print();
             }
         }
 
-        removeCards(round_cards);
+        removeCards(round.round_cards);
 
         turn++;
         if (turn == 4)
@@ -698,7 +705,7 @@ void startGame(int winner)
     trump = getTrump(winner);
     print("The trump is ", "magenta", true, "");
     printSuit(trump);
-    print();
+    print("\n");
     wait();
 
     for (int i = 0; i < 8; i++)
@@ -734,9 +741,9 @@ void toss(vector<string> deck)
     wait();
     print("Your card: ", "green", true, "  ");
     print("Computer 1:  Computer 2:  Computer 3:", "cyan");
-    wait(100);
+    wait(300);
     printCards(draw4);
-    wait(2000);
+    wait(1000);
     int highest = 0;
     string value;
     int number = 0;
@@ -758,7 +765,8 @@ void toss(vector<string> deck)
     {
         print("Computer " + to_string(winner) + " won the toss!", "cyan");
     }
-    wait();
+    wait(2000);
+    print();
     startGame(winner);
 }
 
