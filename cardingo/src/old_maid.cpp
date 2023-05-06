@@ -164,8 +164,8 @@ void playTurn(vector<string>& discard_pile, vector<string>& human_hand, vector<s
         cout << "The robot picked card number " << choice+1 << endl;
         wait();
         cout << "The robot took the ";
-        print(getSuit(human_hand[choice - 1]), "magenta", true, ""); 
-        print(getValue(human_hand[choice - 1]), "magenta", true);
+        print(getSuit(human_hand[choice]), "magenta", true, ""); 
+        print(getValue(human_hand[choice]), "magenta", true);
         wait();
         robot_hand.push_back(human_hand[choice]);
         human_hand.erase(human_hand.begin() + (choice));
