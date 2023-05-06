@@ -7,6 +7,7 @@
 #include "../include/file_handler.h"
 using namespace std;
 
+// take color as string input and return the escape sequence characters of the color
 string getEscapeSequence(string color)
 {
     string escape_sequence;
@@ -42,6 +43,14 @@ string getEscapeSequence(string color)
     {
         escape_sequence = "\033[37m";
     }
+    else if (color == "bronze")
+    {
+        escape_sequence = "\033[38;5;130m";
+    }
+    else if (color == "grey")
+    {
+        escape_sequence = "\033[90m";
+    }
     else
     {
         escape_sequence = "\033[0m";
@@ -50,6 +59,7 @@ string getEscapeSequence(string color)
     return escape_sequence;
 }
 
+// print one line of text, with the options of bold, color, and end of line.
 void print(string text = "", string color = "default", bool bold = false, string end = "\n")
 {
     string def = "\033[0m";
@@ -62,6 +72,7 @@ void print(string text = "", string color = "default", bool bold = false, string
     cout << bold_esc << esc << text << def << end;
 }
 
+// takes suit as string input prints the suit in it's appropriate symbol and color
 void printSuit(string suit)
 {
     if (suit == "H")
@@ -82,6 +93,7 @@ void printSuit(string suit)
     }
 }
 
+// prints the main heading for Cardingo
 void printMainHeading()
 {
     for (int i = 0; i < 5; i++)
@@ -136,6 +148,7 @@ void printMainHeading()
     print();
 }
 
+// prints the main thank you message at the end of the game
 void printMainEnding()
 {
     for (int i = 0; i < 8; i++)
@@ -194,6 +207,7 @@ void printMainEnding()
     print();
 }
 
+// takes the game name as string input and prints the game heading
 void printGameHeading(string game)
 {
     print("YOU ARE NOW PLAYING", "blue", true);
@@ -224,6 +238,7 @@ void printGameHeading(string game)
     print();
 }
 
+// handle the output of user information before and after the game, previous score, and new score etc.
 void printUserDetails(string user, string game, int total, int played, int score)
 {
     string game_name;
@@ -258,6 +273,7 @@ void printUserDetails(string user, string game, int total, int played, int score
     print();
 }
 
+// takes a single card as string input and prints the card as ASCII art
 void printCard(string card, bool show)
 {
     string value = getValue(card);
@@ -291,6 +307,7 @@ void printCard(string card, bool show)
     }
 }
 
+// takes cards as vector<string> input and prints the cards as ASCII art
 void printCards(vector<string> deck, int n, bool show)
 {
     int size = deck.size();
@@ -508,6 +525,7 @@ void printCards(vector<string> deck, int n, bool show)
     // print("└─────────┘");
 }
 
+// prints the rules of the corresponding games
 void printRules(string game_name)
 {
     print();
@@ -542,13 +560,31 @@ void printRules(string game_name)
     while (true)
     {
         cin >> input;
-        if (input == "Y" || input == "y") {
+        if (input == "Y" || input == "y")
+        {
             break;
         }
         print("Invalid input!", "red", true);
         print("Continue? (Y): ", "blue", true, "");
     }
     print();
+}
+
+// Prints the medal of the user
+void printMedal(int score)
+{
+    if (score > 0 && score <= 10)
+    {
+        print("Bronze 🥉 Medal", "bronze", true, "");
+    }
+    else if (score > 10 && score <= 20)
+    {
+        print("Silver 🥈 Medal", "grey", true, "");
+    }
+    else if (score > 20)
+    {
+        print("Gold 🥇 Medal", "yellow", true, "");
+    }
 }
 
 // int main()
