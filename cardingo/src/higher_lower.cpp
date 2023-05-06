@@ -24,7 +24,7 @@ int getRank(string val);
 
 string compareCards(string current_card, string next_card);
 
-int winner();
+void higherLowerWinner();
 
 void startHigherLower() {
     vector<string> answer_cards = getCards();
@@ -66,7 +66,7 @@ void continueHigherLower(vector<string> answer_cards) {
         }
     }
     
-    winner();
+    higherLowerWinner();
 }
 
 int getRank(string val) {
@@ -103,7 +103,7 @@ string compareCards(string current_card, string next_card) {
     return answer;
 }
 
-int winner() {
+void higherLowerWinner() {
     if (life_count == 5) {
         game_score = 5;
         cout << "Congratulations! You are the winner!";
@@ -135,6 +135,4 @@ int winner() {
         cout << "Your score: " << game_score;
         cout << "Thank you for playing!";
     }
-    
-    return game_score;
 }
