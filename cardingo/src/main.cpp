@@ -22,6 +22,7 @@ void chooseCrazyEights(string username)
     int score;
     score = playCrazyEights();
     updateFile(username, 1, 1, 0, 0, 0, 0, score);
+    getline(cin, reply);
     while (true)
     {
         print("Would you like to play again? (y/n)");
@@ -56,6 +57,7 @@ void chooseBlackjack(string username)
     int score;
     score = playBlackjack();
     updateFile(username, 1, 0, 1, 0, 0, 0, score);
+    getline(cin, reply);
     while (true)
     {
         print("Would you like to play again? (y/n)");
@@ -90,6 +92,7 @@ void chooseHigherLower(string username)
     int score;
     score = playHigherLower();
     updateFile(username, 1, 0, 0, 1, 0, 0, score);
+    getline(cin, reply);
     while (true)
     {
         print("Would you like to play again? (y/n)");
@@ -124,6 +127,7 @@ void chooseTrump(string username)
     int score;
     score = playTrump();
     updateFile(username, 1, 0, 0, 0, 0, 1, score);
+    getline(cin, reply);
     while (true)
     {
         print("Would you like to play again? (y/n)");
