@@ -91,7 +91,7 @@ void removePairs(vector<string>& discard_pile, vector<string>& hand, string curr
             cout << "No pairs to throw" << endl;
             wait();
         } else {
-            cout << "The robot threw away the cards:" << endl;
+            cout << "The computer threw away the cards:" << endl;
             wait();
             printCards(thrown_pairs);
             wait();
@@ -114,7 +114,7 @@ void playTurn(vector<string>& discard_pile, vector<string>& human_hand, vector<s
         int choice;
         cout << "Its your turn" << endl;
         wait();
-        cout << "The robot has " << robot_hand.size() << " card(s)" << endl;
+        cout << "The computer has " << robot_hand.size() << " card(s)" << endl;
         wait();
         while (true){
             if(robot_hand.size() == 1){
@@ -143,7 +143,7 @@ void playTurn(vector<string>& discard_pile, vector<string>& human_hand, vector<s
         robot_hand.erase(robot_hand.begin() + (choice-1));
         removePairs(discard_pile, human_hand, "human");
         if(robot_hand.size()==0 && human_hand.size() == 1){
-            cout << "The robot wins" << endl;
+            cout << "The computer wins" << endl;
             wait();
             return;
         } else if (robot_hand.size() == 1 && human_hand.size() == 0){
@@ -161,9 +161,9 @@ void playTurn(vector<string>& discard_pile, vector<string>& human_hand, vector<s
         wait();
         cout << "You have " << human_hand.size() << " cards" << endl;
         wait();
-        cout << "The robot picked card number " << choice+1 << endl;
+        cout << "The computer picked card number " << choice+1 << endl;
         wait();
-        cout << "The robot took the ";
+        cout << "The computer took the ";
         print(getSuit(human_hand[choice]), "magenta", true, ""); 
         print(getValue(human_hand[choice]), "magenta", true);
         wait();
@@ -171,7 +171,7 @@ void playTurn(vector<string>& discard_pile, vector<string>& human_hand, vector<s
         human_hand.erase(human_hand.begin() + (choice));
         removePairs(discard_pile, robot_hand, "robot");
         if(robot_hand.size()==0 && human_hand.size() == 1){
-            cout << "The robot wins" << endl;
+            cout << "The computer wins" << endl;
             wait();
             return;
         } else if (robot_hand.size() == 1 && human_hand.size() == 0){
@@ -230,11 +230,11 @@ int playOldMaid(){
     }
 
     if(human_hand.size() == 25){
-        cout << "You got the queen of clubs so you threw it away and the robot starts first" << endl;
+        cout << "You got the queen of clubs so you threw it away and the computer starts first" << endl;
         wait();
         current_player = "robot";
     } else if(robot_hand.size() == 25){
-        cout << "The robot got the queen of clubs so you start first" << endl;
+        cout << "The computer got the queen of clubs so you start first" << endl;
         wait();
         current_player = "human";
     }
