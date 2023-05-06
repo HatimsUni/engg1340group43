@@ -40,31 +40,31 @@ void continueHigherLower(vector<string> answer_cards) {
 
     for (int i = 0; i <= answer_cards.size() - 1; i++) {
         string current_card = answer_cards[i];
-        cout << current_card;
-        cout << "Input your guess of how the current card compares to the next card (Higher, Lower, Similar):";
+        cout << current_card << endl;
+        cout << "Input your guess of how the current card compares to the next card (Higher, Lower, Similar): " << endl;
         cin >> guess;
 
         if (guess != "Higher" || guess != "Lower" || guess != "Similar") {
-            cout << "Please input your guess correctly (Higher / Lower / Similar)";
+            cout << "Please input your guess correctly (Higher / Lower / Similar): " << endl;
             cin >> guess;
         }
 
         string next_card = answer_cards[i+1];
-        cout << next_card;
+        cout << next_card << endl;
 
         answer = compareCards(current_card, next_card);
 
         if (answer == guess) {
-            cout << "Congratulation! Your guess is correct!";
+            cout << "Congratulation! Your guess is correct!" << endl;
         } else {
-            cout << "You are wrong. The correct answer is: " << answer;
-            cout << "One life will be lost.";
+            cout << "You are wrong. The correct answer is: " << answer << endl;
+            cout << "One life will be lost." << endl;
             life_count--;
-            cout << "Total life left: " << life_count;
+            cout << "Total life left: " << life_count << endl;
         }
 
         if (life_count == 0) {
-            cout << "You have lost all your lives.";
+            cout << "You have lost all your lives." << endl;
             break;
         }
     }
@@ -73,11 +73,11 @@ void continueHigherLower(vector<string> answer_cards) {
 }
 
 int getRank(string val) {
-    string val = val.substr(1, val.length() - 1);
+    string newval = val.substr(1, val.length() - 1);
     vector<string> vect_ranks = { "A", "K", "Q", "J", "10", "9", "8", "7", "6", "5", "4", "3", "2" };
     int rank;
     for (int i = 0; i <= vect_ranks.size(); i++) {
-        if (val == vect_ranks[i]) {
+        if (newval == vect_ranks[i]) {
             rank = i;
         }
     }
@@ -109,33 +109,33 @@ string compareCards(string current_card, string next_card) {
 void higherLowerWinner() {
     if (life_count == 5) {
         game_score = 5;
-        cout << "Congratulations! You are the winner!";
-        cout << "Your score: " << game_score;
+        cout << "Congratulations! You are the winner!" << endl;
+        cout << "Your score: " << game_score << endl;
         cout << "Thank you for playing!";
     } else if (life_count == 4) {
         game_score = 4;
-        cout << "Congratulations! You are the winner!";
-        cout << "Your score: " << game_score;
+        cout << "Congratulations! You are the winner!" << endl;
+        cout << "Your score: " << game_score << endl;
         cout << "Thank you for playing!";
     } else if (life_count == 3) {
         game_score = 3;
-        cout << "Congratulations! You are the winner!";
-        cout << "Your score: " << game_score;
+        cout << "Congratulations! You are the winner!" << endl;
+        cout << "Your score: " << game_score << endl;
         cout << "Thank you for playing!";
     } else if (life_count == 2) {
         game_score = 2;
-        cout << "Congratulations! You are the winner!";
-        cout << "Your score: " << game_score;
+        cout << "Congratulations! You are the winner!" << endl;
+        cout << "Your score: " << game_score << endl;
         cout << "Thank you for playing!";
     } else if (life_count == 1) {
         game_score = 1;
-        cout << "Congratulations! You are the winner!";
-        cout << "Your score: " << game_score;
+        cout << "Congratulations! You are the winner!" << endl;
+        cout << "Your score: " << game_score << endl;
         cout << "Thank you for playing!";
     } else {
         game_score = 0;
-        cout << "Try again.. You have lost due to incorrect guesses...";
-        cout << "Your score: " << game_score;
+        cout << "Try again.. You have lost due to incorrect guesses..." << endl;
+        cout << "Your score: " << game_score << endl;
         cout << "Thank you for playing!";
     }
 }
