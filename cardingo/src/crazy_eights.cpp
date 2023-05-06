@@ -7,6 +7,7 @@
 #include "../include/card_dealer.h"
 #include "../include/print_text.h"
 #include "../include/sleep.h"
+#include "../include/score.h"
 
 using namespace std;
 
@@ -297,7 +298,7 @@ void Deck::getStartingCard(vector<string> &deck, string &currentSuit, string &cu
     deck.erase(itr);
 }
 
-void play_crazy_eights() {
+int playCrazyEights() {
     printGameHeading("crazyeights");
     wait(2100);
     
@@ -333,4 +334,6 @@ void play_crazy_eights() {
 
     cout << endl;
     cout << "\t--- GAME OVER ---" << endl;
+
+    return game_score;
 }

@@ -68,7 +68,7 @@ void printData(string username){
     bool player_exists = false;
     for (int i = 0; i < player_data.size(); i++){
         if(player_data[i].name == username){
-            cout << "You have played " << player_data[i].games_played << "games" << endl;
+            cout << "You have played " << player_data[i].games_played << " games" << endl;
             cout << "Your total score is " << player_data[i].score << endl;
             player_exists = true;
         }

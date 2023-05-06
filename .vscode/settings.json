@@ -11,5 +11,6 @@
         "vector": "cpp",
         "string": "cpp",
         "thread": "cpp"
-    }
+    },
+    "cmake.configureOnOpen": false
 }
