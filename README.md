@@ -42,6 +42,18 @@ Blackjack:
 * Winners earn points equal to the number of players in the game.
 
 Trump:
+- Goal: One team to wins 7 sets first.
+- Cards ranked A-K-Q-J-10-9-8-7-6-5-4-3-2, A highest and 2 lowest.
+- Player to choose trump decided by toss.
+- Four players, each dealt 5 cards initially.
+- Winner of toss chooses trump suit from their cards.
+- Then, 4 cards dealt to each player, then again 4, resulting in 13 cards each.
+- You and Computer 2 vs. Computer 1 and Computer 3.
+- Each round, players throw 1 card from same suit as winner of toss or last round.
+- Team with highest-ranking card wins the round.
+- If no same-suit card, waste another suit or play trump card.
+- If multiple trump cards, highest-ranking card wins.
+- First team to win 7 sets wins the game.
 
 Old Maid:
 * Old Maid is a classic card game where the goal of the game is to remove all pairs from your hand while not being left with the queen of spades
