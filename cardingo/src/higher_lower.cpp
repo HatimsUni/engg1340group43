@@ -40,34 +40,34 @@ void continueHigherLower(vector<string> answer_cards) {
 
     for (int i = 0; i <= answer_cards.size() - 1; i++) {
         string current_card = answer_cards[i];
-        cout << "Current card: " << endl;
-        cout << current_card << endl;
-        cout << "Input your guess of how the current card compares to the next card (Higher, Lower, Similar): ";
+        print("Current card: ");
+        printCard(current_card);
+        print("Input your guess of how the current card compares to the next card (Higher, Lower, Similar): ");
         cin >> guess;
 
         if (guess == "Higher" || guess == "Lower" || guess == "Similar") {
             continue;
         } else {
-            cout << "Please input your guess correctly (Higher / Lower / Similar): " << endl;
+            print("Please input your guess correctly (Higher / Lower / Similar): ");
             cin >> guess;
         }
 
         string next_card = answer_cards[i+1];
-        cout << next_card << endl;
+        printCard(next_card);
 
         answer = compareCards(current_card, next_card);
 
         if (answer == guess) {
-            cout << "Congratulation! Your guess is correct!" << endl;
+            print("Congratulation! Your guess is correct!");
         } else {
-            cout << "You are wrong. The correct answer is: " << answer << endl;
-            cout << "One life will be lost." << endl;
+            print("You are wrong. The correct answer is: %s", answer);
+            print("One life will be lost.");
             life_count--;
             cout << "Total life left: " << life_count << endl;
         }
 
         if (life_count == 0) {
-            cout << "You have lost all your lives." << endl;
+            print("You have lost all your lives.");
             break;
         }
     }
@@ -112,33 +112,33 @@ string compareCards(string current_card, string next_card) {
 void higherLowerWinner() {
     if (life_count == 5) {
         game_score = 5;
-        cout << "Congratulations! You are the winner!" << endl;
+        print("Congratulations! You are the winner!");
         cout << "Your score: " << game_score << endl;
-        cout << "Thank you for playing!";
+        print("Thank you for playing!");
     } else if (life_count == 4) {
         game_score = 4;
-        cout << "Congratulations! You are the winner!" << endl;
+        print("Congratulations! You are the winner!");
         cout << "Your score: " << game_score << endl;
-        cout << "Thank you for playing!";
+        print("Thank you for playing!");
     } else if (life_count == 3) {
         game_score = 3;
-        cout << "Congratulations! You are the winner!" << endl;
+        print("Congratulations! You are the winner!");
         cout << "Your score: " << game_score << endl;
-        cout << "Thank you for playing!";
+        print("Thank you for playing!");
     } else if (life_count == 2) {
         game_score = 2;
-        cout << "Congratulations! You are the winner!" << endl;
+        print("Congratulations! You are the winner!");
         cout << "Your score: " << game_score << endl;
-        cout << "Thank you for playing!";
+        print("Thank you for playing!");
     } else if (life_count == 1) {
         game_score = 1;
-        cout << "Congratulations! You are the winner!" << endl;
+        print("Congratulations! You are the winner!");
         cout << "Your score: " << game_score << endl;
-        cout << "Thank you for playing!";
+        print("Thank you for playing!");
     } else {
         game_score = 0;
-        cout << "Try again.. You have lost due to incorrect guesses..." << endl;
+        print("Try again.. You have lost due to incorrect guesses...");
         cout << "Your score: " << game_score << endl;
-        cout << "Thank you for playing!";
+        print("Thank you for playing!");
     }
 }
