@@ -63,7 +63,7 @@ void continueHigherLower(vector<string> answer_cards) {
             print("You are wrong. The correct answer is: %s", answer);
             print("One life will be lost.");
             life_count--;
-            cout << "Total life left: " << life_count << endl;
+            print("Total life left: %s", to_string(life_count));
         }
 
         if (life_count == 0) {
@@ -113,32 +113,32 @@ void higherLowerWinner() {
     if (life_count == 5) {
         game_score = 5;
         print("Congratulations! You are the winner!");
-        cout << "Your score: " << game_score << endl;
+        print("Your score: %s", to_string(game_score));
         print("Thank you for playing!");
     } else if (life_count == 4) {
         game_score = 4;
         print("Congratulations! You are the winner!");
-        cout << "Your score: " << game_score << endl;
+        print("Your score: %s", to_string(game_score));
         print("Thank you for playing!");
     } else if (life_count == 3) {
         game_score = 3;
         print("Congratulations! You are the winner!");
-        cout << "Your score: " << game_score << endl;
+        print("Your score: %s", to_string(game_score));
         print("Thank you for playing!");
     } else if (life_count == 2) {
         game_score = 2;
         print("Congratulations! You are the winner!");
-        cout << "Your score: " << game_score << endl;
+        print("Your score: %s", to_string(game_score));
         print("Thank you for playing!");
     } else if (life_count == 1) {
         game_score = 1;
         print("Congratulations! You are the winner!");
-        cout << "Your score: " << game_score << endl;
+        print("Your score: %s", to_string(game_score));
         print("Thank you for playing!");
     } else {
         game_score = 0;
         print("Try again.. You have lost due to incorrect guesses...");
-        cout << "Your score: " << game_score << endl;
+        print("Your score: %s", to_string(game_score));
         print("Thank you for playing!");
     }
 }
