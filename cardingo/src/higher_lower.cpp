@@ -1,7 +1,6 @@
 #include <iostream>
 #include <vector>
 #include <cstring>
-#include <cctype>
 #include "../include/higher_lower.h"
 #include "../include/card_dealer.h"
 #include "../include/print_text.h"
@@ -34,22 +33,26 @@ vector<string> getCards() {
 void startHigherLower() {
     vector<string> answer_cards = getCards();
     continueHigherLower(answer_cards);
-} 
+}
 
 void continueHigherLower(vector<string> answer_cards) {
     string guess;
     string answer;
-
+    string answer_char;
 
     for (int i = 0; i <= answer_cards.size() - 2; i++) {
         string current_card = answer_cards[i];
         print("Current card: ", "yellow", true, "\n");
         printCard(current_card);
-        print("Input your guess of how the current card compares to the next card (H = Higher, L = Lower, S = Similar): ", "green", false, "\n");
+        print("Input your guess of how the current card compares to
+the next card (H = Higher, L = Lower, S = Similar): ", "green", false,
+"\n");
         cin >> guess;
 
-        while (!(guess == "H" || guess == "L" || guess == "S" || guess == "h" || guess == "l" || guess == "s")) {
-            print("Please input your guess correctly (H / L / S): ", "green", false, "\n");
+        while (!(guess == "H" || guess == "L" || guess == "S" || guess
+== "h" || guess == "l" || guess == "s")) {
+            print("Please input your guess correctly (H / L / S): ",
+"green", false, "\n");
             cin >> guess;
         }
 
@@ -59,16 +62,18 @@ void continueHigherLower(vector<string> answer_cards) {
 
         answer = compareCards(current_card, next_card);
         const char answer_char = answer[0];
-        const char guess2 = toupper(guess[0]);
+        const char guess_char = toupper(guess[0]);
 
-
-        if (answer_char == guess2) {
-            print("Congratulation! Your guess is correct!", "green", false, "\n");
+        if (answer_char == guess_char) {
+            print("Congratulation! Your guess is correct!", "green",
+false, "\n");
         } else {
-            print("Incorrect guess, the correct answer was: " + answer, "green", false, "\n");
+            print("Incorrect guess, the correct answer was: " +
+answer, "green", false, "\n");
             print("One life will be lost.", "magenta", false, "\n");
             life_count--;
-            print("Total lives left: " + to_string(life_count), "magenta", true, "\n");
+            print("Total lives left: " + to_string(life_count),
+"magenta", true, "\n");
         }
 
         if (life_count == 0) {
@@ -76,13 +81,14 @@ void continueHigherLower(vector<string> answer_cards) {
             break;
         }
     }
-    
+
     higherLowerWinner();
 }
 
 int getRank(string val) {
     string newval = val.substr(1, val.length() - 1);
-    vector<string> vect_ranks = { "A", "K", "Q", "J", "10", "9", "8", "7", "6", "5", "4", "3", "2" };
+    vector<string> vect_ranks = { "A", "K", "Q", "J", "10", "9", "8",
+"7", "6", "5", "4", "3", "2" };
     int rank;
     for (int i = 0; i <= vect_ranks.size(); i++) {
         if (newval == vect_ranks[i]) {
@@ -142,7 +148,8 @@ void higherLowerWinner() {
         print("Thank you for playing!");
     } else {
         game_score = 0;
-        print("Try again.. You have lost due to incorrect guesses...", "magenta", true, "\n");
+        print("Try again.. You have lost due to incorrect guesses...",
+"magenta", true, "\n");
         print("Your score: " + to_string(game_score), "magenta", false, "\n");
         print("Thank you for playing!");
     }
