@@ -2,6 +2,7 @@
 #include <string>
 #include <sstream>
 #include <vector>
+#include <cstdio>
 #include "../include/card_dealer.h"
 #include "../include/file_handler.h"
 using namespace std;
@@ -522,7 +523,7 @@ void printRules(string game_name)
             print("Rules: ", "green", true);
             for (int i = 0; i < rules.size(); i++)
             {
-                print(" - " + rules[i]);
+                print(" - " + rules[i], "cyan");
             }
             break;
         }
@@ -534,6 +535,18 @@ void printRules(string game_name)
         {
             print("Invalid Choice!", "red", true);
         }
+    }
+    print();
+    print("Continue? (Y): ", "blue", true, "");
+    string input;
+    while (true)
+    {
+        cin >> input;
+        if (input == "Y" || input == "y") {
+            break;
+        }
+        print("Invalid input!", "red", true);
+        print("Continue? (Y): ", "blue", true, "");
     }
     print();
 }
