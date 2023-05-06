@@ -6,6 +6,7 @@
 #include "../include/old_maid.h"
 #include "../include/card_dealer.h"
 #include "../include/file_handler.h"
+#include "../include/higher_lower.h"
 #include "../include/print_text.h"
 #include "../include/sleep.h"
 using namespace std;
@@ -18,7 +19,7 @@ void chooseCrazyEights(string username){
     string reply;
     int score;
     score = playCrazyEights();
-    updateFile(username, 1, 0, 1, 0, 0, score);
+    updateFile(username, 1, 1, 0, 0, 0, 0, score);
     while (true){
         print("Would you like to play again? (y/n)");
         wait();
@@ -45,7 +46,7 @@ void chooseBlackjack(string username){
     string reply;
     int score;
     score = playBlackjack();
-    updateFile(username, 1, 0, 1, 0, 0, score);
+    updateFile(username, 1, 0, 1, 0, 0, 0, score);
     while (true){
         print("Would you like to play again? (y/n)");
         wait();
@@ -64,6 +65,36 @@ void chooseBlackjack(string username){
     }
 }
 
+void chooseHigherLower(string username){
+    //if the user chooses higher lower this function will run
+    //this will play higher lower and once the game has finished it will ask if the user wants to play again
+    //if the user wants to play again, it will play  higher lower
+    //if the user doesnt want to play they will be brought back to the game chooser screen
+    string reply;
+    int score;
+    score = playHigherLower();
+    updateFile(username, 1, 0, 0, 1, 0, 0, score);
+    while (true){
+        print("Would you like to play again? (y/n)");
+        wait();
+        getline(cin, reply);
+        if (reply == "y"){
+            chooseHigherLower(username);
+            return;
+        } else if  (reply == "n"){
+            print("Thank you. Returning to the game chooser screen");
+            wait();
+            return;
+        } else {
+            print("Wrong input. Please input your answer again");
+            wait();
+        }
+    }
+}
+
+
+
+
 void chooseTrump(string username){
     //if the user chooses trump this function will run
     //this will play trump and once the game has finished it will ask if the user wants to play again
@@ -72,7 +103,7 @@ void chooseTrump(string username){
     string reply;
     int score;
     score = playTrump();
-    updateFile(username, 1, 0, 0, 0, 1, score);
+    updateFile(username, 1, 0, 0, 0, 0, 1, score);
     while (true){
         print("Would you like to play again? (y/n)");
         wait();
@@ -100,7 +131,7 @@ void chooseOldMaid(string username){
     string reply;
     int score;
     score = playOldMaid();
-    updateFile(username, 1, 0, 0, 1, 0, score);
+    updateFile(username, 1, 0, 0, 0, 1, 0, score);
     getline(cin, reply);
     while (true){
         print("Would you like to play again? (y/n)");
@@ -128,15 +159,16 @@ void chooseGame(string username){
     string input;
     int number;
     while(true){
-        print("We have many card games, please pick one by entering the number (0-4)");
+        print("We have many card games, please pick one by entering the number (0-5)");
         print("1 Crazy Eights");
         print("2 Blackjack");
-        print("3 Trump");
-        print("4 Old Maid");
+        print("3 Higher Lower");
+        print("4 Trump");
+        print("5 Old Maid");
         print("0 Exit");
         getline(cin, input);
         
-        if (input.size() == 1 && input.find_first_not_of("01234") == string::npos){
+        if (input.size() == 1 && input.find_first_not_of("01235") == string::npos){
             number = stoi(input);
             if (number == 0){
                 print("Thank you for playing");
@@ -147,15 +179,17 @@ void chooseGame(string username){
             } else if (number == 2){
                 printGameHeading("blackjack");
                 chooseBlackjack(username);
-            } else if (number == 3){
+            } else if (number == 3) {
+                printGameHeading("higherlower");
+            } else if (number == 4){
                 printGameHeading("trump");
                 chooseTrump(username);
-            } else if (number == 4){
+            } else if (number == 5){
                 printGameHeading("oldmaid");
                 chooseOldMaid(username);
             }
         } else {
-            print("Invalid input, please reenter a number from 0-4");
+            print("Invalid input, please reenter a number from 0-5");
         }
     }
 }
