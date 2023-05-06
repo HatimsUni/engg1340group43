@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <random>
 #include "../include/card_dealer.h"
+#include "../include/print_text.h"
 using namespace std;
 
 string intToCard(int inputInt) { // inputInt: [1, 52]
@@ -29,12 +30,12 @@ string intToCard(int inputInt) { // inputInt: [1, 52]
 void printStringVector(vector<string> vec) { // debug purposes
     vector<string>::iterator itr = vec.begin();
     
-    cout << "Card: ";
+    print("Card: ", "", "", "");
     for (int i = 0; i < vec.size(); i++) {
-        cout << *itr << " ";
+        print(*itr, "", "", " ");
         itr++;
     }
-    cout << endl;
+    print();
 }
 
 vector<string> newDeck(bool isShuffle) { // return a shuffled 52-Card vector
@@ -75,18 +76,18 @@ string getValue(string card) {
 int test() {
     
     vector<string> deck = newDeck(false);
-    cout << endl << "full unshuffled deck" << endl;
+    print("\nfull unshuffled deck");
     printStringVector(deck);
     
     deck = newDeck();
-    cout << endl << "full shuffled deck" << endl;
+    print("\nfull shuffled deck");
     printStringVector(deck);
 
     vector<string> hand1 = drawCard(deck, 3);
-    cout << endl << "draw 3 cards" << endl;
+    print("\ndraw 3 cards");
     printStringVector(hand1);
     
-    cout << endl << "card left in the deck" << endl;
+    print("\ncard left in the deck");
     printStringVector(deck);
 
     return 0;
