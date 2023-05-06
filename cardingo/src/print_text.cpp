@@ -3,6 +3,7 @@
 #include <sstream>
 #include <vector>
 #include "../include/card_dealer.h"
+#include "../include/file_handler.h"
 using namespace std;
 
 string getEscapeSequence(string color)
@@ -504,6 +505,14 @@ void printCards(vector<string> deck, int n, bool show)
     // print("|         |");
     // print("|        A|");
     // print("└─────────┘");
+}
+
+void printRules(string game_name) {
+    vector<string> rules = getRules(game_name);
+    print("Rules: ", "green", true);
+    for (int i = 0; i < rules.size(); i++) {
+        print(" - " + rules[i]);
+    }
 }
 
 // int main()

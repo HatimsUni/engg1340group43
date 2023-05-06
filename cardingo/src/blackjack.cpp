@@ -26,6 +26,7 @@ void printWinners(vector<int> finals)
         {
             print("You won the game !", "green", true);
             wait(2000);
+            game_score = n;
         }
         else
         {
@@ -37,10 +38,11 @@ void printWinners(vector<int> finals)
         print("The following players won the game !", "blue", true);
         for (int i = 0; i < finals.size(); i++)
         {
-            if (i == 0)
+            if (finals[i] == 0)
             {
                 wait(400);
                 print("    You", "green", true);
+                game_score = n;
             }
             else
             {
