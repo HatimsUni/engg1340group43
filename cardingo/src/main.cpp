@@ -197,13 +197,14 @@ void chooseGame(string username)
     int number;
     while (true)
     {
-        print("We have many card games, please pick one by entering the number (0-5)");
-        print("1 Crazy Eights");
-        print("2 Blackjack");
-        print("3 Higher Lower");
-        print("4 Trump");
-        print("5 Old Maid");
-        print("0 Exit");
+        print("We have many card games! Please choose one", "green", true);
+        print("1: Crazy Eights", "cyan");
+        print("2: Blackjack", "cyan");
+        print("3: Higher Lower", "cyan");
+        print("4: Trump", "cyan");
+        print("5: Old Maid", "cyan");
+        print("0: Exit", "red");
+        print("Your Choice (0-5): ", "green", true, "");
         getline(cin, input);
 
         if (input.size() == 1 && input.find_first_not_of("012345") == string::npos)
@@ -211,7 +212,6 @@ void chooseGame(string username)
             number = stoi(input);
             if (number == 0)
             {
-                print("Thank you for playing");
                 return;
             }
             else if (number == 1)
@@ -281,6 +281,7 @@ int main()
     printData(username);
     updateFile(username);
     chooseGame(username);
+    print();
     printMainEnding();
     return 0;
 }
