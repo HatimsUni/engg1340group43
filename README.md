@@ -18,8 +18,8 @@ CARD-INGO is a fun and exciting collection of five different card games. The gam
 Blackjack\
 Trump\
 Old Maid\
-Higher lower\
-Crazy eights
+Higher Lower\
+Crazy Eights
 
 The name CARD-INGO is inspired by the popular game BINGO. CARD-INGO is sure to provide hours of entertainment and challenge. So, gather your friends and family, and get ready to play these classic card games in a whole new way with CARD-INGO!
 
