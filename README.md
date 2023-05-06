@@ -10,7 +10,7 @@ QUETTAWALA Hatim (3036094849)\
 SUHANDJAJA Alexander Gaudi (3036029674)\
 SUTANTO Winiera (3035964671)\
 MANATUNGE Aishani Induja (3035962386)\
-YOON Hyunseo ()
+YOON Hyunseo (3036029844)
 
 ## Introduction
 CARD-INGO is a fun and exciting collection of five different card games. The games included are:
@@ -41,6 +41,14 @@ Old Maid:
 * The loser is the player with the queen of spades left
 
 Higher Lower:
+- Higher Lower is a one-person game, in which the player has to guess if the current card drawed is either higher, lower, or similar to the next card with the least amount of lives lost as possible
+- At the start of the game the player gets 5 lives and a card from a deck is drawed in the player's hand
+- The player will try to guess if the value of the card in hand is higher, lower, or same (which will be considered similar given that the suits of the cards might be different) to the next card drawed
+- The next card is revealed and if the player guessed wrong, then the player loses one life
+- The next card becomes the current card in the player's hand, and another card is drawed as the next card
+- The player repeats guessing until either the player guessed 10 cards correctly or the player runs out of lives
+- At the end of the game, the amount of lives left becomes the score point
+- If the player has no lives, the player loses and wins no score points
 
 Crazy Eights:
 - The basic gameplay of Crazy Eights involves trying to get rid of your cards by matching either the rank or suit of the current card
