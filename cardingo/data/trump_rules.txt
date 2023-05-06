@@ -10,4 +10,4 @@ Team with highest-ranking card wins the round.
 If no same-suit card, waste another suit or play trump card.
 If multiple trump cards, highest-ranking card wins.
 First team to win 7 sets wins the game.
-Have fun playing the Trump card game!
+Have Fun!
