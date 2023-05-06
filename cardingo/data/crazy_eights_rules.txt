@@ -1,0 +1,10 @@
+Match rank or suit to discard cards.
+Objective: Be the first to discard all cards.
+Start with 7 cards each.
+Draw pile and discard pile on table.
+Play card matching suit or rank of top discard card.
+Draw until a playable card is found.
+"Eight" card lets player choose next suit.
+First to discard all cards wins.
+If draw pile is empty, game ends in a tie.
+Have Fun!

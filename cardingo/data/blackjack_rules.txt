@@ -1,0 +1,10 @@
+2-6 players.
+Cards rank 2-10, J/Q/K = 10, A = 1 or 11.
+Each player gets 2 cards.
+Score of 21 is a win, else hit or stand.
+Hit: draw another card.
+Over 21 is a loss, 21 is a win, lower score continues.
+Stand: final score.
+Game ends when everyone loses, wins, or stands.
+Winners have highest scores.
+Winners gain points equal to number of players in game.

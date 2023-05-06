@@ -1,0 +1,10 @@
+Remove all pairs without the queen of spades.
+Pair: same value and color (clubs/spades, diamonds/hearts).
+Each player draws 26 cards at start.
+Player having Queen of Clubs, discards it.
+Opponent starts first.
+Take a card from opponent, discard pairs.
+Alternate turns until one player has no cards.
+Loser: player with queen of spades.
+Winner: player with no cards left.
+Have Fun!
